@@ -1,0 +1,121 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.42s ease, visibility 0.42s ease;
+}
+
+.panel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(70% 58% at 72% 24%, rgba(148, 113, 255, 0.38), transparent 68%),
+    radial-gradient(60% 52% at 24% 72%, rgba(80, 146, 255, 0.34), transparent 72%),
+    linear-gradient(180deg, rgba(6, 10, 44, 0.98) 0%, rgba(2, 5, 28, 0.99) 100%);
+}
+
+.overlayOpen {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  will-change: transform, opacity;
+}
+
+.fromLeft {
+  animation: slideFromLeft 0.82s cubic-bezier(0.50, 1, 0.20, 1) forwards;
+}
+
+.fromTop {
+  animation: slideFromTop 0.82s cubic-bezier(0.50, 1, 0.20, 1) forwards;
+}
+
+.fromBottom {
+  animation: slideFromBottom 0.82s cubic-bezier(0.50, 1, 0.3, 1) forwards;
+}
+
+.fromRight {
+  animation: slideFromRight 0.82s cubic-bezier(0.50, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideFromLeft {
+  from {
+    opacity: 0;
+    transform: translate3d(-200px, 0, 0);
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideFromTop {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -18vh, 0);
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideFromBottom {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 18vh, 0);
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideFromRight {
+  from {
+    opacity: 0;
+    transform: translate3d(18vw, 0, 0);
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay,
+  .content {
+    transition: none;
+    animation: none;
+  }
+}

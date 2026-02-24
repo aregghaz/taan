@@ -1,9 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-
-const rootReducer = (state = {}) => state;
+import heroSliderReducer from "./heroSliderSlice";
 
 export const store = configureStore({
-  reducer: rootReducer,
+  reducer: {
+    heroSlider: heroSliderReducer,
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>;
