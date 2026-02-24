@@ -1,0 +1,115 @@
+.heroWrapper {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(80% 70% at 50% -20%, #1f30ff 0%, transparent 70%),
+    radial-gradient(45% 35% at 50% 40%, #0f35ff55 0%, transparent 90%),
+    linear-gradient(180deg, #0610b3 0%, #02084f 45%, #010325 100%);
+  color: #fff;
+}
+
+.heroRing {
+  position: absolute;
+  top: -42vmin;
+  left: 50%;
+  width: 120vmin;
+  height: 120vmin;
+  transform: translateX(-50%);
+  transform-origin: center;
+  border-radius: 50%;
+  border: 0.45vmin solid #ffffff;
+  box-shadow:
+    0 0 18px #ffffff,
+    0 0 48px #5e73ff,
+    0 0 90px #6f43ff;
+  opacity: 0.92;
+  animation: ringPulse 3.6s ease-in-out infinite;
+}
+
+.heroGlow {
+  position: absolute;
+  width: 42vmin;
+  height: 42vmin;
+  border-radius: 50%;
+  bottom: 27vh;
+  left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, #2f4effaa 0%, #2f4eff22 45%, transparent 75%);
+  filter: blur(2px);
+  animation: glowPulse 3.6s ease-in-out infinite;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+  text-align: center;
+  padding: 2rem;
+}
+
+.kicker {
+  margin: 0;
+  font-size: 25px;
+  letter-spacing: 0.08em;
+  opacity: 0.9;
+}
+
+.title {
+  margin: 0;
+  font-size: 72px;
+  letter-spacing: 20px;
+  font-weight: 700;
+}
+
+.heroButton {
+  border: 0;
+  border-radius: 9999px;
+  padding: 0.9rem 2.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #090d3f;
+  background: #ffffff;
+  box-shadow: 0 6px 22px #00000055;
+}
+
+@keyframes ringPulse {
+  0%,
+  100% {
+    transform: translateX(-50%) scale(1);
+    box-shadow:
+      0 0 16px #ffffff,
+      0 0 42px #5e73ff,
+      0 0 82px #6f43ff;
+  }
+
+  50% {
+    transform: translateX(-50%) scale(1.018);
+    box-shadow:
+      0 0 24px #ffffff,
+      0 0 64px #7b8fff,
+      0 0 120px #8b6bff;
+  }
+}
+
+@keyframes glowPulse {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ring,
+  .glow {
+    animation: none;
+  }
+}
