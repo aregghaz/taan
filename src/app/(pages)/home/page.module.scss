@@ -3,12 +3,23 @@
   min-height: 100vh;
   overflow: hidden;
   display: grid;
-  place-items: center;
+  place-items: start;
+  justify-items: center;
   background:
     radial-gradient(80% 70% at 50% -20%, #1f30ff 0%, transparent 70%),
     radial-gradient(45% 35% at 50% 40%, #0f35ff55 0%, transparent 90%),
     linear-gradient(180deg, #0610b3 0%, #02084f 45%, #010325 100%);
   color: #fff;
+
+  & > .heroHeaderWrapper{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    position: relative;
+    z-index: 99;
+  }
 }
 
 .heroRing {
@@ -26,7 +37,7 @@
     0 0 48px #5e73ff,
     0 0 90px #6f43ff;
   opacity: 0.92;
-  animation: ringPulse 3.6s ease-in-out infinite;
+  //animation: ringPulse 3.6s ease-in-out infinite;
 }
 
 .heroGlow {
@@ -39,7 +50,7 @@
   transform: translateX(-50%);
   background: radial-gradient(circle, #2f4effaa 0%, #2f4eff22 45%, transparent 75%);
   filter: blur(2px);
-  animation: glowPulse 3.6s ease-in-out infinite;
+  //animation: glowPulse 3.6s ease-in-out infinite;
 }
 
 .heroContent {

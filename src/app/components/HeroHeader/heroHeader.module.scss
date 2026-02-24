@@ -1,0 +1,54 @@
+.heroHeader {
+  position: relative;
+  width: min(92%, 850px);
+  height: 50px;
+  border-radius: 999px;
+  background:
+    linear-gradient(120deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05)),
+    rgba(6, 14, 55, 0.42);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.12),
+    0 10px 28px rgba(1, 7, 45, 0.5),
+    0 0 36px rgba(77, 125, 255, 0.28);
+  overflow: hidden;
+}
+
+.heroHeader::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    105deg,
+    rgba(255, 255, 255, 0.42) 0%,
+    rgba(255, 255, 255, 0.08) 24%,
+    rgba(255, 255, 255, 0.02) 46%,
+    rgba(255, 255, 255, 0.24) 100%
+  );
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.heroHeader::after {
+  content: "";
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  top: -120px;
+  right: 8%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(145, 177, 255, 0.5), transparent 70%);
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .heroHeader {
+    width: calc(100% - 1.5rem);
+    height: 56px;
+  }
+}

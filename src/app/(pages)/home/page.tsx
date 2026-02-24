@@ -1,8 +1,12 @@
 import styles from './page.module.scss';
+import HeroHeader from "@/app/components/HeroHeader/HeroHeader";
 
 export default function Home() {
   return (
     <main className={styles.heroWrapper}>
+        <div className={styles.heroHeaderWrapper}>
+            <HeroHeader />
+        </div>
       <div className={styles.heroRing} />
       <div className={styles.heroGlow} />
 
