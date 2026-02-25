@@ -14,41 +14,37 @@ import {
 } from "@/app/store/heroSliderSelectors";
 
 const SLIDES = [OurProjectsSlide, AboutUsSlide, ContactUsSlide, CVslide];
-
-function getEntryOffset(index: number | null): { x: string | number; y: string | number } {
-  switch (index) {
-    case 0:
-      return { x: "-110%", y: "0%" };
-    case 1:
-      return { x: "0%", y: "-110%" };
-    case 2:
-      return { x: "0%", y: "110%" };
-    case 3:
-      return { x: "110%", y: "0%" };
-    default:
-      return { x: "0%", y: "0%" };
-  }
-}
+const SCROLL_EASE = [0.16, 1, 0.3, 1] as const;
 
 const slideVariants: Variants = {
-  enter: (index: number | null) => {
-    const offset = getEntryOffset(index);
-    return {
-      x: offset.x,
-      y: offset.y,
-      opacity: 1,
-    };
+  enter: {
+    zIndex: 2,
+    y: "118%",
+    scale: 1.01,
+    opacity: 1,
+    transition: {
+      duration: 1.5,
+      ease: SCROLL_EASE,
+    },
   },
   center: {
-    x: "0%",
+    zIndex: 2,
     y: "0%",
+    scale: 1,
     opacity: 1,
+    transition: {
+      duration: 1.5,
+      ease: SCROLL_EASE,
+    },
   },
   exit: {
-    opacity: 0,
+    zIndex: 1,
+    y: "-24%",
+    scale: 0.995,
+    opacity: 1,
     transition: {
-      duration: 0.01,
-      ease: "linear",
+      duration: 1.5,
+      ease: SCROLL_EASE,
     },
   },
 };
@@ -69,20 +65,15 @@ export default function HeroFullscreenSlide() {
     >
       <div className={styles.panel}>
         <div className={styles.content}>
-          <AnimatePresence initial={false} mode="wait">
+          <AnimatePresence initial={false}>
             {ActiveSlide ? (
               <motion.div
                 key={activeIndex ?? "empty"}
                 className={styles.slideLayer}
-                custom={activeIndex}
                 variants={slideVariants}
                 initial="enter"
                 animate="center"
                 exit="exit"
-                transition={{
-                  x: { type: "tween", duration: 1, ease: [0.22, 1, 0.36, 1] },
-                  y: { type: "tween", duration: 1, ease: [0.22, 1, 0.36, 1] },
-                }}
               >
                 <ActiveSlide />
               </motion.div>

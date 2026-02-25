@@ -38,7 +38,10 @@
 .slideLayer {
   position: absolute;
   inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, #060a2c 0%, #02051c 100%);
   will-change: transform, opacity;
+  transform-origin: center top;
   backface-visibility: hidden;
   transform: translateZ(0);
 }
