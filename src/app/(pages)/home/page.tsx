@@ -2,7 +2,6 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { usePathname } from "next/navigation";
-import styles from './page.module.scss';
 import HeroHeader from "@/app/components/HeroHeader/HeroHeader";
 import HeroFullscreenSlide from "@/app/components/HeroFullscreenSlide/HeroFullscreenSlide";
 import HeroRouteSync from "@/app/components/HeroRouteSync/HeroRouteSync";
@@ -38,23 +37,23 @@ export default function Home() {
 
   const headerWrapperClassName = useMemo(() => {
     return shouldAnimateHeader
-      ? `${styles.heroHeaderWrapper} ${styles.heroHeaderAnimate}`
-      : styles.heroHeaderWrapper;
+      ? "homePageHeaderWrapper homePageHeaderAnimate"
+      : "homePageHeaderWrapper";
   }, [shouldAnimateHeader]);
 
   return (
-    <main className={styles.heroWrapper}>
+    <main className="homePage">
         <HeroRouteSync />
         <div className={headerWrapperClassName}>
             <HeroHeader />
         </div>
-      <div className={styles.heroRing} />
-      <div className={styles.heroGlow} />
+      <div className="homePageRing" />
+      <div className="homePageGlow" />
 
-      <div className={styles.heroContent}>
-        <p className={styles.kicker}>Tomorrow’s Answers, Available Now</p>
-        <h1 className={styles.title}>TAAN <br/> TECHNOLOGIES</h1>
-        <button className={styles.heroButton}>Buttonik</button>
+      <div className="homePageContent">
+        <p className="homePageKicker">Tomorrow’s Answers, Available Now</p>
+        <h1 className="homePageTitle">TAAN <br/> TECHNOLOGIES</h1>
+        <button className="homePageButton">Buttonik</button>
       </div>
 
       <HeroFullscreenSlide />

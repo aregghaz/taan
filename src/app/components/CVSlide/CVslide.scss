@@ -1,38 +1,69 @@
-.slide {
+.cvSlide {
   width: 100%;
   height: 100%;
   display: grid;
   align-content: center;
-  gap: 0.9rem;
-  padding: clamp(1.4rem, 4vw, 3rem);
+  gap: 14px;
+  padding: 48px;
   background: linear-gradient(160deg, rgba(20, 30, 120, 0.7), rgba(11, 15, 59, 0.85));
 }
 
-.cv {
+.cvSlideTheme {
   background:
     radial-gradient(92% 80% at 50% 6%, rgba(253, 182, 255, 0.3), transparent 60%),
     radial-gradient(72% 72% at 16% 88%, rgba(94, 156, 255, 0.22), transparent 62%),
     linear-gradient(160deg, rgba(20, 30, 120, 0.7), rgba(11, 15, 59, 0.85));
 }
 
-.kicker {
+.cvSlideKicker {
   margin: 0;
-  font-size: 1rem;
+  font-size: 16px;
   color: rgba(225, 231, 255, 0.82);
-  letter-spacing: 0.08em;
+  letter-spacing: 1px;
   text-transform: uppercase;
 }
 
-.title {
+.cvSlideTitle {
   margin: 0;
-  font-size: clamp(2rem, 6vw, 5rem);
+  font-size: 80px;
   color: #f6f8ff;
-  letter-spacing: 0.03em;
+  letter-spacing: 2px;
 }
 
-.text {
+.cvSlideText {
   margin: 0;
-  max-width: 58ch;
+  max-width: 58%;
   color: rgba(221, 227, 255, 0.78);
-  font-size: clamp(1rem, 2.2vw, 1.3rem);
+  font-size: 21px;
+}
+
+@media (max-width: 980px) {
+  .cvSlide {
+    padding: 32px;
+  }
+
+  .cvSlideTitle {
+    font-size: 56px;
+  }
+
+  .cvSlideText {
+    max-width: 72%;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 620px) {
+  .cvSlide {
+    gap: 12px;
+    padding: 20px;
+  }
+
+  .cvSlideTitle {
+    font-size: 36px;
+  }
+
+  .cvSlideText {
+    max-width: 100%;
+    font-size: 16px;
+  }
 }

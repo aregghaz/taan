@@ -1,6 +1,6 @@
-.heroWrapper {
+.homePage {
   position: relative;
-  min-height: 100vh;
+  min-height: 100%;
   overflow: hidden;
   isolation: isolate;
   display: grid;
@@ -11,27 +11,27 @@
     radial-gradient(45% 35% at 50% 40%, #0f35ff55 0%, transparent 90%),
     linear-gradient(180deg, #0610b3 0%, #02084f 45%, #010325 100%);
   color: #fff;
-
-  & > .heroHeaderWrapper{
-    width: 100%;
-    height: 100px;
-    display: flex;
-    align-items: end;
-    justify-content: center;
-    position: relative;
-    z-index: 99;
-  }
-
-  & > .heroHeaderAnimate {
-    opacity: 0;
-    transform: translate3d(0, -90px, 0);
-    will-change: transform, opacity;
-    animation: headerIn 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s forwards;
-  }
 }
 
-.heroWrapper::before,
-.heroWrapper::after {
+.homePage > .homePageHeaderWrapper {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+  z-index: 99;
+}
+
+.homePage > .homePageHeaderAnimate {
+  opacity: 0;
+  transform: translate3d(0, -90px, 0);
+  will-change: transform, opacity;
+  animation: homePageHeaderIn 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s forwards;
+}
+
+.homePage::before,
+.homePage::after {
   content: "";
   position: absolute;
   inset: -18%;
@@ -39,7 +39,7 @@
   z-index: 0;
 }
 
-.heroWrapper::before {
+.homePage::before {
   background:
     radial-gradient(36% 30% at 26% 72%, rgba(81, 123, 255, 0.4), transparent 72%),
     radial-gradient(34% 28% at 74% 30%, rgba(154, 103, 255, 0.32), transparent 74%),
@@ -48,10 +48,10 @@
   opacity: 0.62;
   transform: translate3d(0, 0, 0) scale(1);
   will-change: transform, opacity;
-  animation: auroraDrift 10s ease-in-out infinite;
+  animation: homePageAuroraDrift 10s ease-in-out infinite;
 }
 
-.heroWrapper::after {
+.homePage::after {
   background:
     linear-gradient(115deg, rgba(255, 255, 255, 0) 43%, rgba(173, 192, 255, 0.14) 50%, rgba(255, 255, 255, 0) 57%),
     linear-gradient(-115deg, rgba(255, 255, 255, 0) 44%, rgba(174, 142, 255, 0.1) 51%, rgba(255, 255, 255, 0) 58%);
@@ -61,68 +61,68 @@
   opacity: 0.34;
   transform: translate3d(-6%, 6%, 0) scale(1.04);
   will-change: transform, opacity;
-  animation: auroraSweep 9s ease-in-out infinite;
+  animation: homePageAuroraSweep 9s ease-in-out infinite;
 }
 
-.heroRing {
+.homePageRing {
   position: absolute;
-  top: -42vmin;
+  top: -42%;
   left: 50%;
   z-index: 1;
-  width: 120vmin;
-  height: 120vmin;
+  width: 120%;
+  height: 120%;
   transform: translateX(-50%);
   transform-origin: center;
   border-radius: 50%;
-  border: 0.45vmin solid #ffffff;
+  border: 6px solid #ffffff;
   box-shadow:
     0 0 18px #ffffff,
     0 0 48px #5e73ff,
     0 0 90px #6f43ff;
   opacity: 0.92;
   will-change: transform, opacity;
-  animation: ringPulse 3.6s ease-in-out infinite;
+  animation: homePageRingPulse 3.6s ease-in-out infinite;
 }
 
-.heroGlow {
+.homePageGlow {
   position: absolute;
   z-index: 1;
-  width: 42vmin;
-  height: 42vmin;
+  width: 42%;
+  height: 42%;
   border-radius: 50%;
-  bottom: 27vh;
+  bottom: 27%;
   left: 50%;
   transform: translateX(-50%);
   background: radial-gradient(circle, #2f4effaa 0%, #2f4eff22 45%, transparent 75%);
   will-change: transform, opacity;
-  animation: glowPulse 3.6s ease-in-out infinite;
+  animation: homePageGlowPulse 3.6s ease-in-out infinite;
 }
 
-.heroContent {
+.homePageContent {
   position: relative;
   z-index: 2;
   display: grid;
   justify-items: center;
-  gap: 1rem;
+  gap: 16px;
   text-align: center;
-  padding: 2rem;
+  padding: 32px;
   opacity: 0;
   transform: translateY(26px) scale(0.98);
   will-change: transform, opacity;
-  animation: heroContentIn 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.55s forwards;
+  animation: homePageContentIn 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.55s forwards;
 }
 
-.kicker {
+.homePageKicker {
   margin: 0;
   font-size: 25px;
-  letter-spacing: 0.08em;
+  letter-spacing: 1px;
   opacity: 0;
   transform: translateY(16px);
   will-change: transform, opacity;
-  animation: heroItemIn 0.75s ease-out 0.95s forwards;
+  animation: homePageItemIn 0.75s ease-out 0.95s forwards;
 }
 
-.title {
+.homePageTitle {
   margin: 0;
   font-size: 72px;
   letter-spacing: 20px;
@@ -133,17 +133,17 @@
     0 0 16px rgba(182, 196, 255, 0.22),
     0 0 30px rgba(122, 98, 255, 0.18);
   will-change: transform, opacity;
-  animation: titleIn 0.95s cubic-bezier(0.22, 0.77, 0.26, 1) 1.15s forwards;
+  animation: homePageTitleIn 0.95s cubic-bezier(0.22, 0.77, 0.26, 1) 1.15s forwards;
 }
 
-.heroButton {
+.homePageButton {
   position: relative;
   isolation: isolate;
   overflow: hidden;
   border: 0;
   border-radius: 9999px;
-  padding: 0.9rem 2.5rem;
-  font-size: 1rem;
+  padding: 14px 40px;
+  font-size: 16px;
   font-weight: 600;
   color: #090d3f;
   cursor: pointer;
@@ -153,10 +153,10 @@
   transform: translateY(18px) scale(0.95);
   transition: transform 0.28s ease, box-shadow 0.28s ease;
   will-change: transform, opacity;
-  animation: buttonIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 1.35s forwards;
+  animation: homePageButtonIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 1.35s forwards;
 }
 
-.heroButton::before {
+.homePageButton::before {
   content: "";
   position: absolute;
   top: -120%;
@@ -173,17 +173,17 @@
   opacity: 0;
   z-index: 1;
   will-change: transform, opacity;
-  animation: buttonShine 2.8s ease-in-out 2.25s infinite;
+  animation: homePageButtonShine 2.8s ease-in-out 2.25s infinite;
 }
 
-.heroButton:hover {
+.homePageButton:hover {
   transform: translateY(-2px) scale(1.02);
   box-shadow:
     0 10px 30px rgba(0, 0, 0, 0.4),
     0 0 24px rgba(194, 208, 255, 0.36);
 }
 
-@keyframes ringPulse {
+@keyframes homePageRingPulse {
   0%,
   100% {
     transform: translateX(-50%) scale(1);
@@ -196,7 +196,7 @@
   }
 }
 
-@keyframes auroraDrift {
+@keyframes homePageAuroraDrift {
   0%,
   100% {
     transform: translate3d(0, 0, 0) scale(1);
@@ -209,7 +209,7 @@
   }
 }
 
-@keyframes auroraSweep {
+@keyframes homePageAuroraSweep {
   0%,
   100% {
     transform: translate3d(-6%, 6%, 0) scale(1.04);
@@ -222,7 +222,7 @@
   }
 }
 
-@keyframes glowPulse {
+@keyframes homePageGlowPulse {
   0%,
   100% {
     opacity: 0.7;
@@ -233,7 +233,7 @@
   }
 }
 
-@keyframes headerIn {
+@keyframes homePageHeaderIn {
   0% {
     opacity: 0;
     transform: translate3d(0, -120px, 0);
@@ -245,21 +245,21 @@
   }
 }
 
-@keyframes heroContentIn {
+@keyframes homePageContentIn {
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
 }
 
-@keyframes heroItemIn {
+@keyframes homePageItemIn {
   to {
     opacity: 0.92;
     transform: translateY(0);
   }
 }
 
-@keyframes titleIn {
+@keyframes homePageTitleIn {
   to {
     opacity: 1;
     transform: translateY(0);
@@ -267,14 +267,14 @@
   }
 }
 
-@keyframes buttonIn {
+@keyframes homePageButtonIn {
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
 }
 
-@keyframes buttonShine {
+@keyframes homePageButtonShine {
   0%,
   55%,
   100% {
@@ -289,27 +289,24 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .heroWrapper,
-  .heroWrapper::before,
-  .heroWrapper::after,
-  .heroRing,
-  .heroGlow,
-  .heroHeaderAnimate,
-  .orbitCore,
-  .satellite,
-  .keyHead,
-  .heroContent,
-  .kicker,
-  .title,
-  .heroButton,
-  .heroButton::before {
+  .homePage,
+  .homePage::before,
+  .homePage::after,
+  .homePageRing,
+  .homePageGlow,
+  .homePageHeaderAnimate,
+  .homePageContent,
+  .homePageKicker,
+  .homePageTitle,
+  .homePageButton,
+  .homePageButton::before {
     animation: none;
   }
 
-  .heroContent,
-  .kicker,
-  .title,
-  .heroButton {
+  .homePageContent,
+  .homePageKicker,
+  .homePageTitle,
+  .homePageButton {
     opacity: 1;
     transform: none;
   }

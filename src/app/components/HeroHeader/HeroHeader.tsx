@@ -1,6 +1,5 @@
 'use client';
 
-import styles from './heroHeader.module.scss';
 import { usePathname, useRouter } from "next/navigation";
 import TaanMiniLogo from "@/app/assets/icons/TaanMiniLogo";
 import { useAppDispatch, useAppSelector } from "@/app/store/hooks";
@@ -29,17 +28,17 @@ export default function HeroHeader() {
   };
 
   return (
-    <header className={styles.heroHeader}>
-      <div className={styles.brand}>
+    <header className="heroHeader">
+      <div className="heroHeaderBrand">
           <TaanMiniLogo  />
       </div>
 
-      <nav className={styles.nav} aria-label="Main navigation">
+      <nav className="heroHeaderNav" aria-label="Main navigation">
         {navItems.map((item, index) => (
           <button
             key={item}
             type="button"
-            className={`${styles.navLink} ${activeMenuIndex === index ? styles.navLinkActive : ""}`}
+            className={`heroHeaderNavLink ${activeMenuIndex === index ? "heroHeaderNavLinkActive" : ""}`}
             onClick={() => handleMenuClick(index)}
           >
             {item}
@@ -47,8 +46,8 @@ export default function HeroHeader() {
         ))}
       </nav>
 
-      <div className={styles.actions}>
-        <button className={styles.langButton} type="button">
+      <div className="heroHeaderActions">
+        <button className="heroHeaderLangButton" type="button">
           EN
         </button>
       </div>

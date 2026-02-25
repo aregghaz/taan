@@ -1,4 +1,4 @@
-.overlay {
+.heroSlideOverlay {
   position: fixed;
   inset: 0;
   z-index: 70;
@@ -8,7 +8,7 @@
   transition: opacity 0.42s ease, visibility 0.42s ease;
 }
 
-.panel {
+.heroSlidePanel {
   position: absolute;
   inset: 0;
   display: flex;
@@ -19,13 +19,13 @@
     linear-gradient(180deg, rgba(6, 10, 44, 0.98) 0%, rgba(2, 5, 28, 0.99) 100%);
 }
 
-.overlayOpen {
+.heroSlideOverlayOpen {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
 }
 
-.content {
+.heroSlideContent {
   position: relative;
   width: 100%;
   height: 100%;
@@ -35,7 +35,7 @@
   contain: paint;
 }
 
-.slideLayer {
+.heroSlideLayer {
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -47,9 +47,9 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .overlay,
-  .content,
-  .slideLayer {
+  .heroSlideOverlay,
+  .heroSlideContent,
+  .heroSlideLayer {
     transition: none;
     animation: none;
   }

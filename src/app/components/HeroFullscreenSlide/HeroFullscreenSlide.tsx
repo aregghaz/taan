@@ -2,7 +2,6 @@
 
 import { useMemo } from "react";
 import { AnimatePresence, motion, type Variants } from "motion/react";
-import styles from "./heroFullscreenSlide.module.scss";
 import AboutUsSlide from "@/app/components/AboutUsSlide/AboutUsSlide";
 import ContactUsSlide from "@/app/components/ContactUsSlide/ContactUsSlide";
 import OurProjectsSlide from "@/app/components/OurProjectsSlide/OurProjectsSlide";
@@ -60,16 +59,16 @@ export default function HeroFullscreenSlide() {
 
   return (
     <div
-      className={`${styles.overlay} ${isOpen ? styles.overlayOpen : ""}`}
+      className={`heroSlideOverlay ${isOpen ? "heroSlideOverlayOpen" : ""}`}
       aria-hidden={!isOpen}
     >
-      <div className={styles.panel}>
-        <div className={styles.content}>
+      <div className="heroSlidePanel">
+        <div className="heroSlideContent">
           <AnimatePresence initial={false}>
             {ActiveSlide ? (
               <motion.div
                 key={activeIndex ?? "empty"}
-                className={styles.slideLayer}
+                className="heroSlideLayer"
                 variants={slideVariants}
                 initial="enter"
                 animate="center"
