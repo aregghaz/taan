@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo } from "react";
+import { AnimatePresence, motion, type Variants } from "motion/react";
 import styles from "./heroFullscreenSlide.module.scss";
 import AboutUsSlide from "@/app/components/AboutUsSlide/AboutUsSlide";
 import ContactUsSlide from "@/app/components/ContactUsSlide/ContactUsSlide";
@@ -12,7 +13,45 @@ import {
   selectIsHeroSlideOpen,
 } from "@/app/store/heroSliderSelectors";
 
-const SLIDES = [AboutUsSlide, ContactUsSlide, OurProjectsSlide, CVslide];
+const SLIDES = [OurProjectsSlide, AboutUsSlide, ContactUsSlide, CVslide];
+
+function getEntryOffset(index: number | null): { x: string | number; y: string | number } {
+  switch (index) {
+    case 0:
+      return { x: "-110%", y: "0%" };
+    case 1:
+      return { x: "0%", y: "-110%" };
+    case 2:
+      return { x: "0%", y: "110%" };
+    case 3:
+      return { x: "110%", y: "0%" };
+    default:
+      return { x: "0%", y: "0%" };
+  }
+}
+
+const slideVariants: Variants = {
+  enter: (index: number | null) => {
+    const offset = getEntryOffset(index);
+    return {
+      x: offset.x,
+      y: offset.y,
+      opacity: 1,
+    };
+  },
+  center: {
+    x: "0%",
+    y: "0%",
+    opacity: 1,
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      duration: 0.01,
+      ease: "linear",
+    },
+  },
+};
 
 export default function HeroFullscreenSlide() {
   const isOpen = useAppSelector(selectIsHeroSlideOpen);
@@ -23,29 +62,32 @@ export default function HeroFullscreenSlide() {
     return SLIDES[activeIndex] ?? null;
   }, [activeIndex]);
 
-  const directionClass = useMemo(() => {
-    switch (activeIndex) {
-      case 0:
-        return styles.fromLeft;
-      case 1:
-        return styles.fromTop;
-      case 2:
-        return styles.fromBottom;
-      case 3:
-        return styles.fromRight;
-      default:
-        return "";
-    }
-  }, [activeIndex]);
-
   return (
     <div
       className={`${styles.overlay} ${isOpen ? styles.overlayOpen : ""}`}
       aria-hidden={!isOpen}
     >
       <div className={styles.panel}>
-        <div className={`${styles.content} ${directionClass}`} key={activeIndex ?? "empty"}>
-          {ActiveSlide ? <ActiveSlide /> : null}
+        <div className={styles.content}>
+          <AnimatePresence initial={false} mode="wait">
+            {ActiveSlide ? (
+              <motion.div
+                key={activeIndex ?? "empty"}
+                className={styles.slideLayer}
+                custom={activeIndex}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{
+                  x: { type: "tween", duration: 1, ease: [0.22, 1, 0.36, 1] },
+                  y: { type: "tween", duration: 1, ease: [0.22, 1, 0.36, 1] },
+                }}
+              >
+                <ActiveSlide />
+              </motion.div>
+            ) : null}
+          </AnimatePresence>
         </div>
       </div>
     </div>

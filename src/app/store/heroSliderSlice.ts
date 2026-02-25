@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
-export const HERO_MENU_ITEMS = ["Home", "About Us", "Contact Us", "Our Projects", "CV"] as const;
+export const HERO_MENU_ITEMS = ["Home", "Our Projects", "About Us", "Contact Us",  "CV"] as const;
 
 type HeroSliderState = {
   menuItems: string[];
