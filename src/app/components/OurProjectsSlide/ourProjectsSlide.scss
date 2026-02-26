@@ -4,100 +4,74 @@
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  padding-top: 100px;
-  color: var(--project-text-color);
+  padding: clamp(84px, 9vw, 112px) 24px 176px;
+  color: #f5f9ff;
 }
 
 .ourProjectsTheme {
-  background: #0b1236;
+  background: #060d2b;
 }
 
 .ourProjectsBackgroundLayer {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: #0b1236;
+  background: #060d2b;
 }
 
 .ourProjectsBackgroundLayer::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(4, 8, 24, 0.18) 0%, rgba(4, 8, 24, 0.12) 100%);
+  background:
+    linear-gradient(106deg, rgba(4, 8, 23, 0.56) 0%, rgba(4, 8, 23, 0.18) 46%, rgba(4, 8, 23, 0.56) 100%),
+    radial-gradient(60% 48% at 50% 100%, rgba(115, 113, 255, 0.22), transparent 72%);
 }
 
-.ourProjectsIntro {
+.ourProjectsFullPage {
   position: relative;
   z-index: 2;
-  padding: 24px;
-  max-width: min(544px, 100%);
+  width: 100%;
+  height: 100%;
 }
 
-.ourProjectsKicker {
-  margin: 0 0 6px;
-  color: var(--project-muted-color);
-  font-size: 14px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-.ourProjectsTitle {
-  margin: 0;
-  white-space: pre-line;
-  text-transform: uppercase;
-  line-height: 0.92;
-  letter-spacing: 1px;
-  color: var(--project-text-color);
-  font-size: 88px;
-}
-
-.ourProjectsText {
-  margin: 16px 0 0;
-  max-width: 58%;
-  color: var(--project-muted-color);
-  font-size: 16px;
-  line-height: 1.5;
-}
-
-.ourProjectsCounter {
-  margin: 18px 0 0;
-  font-size: 48px;
-  letter-spacing: 2px;
-  color: var(--project-muted-color);
+.ourProjectsFullPage > * {
+  width: 100%;
+  height: 100%;
 }
 
 .ourProjectsRailWrap {
   position: absolute;
+  left: 24px;
   right: 24px;
-  bottom: 20px;
+  bottom: 16px;
   z-index: 3;
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 16px;
-  width: min(992px, 68%);
+  gap: 12px;
 }
 
-.ourProjectsArrowButtonsWrapper{
+.ourProjectsArrowButtonsWrapper {
   width: 100%;
   display: flex;
-  justify-content: end;
-  gap: 20px;
+  justify-content: flex-end;
+  gap: 12px;
 }
 
 .ourProjectsArrowButton {
-  border: 0;
+  border: 1px solid rgba(174, 207, 255, 0.34);
   width: 38px;
   height: 38px;
   flex: 0 0 auto;
   cursor: pointer;
-  font-size: 15px;
-  font-weight: 700;
-  background-color: transparent;
+  background-color: rgba(15, 27, 66, 0.72);
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
 
-  &:first-child{
+  &:first-child {
     transform: rotate(180deg);
-    margin-top: -3px;
   }
 }
 
@@ -109,24 +83,24 @@
 .ourProjectsCardsViewport {
   position: relative;
   width: 100%;
-  height: 306px;
+  height: 248px;
   overflow: hidden;
 }
 
 .ourProjectsCardsRail {
   position: absolute;
-  inset: 16px 12px 0;
+  inset: 10px 0 0;
   display: flex;
-  gap: 16px;
+  gap: 14px;
   align-items: flex-end;
 }
 
 .ourProjectsCard {
-  border: 0;
-  width: calc((100% - 16px * 3) / 4);
-  min-height: 240px;
-  border-radius: 17px;
-  padding: 14px;
+  border: 1px solid rgba(168, 203, 255, 0.28);
+  width: calc((100% - 14px * 3) / 4);
+  min-height: 214px;
+  border-radius: 16px;
+  padding: 12px;
   display: grid;
   align-content: flex-end;
   gap: 5px;
@@ -134,13 +108,14 @@
   cursor: pointer;
   color: #f8fbff;
   background: linear-gradient(160deg, rgba(37, 63, 112, 0.88) 0%, rgba(28, 44, 84, 0.94) 100%);
-  box-shadow:1px 0 15px 1px rgba(0, 0, 0, 0.24);
+  box-shadow: 1px 0 15px 1px rgba(0, 0, 0, 0.24);
   backdrop-filter: blur(4px);
   transform-origin: center bottom;
-  transition: box-shadow 0.35s ease;
+  transition: box-shadow 0.35s ease, border-color 0.3s ease;
 }
 
 .ourProjectsCardActive {
+  border-color: color-mix(in srgb, var(--project-accent) 70%, #ffffff 30%);
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.36),
     0 22px 40px rgba(4, 10, 34, 0.48);
@@ -158,10 +133,11 @@
 }
 
 .ourProjectsCardTitle {
-  font-size: 20px;
-  letter-spacing: 1px;
+  font-size: clamp(20px, 1.7vw, 30px);
+  letter-spacing: 0.4px;
   text-transform: uppercase;
   font-weight: 700;
+  line-height: 1.03;
 }
 
 .ourProjectsCardSubtitle {
@@ -170,83 +146,61 @@
 }
 
 @media (max-width: 980px) {
-  .ourProjectsIntro {
-    max-width: 100%;
-    padding: 16px;
-  }
-
-  .ourProjectsTitle {
-    font-size: 54px;
-  }
-
-  .ourProjectsCounter {
-    font-size: 34px;
+  .ourProjectsSlide {
+    padding: 82px 16px 168px;
   }
 
   .ourProjectsRailWrap {
-    width: min(576px, calc(100% - 32px));
+    left: 16px;
+    right: 16px;
+    bottom: 10px;
   }
 
   .ourProjectsCardsViewport {
-    height: 244px;
+    height: 192px;
   }
 
   .ourProjectsCard {
-    width: calc((100% - 16px) / 2);
+    width: calc((100% - 14px) / 2);
+    min-height: 168px;
+  }
+
+  .ourProjectsCardTitle {
+    font-size: 20px;
   }
 }
 
 @media (max-width: 620px) {
   .ourProjectsSlide {
-    padding-top: 84px;
-  }
-
-  .ourProjectsIntro {
-    padding: 12px;
-  }
-
-  .ourProjectsTitle {
-    font-size: 36px;
-    letter-spacing: 0;
-  }
-
-  .ourProjectsText {
-    max-width: 100%;
-    font-size: 14px;
-  }
-
-  .ourProjectsCounter {
-    margin-top: 12px;
-    font-size: 28px;
+    padding: 74px 12px 146px;
   }
 
   .ourProjectsRailWrap {
-    right: 8px;
-    bottom: 8px;
-    width: calc(100% - 16px);
-    gap: 8px;
-  }
-
-  .ourProjectsArrowButton {
-    width: 32px;
-    height: 32px;
+    left: 12px;
+    right: 12px;
   }
 
   .ourProjectsCardsViewport {
-    height: 202px;
-  }
-
-  .ourProjectsCard {
-    width: calc((100% - 10px) / 2);
-    min-height: 128px;
-    padding: 10px;
+    height: 178px;
   }
 
   .ourProjectsCardsRail {
     gap: 10px;
   }
 
+  .ourProjectsCard {
+    width: calc((100% - 10px) / 2);
+    min-height: 156px;
+    border-radius: 14px;
+    padding: 10px;
+  }
+
   .ourProjectsCardTitle {
-    font-size: 18px;
+    font-size: 17px;
+  }
+
+  .ourProjectsArrowButton {
+    width: 32px;
+    height: 32px;
   }
 }

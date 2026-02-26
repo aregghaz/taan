@@ -2,17 +2,13 @@
 
 import { useMemo } from "react";
 import { AnimatePresence, motion, type Variants } from "motion/react";
-import AboutUsSlide from "@/app/components/AboutUsSlide/AboutUsSlide";
-import ContactUsSlide from "@/app/components/ContactUsSlide/ContactUsSlide";
-import OurProjectsSlide from "@/app/components/OurProjectsSlide/OurProjectsSlide";
-import CVslide from "@/app/components/CVSlide/CVslide";
 import { useAppSelector } from "@/app/store/hooks";
 import {
-  selectActiveSlideIndex,
+  selectActiveSlideId,
   selectIsHeroSlideOpen,
 } from "@/app/store/heroSliderSelectors";
+import { HERO_SLIDE_REGISTRY } from "@/app/components/HeroFullscreenSlide/heroSlideRegistry";
 
-const SLIDES = [OurProjectsSlide, AboutUsSlide, ContactUsSlide, CVslide];
 const SCROLL_EASE = [0.16, 1, 0.3, 1] as const;
 
 const slideVariants: Variants = {
@@ -50,12 +46,12 @@ const slideVariants: Variants = {
 
 export default function HeroFullscreenSlide() {
   const isOpen = useAppSelector(selectIsHeroSlideOpen);
-  const activeIndex = useAppSelector(selectActiveSlideIndex);
+  const activeSlideId = useAppSelector(selectActiveSlideId);
 
   const ActiveSlide = useMemo(() => {
-    if (activeIndex === null) return null;
-    return SLIDES[activeIndex] ?? null;
-  }, [activeIndex]);
+    if (!activeSlideId) return null;
+    return HERO_SLIDE_REGISTRY[activeSlideId] ?? null;
+  }, [activeSlideId]);
 
   return (
     <div
@@ -67,7 +63,7 @@ export default function HeroFullscreenSlide() {
           <AnimatePresence initial={false}>
             {ActiveSlide ? (
               <motion.div
-                key={activeIndex ?? "empty"}
+                key={activeSlideId ?? "empty"}
                 className="heroSlideLayer"
                 variants={slideVariants}
                 initial="enter"

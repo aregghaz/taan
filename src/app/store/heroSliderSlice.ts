@@ -1,18 +1,21 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-
-export const HERO_MENU_ITEMS = ["Home", "Our Projects", "About Us", "Contact Us",  "CV"] as const;
+import {
+  HERO_MENU_ITEMS,
+  getHeroMenuItemByIndex,
+  type HeroSlideId,
+} from "@/app/config/heroMenuConfig";
 
 type HeroSliderState = {
   menuItems: string[];
   activeMenuIndex: number;
-  activeIndex: number | null;
+  activeSlideId: HeroSlideId | null;
   isOpen: boolean;
 };
 
 const initialState: HeroSliderState = {
   menuItems: [...HERO_MENU_ITEMS],
   activeMenuIndex: 0,
-  activeIndex: null,
+  activeSlideId: null,
   isOpen: false,
 };
 
@@ -25,19 +28,21 @@ const heroSliderSlice = createSlice({
       if (nextMenuIndex < 0 || nextMenuIndex >= state.menuItems.length) return;
 
       state.activeMenuIndex = nextMenuIndex;
+      const nextMenuItem = getHeroMenuItemByIndex(nextMenuIndex);
+      const nextSlideId = nextMenuItem?.slideId ?? null;
 
-      if (nextMenuIndex === 0) {
-        state.activeIndex = null;
+      if (!nextSlideId) {
+        state.activeSlideId = null;
         state.isOpen = false;
         return;
       }
 
-      state.activeIndex = nextMenuIndex - 1;
+      state.activeSlideId = nextSlideId;
       state.isOpen = true;
     },
     closeSlide(state) {
       state.activeMenuIndex = 0;
-      state.activeIndex = null;
+      state.activeSlideId = null;
       state.isOpen = false;
     },
   },

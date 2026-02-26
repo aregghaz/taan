@@ -1,10 +1,4 @@
-export const HERO_PATHS = [
-  "/home",
-  "/our-projects",
-  "/about-us",
-  "/contact-us",
-  "/cv",
-] as const;
+import { HERO_MENU_CONFIG } from "@/app/config/heroMenuConfig";
 
 function normalizePathname(pathname: string): string {
   if (pathname.length > 1 && pathname.endsWith("/")) {
@@ -15,12 +9,12 @@ function normalizePathname(pathname: string): string {
 }
 
 export function getPathFromMenuIndex(index: number): string {
-  return HERO_PATHS[index] ?? HERO_PATHS[0];
+  return HERO_MENU_CONFIG[index]?.path ?? HERO_MENU_CONFIG[0].path;
 }
 
 export function getMenuIndexFromPath(pathname: string): number {
   const normalized = normalizePathname(pathname);
-  const foundIndex = HERO_PATHS.findIndex((path) => path === normalized);
+  const foundIndex = HERO_MENU_CONFIG.findIndex((item) => item.path === normalized);
 
   return foundIndex >= 0 ? foundIndex : 0;
 }
