@@ -29,20 +29,17 @@
 }
 
 .ourProjectsFullPage {
-  position: relative;
+  position: absolute;
   z-index: 2;
-  width: 100%;
-  height: 100%;
-}
-
-.ourProjectsFullPage > * {
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
 }
 
 .ourProjectsRailWrap {
+  width: 50%;
   position: absolute;
-  left: 24px;
   right: 24px;
   bottom: 16px;
   z-index: 3;
@@ -83,8 +80,8 @@
 .ourProjectsCardsViewport {
   position: relative;
   width: 100%;
-  height: 248px;
-  overflow: hidden;
+  height: 278px;
+  perspective: 1200px;
 }
 
 .ourProjectsCardsRail {
@@ -92,12 +89,15 @@
   inset: 10px 0 0;
   display: flex;
   gap: 14px;
-  align-items: flex-end;
+  transform-style: preserve-3d;
 }
 
 .ourProjectsCard {
+  --pointer-x: 50%;
+  --pointer-y: 50%;
+  position: relative;
   border: 1px solid rgba(168, 203, 255, 0.28);
-  width: calc((100% - 14px * 3) / 4);
+  width: 200px;
   min-height: 214px;
   border-radius: 16px;
   padding: 12px;
@@ -110,29 +110,77 @@
   background: linear-gradient(160deg, rgba(37, 63, 112, 0.88) 0%, rgba(28, 44, 84, 0.94) 100%);
   box-shadow: 1px 0 15px 1px rgba(0, 0, 0, 0.24);
   backdrop-filter: blur(4px);
-  transform-origin: center bottom;
-  transition: box-shadow 0.35s ease, border-color 0.3s ease;
+  transform-origin: center center;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: box-shadow 0.35s ease, border-color 0.3s ease, filter 0.3s ease;
+}
+
+.ourProjectsCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    radial-gradient(260px circle at var(--pointer-x) var(--pointer-y), rgba(214, 229, 255, 0.14), rgba(214, 229, 255, 0) 56%);
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+
+.ourProjectsCard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: inset 0 -32px 42px rgba(10, 24, 64, 0.34);
+  opacity: 0.7;
 }
 
 .ourProjectsCardActive {
   border-color: color-mix(in srgb, var(--project-accent) 70%, #ffffff 30%);
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.36),
-    0 22px 40px rgba(4, 10, 34, 0.48);
+    0 18px 34px rgba(4, 10, 34, 0.52),
+    0 0 26px color-mix(in srgb, var(--project-accent) 35%, transparent 65%);
+  filter: saturate(1.08);
+}
+
+.ourProjectsCardActive::before,
+.ourProjectsCardHover::before {
+  opacity: 0.55;
+}
+
+.ourProjectsCardHover {
+  border-color: color-mix(in srgb, var(--project-accent) 62%, #ffffff 38%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.34),
+    0 28px 44px rgba(4, 10, 34, 0.5);
+  filter: saturate(1.1);
 }
 
 .ourProjectsCardIndex {
+  position: relative;
+  z-index: 1;
+  transform: translateZ(24px);
   font-size: 12px;
   letter-spacing: 2px;
   color: rgba(230, 239, 255, 0.68);
 }
 
 .ourProjectsCardLocation {
+  position: relative;
+  z-index: 1;
+  transform: translateZ(30px);
   font-size: 13px;
   color: rgba(231, 240, 255, 0.9);
 }
 
 .ourProjectsCardTitle {
+  position: relative;
+  z-index: 1;
+  transform: translateZ(36px);
   font-size: clamp(20px, 1.7vw, 30px);
   letter-spacing: 0.4px;
   text-transform: uppercase;
@@ -141,6 +189,9 @@
 }
 
 .ourProjectsCardSubtitle {
+  position: relative;
+  z-index: 1;
+  transform: translateZ(24px);
   font-size: 13px;
   color: rgba(229, 238, 255, 0.84);
 }

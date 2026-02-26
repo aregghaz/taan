@@ -18,9 +18,9 @@ export type ProjectItem = {
 const PROJECTS: ProjectItem[] = [
   {
     id: "curavel",
-    cardLocation: "Swiss Alps",
-    cardTitle: "Saint Antonien",
-    cardSubtitle: "Mountain Pass",
+    cardLocation: "Curavel",
+    cardTitle: "Curavel",
+    cardSubtitle: "Website",
     componentType: "curavel",
     theme: {
       surface: "linear-gradient(146deg, #020817 0%, #041653 52%, #182b79 100%)",
