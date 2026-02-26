@@ -6,17 +6,21 @@ import {useAppDispatch, useAppSelector} from "@/app/store/hooks";
 import {closeProject, openProject} from "@/app/store/ourProjectsSlice";
 import {selectActiveProjectId, selectProjects} from "@/app/store/ourProjectsSelectors";
 import SliderArrowIcon from "@/app/assets/icons/SliderArrowIcon";
+import {CuravelLogoIcon} from "@/app/assets/icons/CuravelLogoIcon";
 import CuravelProject from "@/app/components/CuravelProject/CuravelProject";
 import Auxilium from "@/app/components/Auxilium/Auxilium";
 import AxuxiliumMobilApp from "@/app/components/AxuxiliumMobilApp/AxuxiliumMobilApp";
 import BioBac from "@/app/components/BioBac/BioBac";
-import type {ProjectComponentType, ProjectItem} from "@/app/store/ourProjectsSlice";
+import type {ProjectComponentType, ProjectItem, ProjectLogoType} from "@/app/store/ourProjectsSlice";
 
 const FULL_PAGE_COMPONENTS: Record<ProjectComponentType, ComponentType> = {
     curavel: CuravelProject,
     auxilium: Auxilium,
     axuxiliumMobileApp: AxuxiliumMobilApp,
     biobac: BioBac,
+};
+const LOGO_COMPONENTS: Record<ProjectLogoType, ComponentType<{className?: string}>> = {
+    curavel: CuravelLogoIcon,
 };
 
 const VISIBLE_CARDS = 4;
@@ -109,17 +113,19 @@ export default function OurProjectsSlide() {
     ? projects.slice(windowStart, windowStart + VISIBLE_CARDS)
     : projects;
 
-    const handlePrevWindow = () => {
-        if (!canSlide || windowStart <= 0) return;
-        setSlideDirection(-1);
-        setWindowStart((prev) => Math.max(0, prev - 1));
-    };
+  // TODO this part is for slider next
 
-  const handleNextWindow = () => {
-    if (!canSlide || windowStart >= maxWindowStart) return;
-    setSlideDirection(1);
-    setWindowStart((prev) => Math.min(maxWindowStart, prev + 1));
-  };
+  //   const handlePrevWindow = () => {
+  //       if (!canSlide || windowStart <= 0) return;
+  //       setSlideDirection(-1);
+  //       setWindowStart((prev) => Math.max(0, prev - 1));
+  //   };
+  //
+  // const handleNextWindow = () => {
+  //   if (!canSlide || windowStart >= maxWindowStart) return;
+  //   setSlideDirection(1);
+  //   setWindowStart((prev) => Math.min(maxWindowStart, prev + 1));
+  // };
 
   const handleCardPointerMove = (event: PointerEvent<HTMLButtonElement>, projectId: string) => {
     if (event.pointerType === "touch") return;
@@ -187,6 +193,7 @@ export default function OurProjectsSlide() {
                 const absoluteIndex = canSlide ? windowStart + localIndex : localIndex;
                 const isActive = project.id === activeProject.id;
                 const isHovered = hoveredCardId === project.id;
+                const Logo = project.logoType ? LOGO_COMPONENTS[project.logoType] : null;
 
                 const rotateX = isHovered ? hoverTilt.rotateX : isActive ? 7 : 0;
                 const rotateY = isHovered ? hoverTilt.rotateY : isActive ? -6 : 0;
@@ -211,6 +218,7 @@ export default function OurProjectsSlide() {
                     transition={{duration: 0.28, ease: [0.2, 0.8, 0.2, 1]}}
                     whileTap={{scale: 0.995}}
                                     >
+                    {Logo ? <Logo className="ourProjectsCardLogo"/> : null}
                     <span className="ourProjectsCardIndex">
                       {String(absoluteIndex + 1).padStart(2, "0")}
                     </span>

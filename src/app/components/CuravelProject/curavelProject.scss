@@ -1,9 +1,22 @@
 .curavelSlide {
   width: 100%;
   height: 100%;
-  display: grid;
+  display: flex;
+  padding-top: 130px;
   position: absolute;
-  place-items: center;
+  border: 1px solid red;
+
+  & > .curavelInfoSide{
+    width: 45%;
+    height: 100%;
+    border: 1px solid red;
+  }
+
+  & > .curavelPicturesSide{
+    width: 55%;
+    height: 100%;
+    border: 1px solid red;
+  }
 }
 
 .curavelSlide h1 {

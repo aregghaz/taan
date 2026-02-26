@@ -1,7 +1,8 @@
 export default function CuravelProject(){
   return (
       <section className="curavelSlide">
-          <h1>Curavel</h1>
+          <div className="curavelInfoSide"></div>
+          <div className="curavelPicturesSide"></div>
       </section>
   )
 }

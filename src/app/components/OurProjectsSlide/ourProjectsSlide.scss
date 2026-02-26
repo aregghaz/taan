@@ -116,6 +116,18 @@
   transition: box-shadow 0.35s ease, border-color 0.3s ease, filter 0.3s ease;
 }
 
+.ourProjectsCardLogo {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 96px;
+  height: auto;
+  opacity: 0.94;
+  transform: translateZ(40px);
+  z-index: 1;
+  pointer-events: none;
+}
+
 .ourProjectsCard::before {
   content: "";
   position: absolute;
