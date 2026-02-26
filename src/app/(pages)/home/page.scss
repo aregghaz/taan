@@ -84,20 +84,6 @@
   animation: homePageRingPulse 3.6s ease-in-out infinite;
 }
 
-.homePageGlow {
-  position: absolute;
-  z-index: 1;
-  width: 42%;
-  height: 42%;
-  border-radius: 50%;
-  bottom: 27%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: radial-gradient(circle, #2f4effaa 0%, #2f4eff22 45%, transparent 75%);
-  will-change: transform, opacity;
-  animation: homePageGlowPulse 3.6s ease-in-out infinite;
-}
-
 .homePageContent {
   position: relative;
   z-index: 2;
@@ -293,7 +279,6 @@
   .homePage::before,
   .homePage::after,
   .homePageRing,
-  .homePageGlow,
   .homePageHeaderAnimate,
   .homePageContent,
   .homePageKicker,

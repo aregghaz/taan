@@ -73,22 +73,32 @@
   z-index: 3;
   display: flex;
   align-items: center;
+  flex-direction: column;
   gap: 16px;
   width: min(992px, 68%);
 }
 
+.ourProjectsArrowButtonsWrapper{
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  gap: 20px;
+}
+
 .ourProjectsArrowButton {
   border: 0;
-  border-radius: 999px;
   width: 38px;
   height: 38px;
   flex: 0 0 auto;
   cursor: pointer;
   font-size: 15px;
   font-weight: 700;
-  color: rgba(243, 248, 255, 0.96);
-  background: rgba(8, 14, 42, 0.58);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.22);
+  background-color: transparent;
+
+  &:first-child{
+    transform: rotate(180deg);
+    margin-top: -3px;
+  }
 }
 
 .ourProjectsArrowButton:disabled {
@@ -98,8 +108,8 @@
 
 .ourProjectsCardsViewport {
   position: relative;
-  flex: 1 1 auto;
-  height: 286px;
+  width: 100%;
+  height: 306px;
   overflow: hidden;
 }
 
@@ -124,9 +134,7 @@
   cursor: pointer;
   color: #f8fbff;
   background: linear-gradient(160deg, rgba(37, 63, 112, 0.88) 0%, rgba(28, 44, 84, 0.94) 100%);
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.18),
-    0 16px 34px rgba(5, 10, 32, 0.34);
+  box-shadow:1px 0 15px 1px rgba(0, 0, 0, 0.24);
   backdrop-filter: blur(4px);
   transform-origin: center bottom;
   transition: box-shadow 0.35s ease;

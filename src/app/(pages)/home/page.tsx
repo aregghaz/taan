@@ -48,7 +48,6 @@ export default function Home() {
             <HeroHeader />
         </div>
       <div className="homePageRing" />
-      <div className="homePageGlow" />
 
       <div className="homePageContent">
         <p className="homePageKicker">Tomorrow’s Answers, Available Now</p>

@@ -5,6 +5,7 @@ import {AnimatePresence, motion} from "motion/react";
 import {useAppDispatch, useAppSelector} from "@/app/store/hooks";
 import {closeProject, openProject} from "@/app/store/ourProjectsSlice";
 import {selectActiveProjectId} from "@/app/store/ourProjectsSelectors";
+import SliderArrowIcon from "@/app/assets/icons/SliderArrowIcon";
 
 type ProjectItem = {
     id: string;
@@ -207,16 +208,6 @@ export default function OurProjectsSlide() {
             </div>
 
             <div className="ourProjectsRailWrap">
-                <button
-                    type="button"
-                    className="ourProjectsArrowButton"
-                    onClick={handlePrevWindow}
-                    disabled={!canSlide || windowStart === 0}
-                    aria-label="Previous cards"
-                >
-                    {"<"}
-                </button>
-
                 <div className="ourProjectsCardsViewport">
                     <AnimatePresence mode="popLayout" initial={false} custom={slideDirection}>
                         <motion.div
@@ -248,9 +239,9 @@ export default function OurProjectsSlide() {
                                         transition={{duration: 0.42, ease: [0.2, 0.8, 0.2, 1]}}
                                         whileTap={{scale: 0.97}}
                                     >
-                    <span className="ourProjectsCardIndex">
-                      {String(absoluteIndex + 1).padStart(2, "0")}
-                    </span>
+                                            <span className="ourProjectsCardIndex">
+                                              {String(absoluteIndex + 1).padStart(2, "0")}
+                                            </span>
                                         <span className="ourProjectsCardLocation">{project.location}</span>
                                         <span className="ourProjectsCardTitle">{project.title.replace("\n", " ")}</span>
                                         <span className="ourProjectsCardSubtitle">{project.subtitle}</span>
@@ -260,16 +251,26 @@ export default function OurProjectsSlide() {
                         </motion.div>
                     </AnimatePresence>
                 </div>
-
-                <button
-                    type="button"
-                    className="ourProjectsArrowButton"
-                    onClick={handleNextWindow}
-                    disabled={!canSlide || windowStart >= maxWindowStart}
-                    aria-label="Next cards"
-                >
-                    {">"}
-                </button>
+                <div className="ourProjectsArrowButtonsWrapper">
+                    <button
+                        type="button"
+                        className="ourProjectsArrowButton"
+                        onClick={handlePrevWindow}
+                        disabled={!canSlide || windowStart === 0}
+                        aria-label="Previous cards"
+                    >
+                        <SliderArrowIcon width={30} height={30} />
+                    </button>
+                    <button
+                        type="button"
+                        className="ourProjectsArrowButton"
+                        onClick={handleNextWindow}
+                        disabled={!canSlide || windowStart >= maxWindowStart}
+                        aria-label="Next cards"
+                    >
+                        <SliderArrowIcon width={30} height={30} />
+                    </button>
+                </div>
             </div>
         </section>
     );
