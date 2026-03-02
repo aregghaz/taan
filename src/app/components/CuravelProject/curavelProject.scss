@@ -4,29 +4,285 @@
   display: flex;
   padding-top: 130px;
   position: absolute;
-  border: 1px solid red;
+  color: #eff4ff;
 
   & > .curavelInfoSide {
     width: 45%;
     height: 100%;
-    border: 1px solid red;
-    padding-left: 80px;
+    padding-left: 40px;
+    padding-top: 50px;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+
+    & > * {
+      opacity: 0;
+      transform: translateY(14px);
+      animation: curavelReveal 0.72s cubic-bezier(0.22, 0.9, 0.2, 1) forwards;
+    }
+
+    & > *:nth-child(1) {
+      animation-delay: 0.14s;
+    }
+
+    & > *:nth-child(2) {
+      animation-delay: 0.22s;
+    }
+
+    & > *:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    & > *:nth-child(4) {
+      animation-delay: 0.38s;
+    }
+
+    & > *:nth-child(5) {
+      animation-delay: 0.46s;
+    }
+
+    & > *:nth-child(6) {
+      animation-delay: 0.54s;
+    }
+
+    & > *:nth-child(7) {
+      animation-delay: 0.62s;
+    }
+
+    & > *:nth-child(8) {
+      animation-delay: 0.8s;
+    }
 
     & > h1 {
-      font-size: 3rem;
+      font-size: clamp(40px, 4.2vw, 68px);
+      line-height: 0.98;
+      letter-spacing: -0.02em;
       margin: 0;
+      font-weight: 800;
+      color: #ffffff;
+      text-shadow: 0 8px 22px rgba(10, 34, 90, 0.4);
     }
 
     & > span {
-      font-size: 2rem;
+      font-size: clamp(16px, 1.35vw, 24px);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #97b9ff;
+      background: linear-gradient(90deg, #7aa5ff 0%, #8fc7ff 50%, #74f1ff 100%);
+      background-size: 180% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation-name: curavelReveal, curavelGradientFlow;
+      animation-duration: 0.72s, 5.4s;
+      animation-delay: 0.14s, 1s;
+      animation-timing-function: cubic-bezier(0.22, 0.9, 0.2, 1), linear;
+      animation-fill-mode: forwards, both;
+      animation-iteration-count: 1, infinite;
+    }
+
+    & > h3 {
+      margin: 8px 0 0;
+      font-size: clamp(18px, 1.25vw, 24px);
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      font-weight: 700;
+      text-shadow: 0 6px 14px rgba(8, 24, 74, 0.28);
+      color: #97b9ff;
+      background: linear-gradient(90deg, #7aa5ff 0%, #8fc7ff 50%, #74f1ff 100%);
+      background-size: 180% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation-name: curavelReveal, curavelGradientFlow;
+      animation-duration: 0.72s, 5.4s;
+      animation-delay: 0.14s, 1s;
+      animation-timing-function: cubic-bezier(0.22, 0.9, 0.2, 1), linear;
+      animation-fill-mode: forwards, both;
+      animation-iteration-count: 1, infinite;
+    }
+
+    & > p {
+      margin: 0;
+      max-width: 62ch;
+      font-size: clamp(14px, 0.94vw, 17px);
+      line-height: 1.7;
+      letter-spacing: 0.002em;
+      color: rgba(233, 241, 255, 0.9);
+    }
+
+    & > button {
+      width: 150px;
+      height: 40px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 700;
     }
   }
 
   & > .curavelPicturesSide {
     width: 55%;
     height: 100%;
-    border: 1px solid red;
+    padding: 24px 30px 260px 20px;
+
+    & > .curavelPicturesSideWrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+.curavelManualSlider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.curavelManualSlide {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  width: clamp(220px, 24vw, 330px);
+  aspect-ratio: 1 / 1;
+  border-radius: 16px;
+  display: grid;
+  place-items: end start;
+  padding: 14px;
+  color: #f8fcff;
+  border: 1px solid rgba(219, 236, 255, 0.32);
+  background: #1e3a8a;
+  overflow: hidden;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.24),
+  0 12px 24px rgba(7, 15, 42, 0.28);
+  transform-style: preserve-3d;
+  transform-origin: center center;
+  will-change: transform;
+
+  & > span {
+    position: relative;
+    z-index: 2;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-shadow: 0 2px 6px rgba(9, 16, 43, 0.36);
+  }
+}
+
+.curavelManualSlideImage {
+  object-fit: cover;
+}
+
+.curavelSliderArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid rgba(208, 228, 255, 0.42);
+  background: rgba(13, 26, 60, 0.68);
+  color: #f1f6ff;
+  font-size: 28px;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  z-index: 80;
+  transition: background 220ms ease,
+  transform 220ms ease,
+  border-color 220ms ease;
+
+  &:hover {
+    background: rgba(22, 42, 88, 0.88);
+    border-color: rgba(225, 238, 255, 0.66);
+    transform: translateY(-50%) scale(1.04);
+  }
+
+  &:active {
+    transform: translateY(-50%) scale(0.98);
+  }
+}
+
+.curavelSliderArrowPrev {
+  left: 12px;
+}
+
+.curavelSliderArrowNext {
+  right: 12px;
+}
+
+@keyframes curavelReveal {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes curavelGradientFlow {
+  from {
+    background-position: 0 50%;
+  }
+  to {
+    background-position: 180% 50%;
+  }
+}
+
+@media (max-width: 1200px) {
+  .curavelSlide > .curavelPicturesSide {
+    padding-right: 18px;
+    padding-bottom: 220px;
+  }
+
+  .curavelManualSlide {
+    width: clamp(180px, 22vw, 280px);
+  }
+}
+
+@media (max-width: 900px) {
+  .curavelSlide > .curavelPicturesSide {
+    padding-right: 12px;
+    padding-bottom: 170px;
+  }
+
+  .curavelManualSlide {
+    width: 170px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .curavelSlide > .curavelInfoSide > * {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  .curavelSlide > .curavelInfoSide > span {
+    animation: none;
+  }
+
+  .curavelSliderArrow {
+    transition: none;
   }
 }
