@@ -12,6 +12,7 @@ import Auxilium from "@/app/components/Auxilium/Auxilium";
 import AxuxiliumMobilApp from "@/app/components/AxuxiliumMobilApp/AxuxiliumMobilApp";
 import BioBac from "@/app/components/BioBac/BioBac";
 import type {ProjectComponentType, ProjectItem, ProjectLogoType} from "@/app/store/ourProjectsSlice";
+import {AuxiliumLogoIcon} from "@/app/assets/icons/AuxiliumLogoIcon";
 
 const FULL_PAGE_COMPONENTS: Record<ProjectComponentType, ComponentType> = {
     curavel: CuravelProject,
@@ -19,8 +20,9 @@ const FULL_PAGE_COMPONENTS: Record<ProjectComponentType, ComponentType> = {
     axuxiliumMobileApp: AxuxiliumMobilApp,
     biobac: BioBac,
 };
-const LOGO_COMPONENTS: Record<ProjectLogoType, ComponentType<{className?: string}>> = {
+const LOGO_COMPONENTS: Partial<Record<ProjectLogoType, ComponentType<{className?: string}>>> = {
     curavel: CuravelLogoIcon,
+    auxilium: AuxiliumLogoIcon,
 };
 
 const VISIBLE_CARDS = 4;

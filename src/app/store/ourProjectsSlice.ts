@@ -1,7 +1,7 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 export type ProjectComponentType = "curavel" | "auxilium" | "axuxiliumMobileApp" | "biobac";
-export type ProjectLogoType = "curavel";
+export type ProjectLogoType = "curavel" | "auxilium" | "axuxiliumMobileApp" | "biobac";
 
 export type ProjectItem = {
   id: string;
@@ -37,6 +37,7 @@ const PROJECTS: ProjectItem[] = [
     cardTitle: "Auxilium",
     cardSubtitle: "Core Platform",
     componentType: "auxilium",
+    logoType: "auxilium",
     theme: {
       surface: "linear-gradient(148deg, #020b1f 0%, #032552 54%, #024267 100%)",
       cardTone: "linear-gradient(160deg, rgba(16, 40, 88, 0.92) 0%, rgba(11, 31, 69, 0.96) 100%)",
