@@ -1,11 +1,11 @@
 'use client';
 
-import { useEffect } from "react";
-import { usePathname } from "next/navigation";
-import { useAppDispatch, useAppSelector } from "@/app/store/hooks";
-import { selectActiveMenuIndex } from "@/app/store/heroSliderSelectors";
-import { setActiveMenu } from "@/app/store/heroSliderSlice";
-import { getMenuIndexFromPath } from "@/app/helpers/heroRoutes";
+import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
+import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
+import { selectActiveMenuIndex } from '@/app/store/heroSliderSelectors';
+import { setActiveMenu } from '@/app/store/heroSliderSlice';
+import { getMenuIndexFromPath } from '@/app/helpers/heroRoutes';
 
 export default function HeroRouteSync() {
   const pathname = usePathname();

@@ -32,7 +32,7 @@
 
 .homePage::before,
 .homePage::after {
-  content: "";
+  content: '';
   position: absolute;
   inset: -18%;
   pointer-events: none;
@@ -41,9 +41,21 @@
 
 .homePage::before {
   background:
-    radial-gradient(36% 30% at 26% 72%, rgba(81, 123, 255, 0.4), transparent 72%),
-    radial-gradient(34% 28% at 74% 30%, rgba(154, 103, 255, 0.32), transparent 74%),
-    radial-gradient(28% 24% at 50% 56%, rgba(59, 189, 255, 0.2), transparent 72%);
+    radial-gradient(
+      36% 30% at 26% 72%,
+      rgba(81, 123, 255, 0.4),
+      transparent 72%
+    ),
+    radial-gradient(
+      34% 28% at 74% 30%,
+      rgba(154, 103, 255, 0.32),
+      transparent 74%
+    ),
+    radial-gradient(
+      28% 24% at 50% 56%,
+      rgba(59, 189, 255, 0.2),
+      transparent 72%
+    );
   filter: blur(4px);
   opacity: 0.62;
   transform: translate3d(0, 0, 0) scale(1);
@@ -53,10 +65,24 @@
 
 .homePage::after {
   background:
-    linear-gradient(115deg, rgba(255, 255, 255, 0) 43%, rgba(173, 192, 255, 0.14) 50%, rgba(255, 255, 255, 0) 57%),
-    linear-gradient(-115deg, rgba(255, 255, 255, 0) 44%, rgba(174, 142, 255, 0.1) 51%, rgba(255, 255, 255, 0) 58%);
-  background-size: 200% 200%, 200% 200%;
-  background-position: 50% 50%, 50% 50%;
+    linear-gradient(
+      115deg,
+      rgba(255, 255, 255, 0) 43%,
+      rgba(173, 192, 255, 0.14) 50%,
+      rgba(255, 255, 255, 0) 57%
+    ),
+    linear-gradient(
+      -115deg,
+      rgba(255, 255, 255, 0) 44%,
+      rgba(174, 142, 255, 0.1) 51%,
+      rgba(255, 255, 255, 0) 58%
+    );
+  background-size:
+    200% 200%,
+    200% 200%;
+  background-position:
+    50% 50%,
+    50% 50%;
   mix-blend-mode: screen;
   opacity: 0.34;
   transform: translate3d(-6%, 6%, 0) scale(1.04);
@@ -93,9 +119,10 @@
   opacity: 0;
   transform: translateY(26px) scale(0.98);
   will-change: transform, opacity;
-  animation: homePageContentIn 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.55s forwards;
+  animation: homePageContentIn 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.55s
+    forwards;
 
-  & > .homePageContentLeft{
+  & > .homePageContentLeft {
     width: 44%;
     height: 100%;
     display: flex;
@@ -111,10 +138,10 @@
       opacity: 0;
       transform: translateY(16px);
       will-change: transform, opacity;
-      animation: homePageItemIn 0.95s ease-out 1.15s  forwards;
+      animation: homePageItemIn 0.95s ease-out 1.15s forwards;
     }
 
-    & > .text2{
+    & > .text2 {
       font-size: 18px;
     }
 
@@ -126,10 +153,11 @@
       opacity: 0;
       transform: translateY(18px);
       text-shadow:
-              0 0 16px rgba(182, 196, 255, 0.22),
-              0 0 30px rgba(122, 98, 255, 0.18);
+        0 0 16px rgba(182, 196, 255, 0.22),
+        0 0 30px rgba(122, 98, 255, 0.18);
       will-change: transform, opacity;
-      animation: homePageTitleIn 0.75s cubic-bezier(0.22, 0.77, 0.26, 1) 0.95s forwards;
+      animation: homePageTitleIn 0.75s cubic-bezier(0.22, 0.77, 0.26, 1) 0.95s
+        forwards;
     }
 
     & > .homePageButton {
@@ -148,14 +176,16 @@
       box-shadow: 0 6px 22px #00000055;
       opacity: 0;
       transform: translateY(18px) scale(0.95);
-      transition: transform 0.28s ease, box-shadow 0.28s ease;
+      transition:
+        transform 0.28s ease,
+        box-shadow 0.28s ease;
       will-change: transform, opacity;
-      animation: homePageButtonIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 1.35s forwards;
+      animation: homePageButtonIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 1.35s
+        forwards;
     }
-
   }
 
-  & > .homePageContentRight{
+  & > .homePageContentRight {
     width: 56%;
     height: 100%;
     display: flex;
@@ -178,8 +208,18 @@
       border-radius: 18px;
       border: 1px solid rgba(124, 149, 255, 0.32);
       background:
-        radial-gradient(95% 100% at 55% 100%, rgba(88, 120, 255, 0.24) 0%, rgba(25, 35, 102, 0.06) 58%, rgba(6, 11, 55, 0.9) 100%),
-        linear-gradient(160deg, rgba(23, 34, 120, 0.9) 0%, rgba(7, 14, 67, 0.96) 48%, rgba(5, 8, 42, 0.98) 100%);
+        radial-gradient(
+          95% 100% at 55% 100%,
+          rgba(88, 120, 255, 0.24) 0%,
+          rgba(25, 35, 102, 0.06) 58%,
+          rgba(6, 11, 55, 0.9) 100%
+        ),
+        linear-gradient(
+          160deg,
+          rgba(23, 34, 120, 0.9) 0%,
+          rgba(7, 14, 67, 0.96) 48%,
+          rgba(5, 8, 42, 0.98) 100%
+        );
       box-shadow:
         inset 0 1px 1px rgba(255, 255, 255, 0.08),
         0 24px 45px rgba(0, 0, 0, 0.28),
@@ -187,20 +227,28 @@
       padding: 16px 18px;
 
       &::before {
-        content: "";
+        content: '';
         position: absolute;
         inset: 0;
-        background: radial-gradient(circle at 60% 105%, rgba(130, 169, 255, 0.4) 0%, rgba(130, 169, 255, 0) 62%);
+        background: radial-gradient(
+          circle at 60% 105%,
+          rgba(130, 169, 255, 0.4) 0%,
+          rgba(130, 169, 255, 0) 62%
+        );
         opacity: 0.7;
         pointer-events: none;
       }
 
       &::after {
-        content: "";
+        content: '';
         position: absolute;
         inset: auto -10% -50% -10%;
         height: 65%;
-        background: radial-gradient(70% 100% at 50% 0%, rgba(108, 145, 255, 0.36) 0%, rgba(108, 145, 255, 0) 72%);
+        background: radial-gradient(
+          70% 100% at 50% 0%,
+          rgba(108, 145, 255, 0.36) 0%,
+          rgba(108, 145, 255, 0) 72%
+        );
         filter: blur(20px);
         pointer-events: none;
       }
@@ -235,7 +283,11 @@
         height: 88px;
         border-radius: 24px;
         border: 1px solid rgba(123, 159, 255, 0.45);
-        background: linear-gradient(160deg, rgba(95, 130, 255, 0.45) 0%, rgba(36, 58, 154, 0.24) 100%);
+        background: linear-gradient(
+          160deg,
+          rgba(95, 130, 255, 0.45) 0%,
+          rgba(36, 58, 154, 0.24) 100%
+        );
         box-shadow:
           0 0 32px rgba(112, 143, 255, 0.42),
           inset 0 0 18px rgba(37, 59, 170, 0.52);
@@ -247,7 +299,7 @@
 
         &::before,
         &::after {
-          content: "";
+          content: '';
           position: absolute;
           inset: -12px;
           border-radius: 30px;
@@ -282,7 +334,7 @@
         z-index: 1;
 
         &::before {
-          content: "";
+          content: '';
           position: absolute;
           left: 18%;
           right: 20%;
@@ -380,7 +432,11 @@
       }
 
       .speedCells .cellAccent {
-        background: linear-gradient(150deg, rgba(92, 132, 255, 0.94) 0%, rgba(60, 93, 221, 0.95) 100%);
+        background: linear-gradient(
+          150deg,
+          rgba(92, 132, 255, 0.94) 0%,
+          rgba(60, 93, 221, 0.95) 100%
+        );
         border-color: rgba(166, 191, 255, 0.55);
         box-shadow: 0 0 18px rgba(92, 126, 255, 0.45);
         color: #eff4ff;
@@ -388,7 +444,11 @@
       }
 
       .speedCells .cellAccent.solved {
-        background: linear-gradient(150deg, rgba(120, 143, 255, 0.92) 0%, rgba(73, 104, 226, 0.96) 100%);
+        background: linear-gradient(
+          150deg,
+          rgba(120, 143, 255, 0.92) 0%,
+          rgba(73, 104, 226, 0.96) 100%
+        );
       }
     }
 
@@ -423,10 +483,8 @@
   }
 }
 
-
-
 .homePageButton::before {
-  content: "";
+  content: '';
   position: absolute;
   top: -120%;
   left: 0;

@@ -1,6 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
-type HighlightedCellVariant = "order" | "solved";
+type HighlightedCellVariant = 'order' | 'solved';
 
 type HighlightedCell = {
   index: number;
@@ -43,51 +43,51 @@ type HomeFeaturesState = {
 const initialState: HomeFeaturesState = {
   cards: {
     cleanCode: {
-      title: "Clean Code",
-      description: "Structured, readable, and maintainable",
-      mark: "</>",
+      title: 'Clean Code',
+      description: 'Structured, readable, and maintainable',
+      mark: '</>',
     },
     uxFocused: {
-      title: "UX-Focused",
-      description: "Seamless experience on all devices",
-      userLabel: "User",
-      buttonLabel: "Button",
+      title: 'UX-Focused',
+      description: 'Seamless experience on all devices',
+      userLabel: 'User',
+      buttonLabel: 'Button',
     },
     reliableSupport: {
-      title: "Reliable Support",
-      description: "Long-term maintenance and stability",
+      title: 'Reliable Support',
+      description: 'Long-term maintenance and stability',
       messages: [
-        "Need help with one issue in production?",
-        "No problem, we are on it.",
+        'Need help with one issue in production?',
+        'No problem, we are on it.',
       ],
     },
     fastDevelopment: {
-      title: "Fast Development",
-      description: "Efficient workflow and quick delivery",
+      title: 'Fast Development',
+      description: 'Efficient workflow and quick delivery',
       cellCount: 24,
       highlightedCells: [
         {
           index: 2,
-          label: "Order",
-          variant: "order",
+          label: 'Order',
+          variant: 'order',
         },
         {
           index: 15,
-          label: "Solved",
-          variant: "solved",
+          label: 'Solved',
+          variant: 'solved',
         },
       ],
     },
     modernStack: {
-      title: "Modern Stack",
-      description: "Up-to-date tools for top performance",
-      badges: ["Java", "JavaScript", "Node.js", "C#"],
+      title: 'Modern Stack',
+      description: 'Up-to-date tools for top performance',
+      badges: ['Java', 'JavaScript', 'Node.js', 'C#'],
     },
   },
 };
 
 const homeFeaturesSlice = createSlice({
-  name: "homeFeatures",
+  name: 'homeFeatures',
   initialState,
   reducers: {},
 });

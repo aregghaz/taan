@@ -1,21 +1,25 @@
 'use client';
 
-import { useAppSelector } from "@/app/store/hooks";
-import { selectHomeFeatureCards } from "@/app/store/homeFeaturesSelectors";
+import { useAppSelector } from '@/app/store/hooks';
+import { selectHomeFeatureCards } from '@/app/store/homeFeaturesSelectors';
 
-type HighlightedCellVariant = "order" | "solved";
-type HighlightedCellMap = Record<number, { label: string; variant: HighlightedCellVariant }>;
+type HighlightedCellVariant = 'order' | 'solved';
+type HighlightedCellMap = Record<
+  number,
+  { label: string; variant: HighlightedCellVariant }
+>;
 
 export default function HomeFeatureCards() {
   const cards = useAppSelector(selectHomeFeatureCards);
 
-  const highlightedCells = cards.fastDevelopment.highlightedCells.reduce<HighlightedCellMap>(
-    (acc, cell) => {
-      acc[cell.index] = { label: cell.label, variant: cell.variant };
-      return acc;
-    },
-    {}
-  );
+  const highlightedCells =
+    cards.fastDevelopment.highlightedCells.reduce<HighlightedCellMap>(
+      (acc, cell) => {
+        acc[cell.index] = { label: cell.label, variant: cell.variant };
+        return acc;
+      },
+      {}
+    );
 
   return (
     <div className="homePageContentRight">
@@ -33,7 +37,9 @@ export default function HomeFeatureCards() {
           <p>{cards.uxFocused.description}</p>
           <div className="uxFlow">
             <span className="uxBubble user">{cards.uxFocused.userLabel}</span>
-            <span className="uxBubble button">{cards.uxFocused.buttonLabel}</span>
+            <span className="uxBubble button">
+              {cards.uxFocused.buttonLabel}
+            </span>
           </div>
         </article>
 
@@ -41,8 +47,12 @@ export default function HomeFeatureCards() {
           <h3>{cards.reliableSupport.title}</h3>
           <p>{cards.reliableSupport.description}</p>
           <div className="supportChat">
-            <span className="chatLine">{cards.reliableSupport.messages[0]}</span>
-            <span className="chatLine answer">{cards.reliableSupport.messages[1]}</span>
+            <span className="chatLine">
+              {cards.reliableSupport.messages[0]}
+            </span>
+            <span className="chatLine answer">
+              {cards.reliableSupport.messages[1]}
+            </span>
           </div>
         </article>
 
@@ -50,16 +60,20 @@ export default function HomeFeatureCards() {
           <h3>{cards.fastDevelopment.title}</h3>
           <p>{cards.fastDevelopment.description}</p>
           <div className="speedCells">
-            {Array.from({ length: cards.fastDevelopment.cellCount }).map((_, index) => {
-              const highlightedCell = highlightedCells[index];
-              const className = highlightedCell ? `cellAccent ${highlightedCell.variant}` : "";
+            {Array.from({ length: cards.fastDevelopment.cellCount }).map(
+              (_, index) => {
+                const highlightedCell = highlightedCells[index];
+                const className = highlightedCell
+                  ? `cellAccent ${highlightedCell.variant}`
+                  : '';
 
-              return (
-                <span className={className} key={index}>
-                  {highlightedCell?.label ?? ""}
-                </span>
-              );
-            })}
+                return (
+                  <span className={className} key={index}>
+                    {highlightedCell?.label ?? ''}
+                  </span>
+                );
+              }
+            )}
           </div>
         </article>
 

@@ -6,21 +6,27 @@
   position: absolute;
   border: 1px solid red;
 
-  & > .curavelInfoSide{
+  & > .curavelInfoSide {
     width: 45%;
     height: 100%;
     border: 1px solid red;
+    padding-left: 80px;
+    display: flex;
+    flex-direction: column;
+
+    & > h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+
+    & > span {
+      font-size: 2rem;
+    }
   }
 
-  & > .curavelPicturesSide{
+  & > .curavelPicturesSide {
     width: 55%;
     height: 100%;
     border: 1px solid red;
   }
-}
-
-.curavelSlide h1 {
-  margin: 0;
-  font-size: clamp(40px, 7vw, 94px);
-  color: #eef5ff;
 }

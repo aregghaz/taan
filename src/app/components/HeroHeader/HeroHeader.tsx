@@ -1,14 +1,14 @@
 'use client';
 
-import { usePathname, useRouter } from "next/navigation";
-import TaanMiniLogo from "@/app/assets/icons/TaanMiniLogo";
-import { useAppDispatch, useAppSelector } from "@/app/store/hooks";
-import { setActiveMenu } from "@/app/store/heroSliderSlice";
+import { usePathname, useRouter } from 'next/navigation';
+import TaanMiniLogo from '@/app/assets/icons/TaanMiniLogo';
+import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
+import { setActiveMenu } from '@/app/store/heroSliderSlice';
 import {
   selectActiveMenuIndex,
   selectHeroMenuItems,
-} from "@/app/store/heroSliderSelectors";
-import { getPathFromMenuIndex } from "@/app/helpers/heroRoutes";
+} from '@/app/store/heroSliderSelectors';
+import { getPathFromMenuIndex } from '@/app/helpers/heroRoutes';
 
 export default function HeroHeader() {
   const dispatch = useAppDispatch();
@@ -30,7 +30,7 @@ export default function HeroHeader() {
   return (
     <header className="heroHeader">
       <div className="heroHeaderBrand">
-          <TaanMiniLogo  />
+        <TaanMiniLogo />
       </div>
 
       <nav className="heroHeaderNav" aria-label="Main navigation">
@@ -38,7 +38,7 @@ export default function HeroHeader() {
           <button
             key={item}
             type="button"
-            className={`heroHeaderNavLink ${activeMenuIndex === index ? "heroHeaderNavLinkActive" : ""}`}
+            className={`heroHeaderNavLink ${activeMenuIndex === index ? 'heroHeaderNavLinkActive' : ''}`}
             onClick={() => handleMenuClick(index)}
           >
             {item}

@@ -1,9 +1,9 @@
-import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import {
   HERO_MENU_ITEMS,
   getHeroMenuItemByIndex,
   type HeroSlideId,
-} from "@/app/config/heroMenuConfig";
+} from '@/app/config/heroMenuConfig';
 
 type HeroSliderState = {
   menuItems: string[];
@@ -20,7 +20,7 @@ const initialState: HeroSliderState = {
 };
 
 const heroSliderSlice = createSlice({
-  name: "heroSlider",
+  name: 'heroSlider',
   initialState,
   reducers: {
     setActiveMenu(state, action: PayloadAction<number>) {

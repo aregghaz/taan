@@ -20,12 +20,21 @@
 }
 
 .ourProjectsBackgroundLayer::after {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(106deg, rgba(4, 8, 23, 0.56) 0%, rgba(4, 8, 23, 0.18) 46%, rgba(4, 8, 23, 0.56) 100%),
-    radial-gradient(60% 48% at 50% 100%, rgba(115, 113, 255, 0.22), transparent 72%);
+    linear-gradient(
+      106deg,
+      rgba(4, 8, 23, 0.56) 0%,
+      rgba(4, 8, 23, 0.18) 46%,
+      rgba(4, 8, 23, 0.56) 100%
+    ),
+    radial-gradient(
+      60% 48% at 50% 100%,
+      rgba(115, 113, 255, 0.22),
+      transparent 72%
+    );
 }
 
 .ourProjectsFullPage {
@@ -107,15 +116,22 @@
   text-align: left;
   cursor: pointer;
   color: #f8fbff;
-  background: linear-gradient(160deg, rgba(37, 63, 112, 0.88) 0%, rgba(28, 44, 84, 0.94) 100%);
+  background: linear-gradient(
+    160deg,
+    rgba(37, 63, 112, 0.88) 0%,
+    rgba(28, 44, 84, 0.94) 100%
+  );
   box-shadow: 1px 0 15px 1px rgba(0, 0, 0, 0.24);
   backdrop-filter: blur(4px);
   transform-origin: center center;
   transform-style: preserve-3d;
   will-change: transform;
-  transition: box-shadow 0.35s ease, border-color 0.3s ease, filter 0.3s ease;
+  transition:
+    box-shadow 0.35s ease,
+    border-color 0.3s ease,
+    filter 0.3s ease;
 
-  & > svg{
+  & > svg {
     margin-bottom: 55px;
   }
 }
@@ -133,19 +149,22 @@
 }
 
 .ourProjectsCard::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   border-radius: inherit;
   pointer-events: none;
-  background:
-    radial-gradient(260px circle at var(--pointer-x) var(--pointer-y), rgba(214, 229, 255, 0.14), rgba(214, 229, 255, 0) 56%);
+  background: radial-gradient(
+    260px circle at var(--pointer-x) var(--pointer-y),
+    rgba(214, 229, 255, 0.14),
+    rgba(214, 229, 255, 0) 56%
+  );
   opacity: 0;
   transition: opacity 0.18s ease;
 }
 
 .ourProjectsCard::after {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   border-radius: inherit;

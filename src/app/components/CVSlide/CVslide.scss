@@ -5,13 +5,25 @@
   align-content: center;
   gap: 14px;
   padding: 48px;
-  background: linear-gradient(160deg, rgba(20, 30, 120, 0.7), rgba(11, 15, 59, 0.85));
+  background: linear-gradient(
+    160deg,
+    rgba(20, 30, 120, 0.7),
+    rgba(11, 15, 59, 0.85)
+  );
 }
 
 .cvSlideTheme {
   background:
-    radial-gradient(92% 80% at 50% 6%, rgba(253, 182, 255, 0.3), transparent 60%),
-    radial-gradient(72% 72% at 16% 88%, rgba(94, 156, 255, 0.22), transparent 62%),
+    radial-gradient(
+      92% 80% at 50% 6%,
+      rgba(253, 182, 255, 0.3),
+      transparent 60%
+    ),
+    radial-gradient(
+      72% 72% at 16% 88%,
+      rgba(94, 156, 255, 0.22),
+      transparent 62%
+    ),
     linear-gradient(160deg, rgba(20, 30, 120, 0.7), rgba(11, 15, 59, 0.85));
 }
 
