@@ -1,0 +1,61 @@
+import Image from 'next/image';
+import Aux1 from '@/app/assets/images/Aux1.jpg';
+import Aux2 from '@/app/assets/images/Aux2.jpg';
+import Aux3 from '@/app/assets/images/Aux3.jpg';
+import Aux4 from '@/app/assets/images/Aux4.jpg';
+import { AUXILIUM_VIDEO_URL } from '@/app/components/Auxilium/auxilium.data';
+
+const AUXILIUM_GALLERY = [
+  { src: Aux1, alt: 'Auxilium dashboard view 1' },
+  { src: Aux2, alt: 'Auxilium dashboard view 2' },
+  { src: Aux3, alt: 'Auxilium dashboard view 3' },
+  { src: Aux4, alt: 'Auxilium dashboard view 4' },
+];
+
+const DELAY_CLASSES = [
+  'auxiliumDelay4',
+  'auxiliumDelay5',
+  'auxiliumDelay6',
+  'auxiliumDelay7',
+];
+
+export default function AuxiliumMediaPanel() {
+  return (
+    <div className="auxiliumRightContent">
+      <div className="auxiliumEmbedCard auxiliumReveal auxiliumDelay2">
+        <div className="auxiliumEmbedViewport">
+          <iframe
+            className="auxiliumEmbedFrame auxiliumEmbedFrameVideoOnly"
+            src={AUXILIUM_VIDEO_URL}
+            title="Auxilium Embedded Demo"
+            loading="lazy"
+            scrolling="no"
+            allowFullScreen
+          />
+        </div>
+      </div>
+
+      <div className="auxiliumVideoMeta auxiliumReveal auxiliumDelay3">
+        <span className="auxiliumMetaPill">Auxilium Demo</span>
+        <span className="auxiliumMetaText">Product walkthrough preview</span>
+      </div>
+
+      <div className="auxiliumPhotoGrid">
+        {AUXILIUM_GALLERY.map((photo, index) => (
+          <article
+            className={`auxiliumPhotoCard auxiliumReveal ${DELAY_CLASSES[index]}`}
+            key={photo.alt}
+          >
+            <Image
+              src={photo.src}
+              alt={photo.alt}
+              fill
+              className="auxiliumPhotoImage"
+              sizes="(max-width: 960px) 48vw, 280px"
+            />
+          </article>
+        ))}
+      </div>
+    </div>
+  );
+}

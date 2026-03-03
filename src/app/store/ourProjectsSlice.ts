@@ -48,10 +48,10 @@ const PROJECTS: ProjectItem[] = [
     componentType: 'auxilium',
     logoType: 'auxilium',
     theme: {
-      surface: 'linear-gradient(148deg, #020b1f 0%, #032552 54%, #024267 100%)',
+      surface: 'linear-gradient(146deg, #252551 0%, #2d2c61 54%, #37346f 100%)',
       cardTone:
-        'linear-gradient(160deg, rgba(16, 40, 88, 0.92) 0%, rgba(11, 31, 69, 0.96) 100%)',
-      accentColor: '#63e5d3',
+        'linear-gradient(160deg, rgba(42, 40, 96, 0.92) 0%, rgba(29, 27, 73, 0.96) 100%)',
+      accentColor: '#7f72e6',
     },
   },
   {

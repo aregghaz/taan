@@ -1,7 +1,13 @@
+import AuxiliumMediaPanel from '@/app/components/Auxilium/AuxiliumMediaPanel';
+import AuxiliumOverview from '@/app/components/Auxilium/AuxiliumOverview';
+
 export default function Auxilium() {
   return (
     <section className="auxiliumSlide">
-      <h1>Auxilium</h1>
+      <div className="auxiliumMain">
+        <AuxiliumOverview />
+        <AuxiliumMediaPanel />
+      </div>
     </section>
   );
 }

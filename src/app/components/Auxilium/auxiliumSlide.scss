@@ -1,0 +1,431 @@
+.auxiliumSlide {
+  --aux-border: rgba(154, 145, 240, 0.42);
+  --aux-card-bg: linear-gradient(
+                  162deg,
+                  rgba(63, 58, 129, 0.92) 0%,
+                  rgba(38, 34, 86, 0.98) 100%
+  );
+  --aux-soft-bg: linear-gradient(
+                  160deg,
+                  rgba(57, 52, 116, 0.45) 0%,
+                  rgba(35, 31, 82, 0.48) 100%
+  );
+  --aux-text-main: #f6f4ff;
+  --aux-text-soft: rgba(235, 232, 255, 0.84);
+  --aux-text-muted: rgba(226, 221, 255, 0.72);
+
+  width: 100%;
+  height: 100%;
+  display: grid;
+  align-content: center;
+  padding: clamp(72px, 9vh, 106px) clamp(16px, 3.2vw, 44px) clamp(124px, 15vh, 176px);
+}
+
+.auxiliumMain {
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) minmax(360px, 1.1fr);
+  gap: clamp(20px, 3vw, 40px);
+  align-items: start;
+}
+
+.auxiliumLeftContent {
+  max-width: 560px;
+  display: grid;
+  gap: 14px;
+  padding-top: clamp(10px, 1.8vw, 42px);
+}
+
+.auxiliumEyebrow {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(239, 235, 255, 0.72);
+}
+
+.auxiliumTitle {
+  margin: 0;
+  font-size: clamp(28px, 3vw, 50px);
+  line-height: 1.04;
+  letter-spacing: 0.2px;
+  color: var(--aux-text-main);
+}
+
+.auxiliumLead {
+  margin: 0;
+  max-width: 52ch;
+  font-size: clamp(14px, 1.2vw, 18px);
+  line-height: 1.55;
+  color: var(--aux-text-soft);
+}
+
+.auxiliumSubLead {
+  margin: 0;
+  max-width: 56ch;
+  font-size: clamp(12px, 1vw, 15px);
+  line-height: 1.5;
+  color: var(--aux-text-muted);
+}
+
+.auxiliumStatsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.auxiliumStatCard {
+  border: 1px solid rgba(165, 154, 245, 0.3);
+  border-radius: 14px;
+  padding: 12px 12px 10px;
+  display: grid;
+  gap: 4px;
+  background: linear-gradient(
+                  160deg,
+                  rgba(62, 56, 126, 0.42) 0%,
+                  rgba(36, 33, 86, 0.44) 100%
+  );
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+  0 10px 22px rgba(8, 7, 24, 0.24);
+}
+
+.auxiliumStatValue {
+  font-size: clamp(20px, 2.1vw, 32px);
+  line-height: 1;
+  font-weight: 700;
+  color: #f4f2ff;
+}
+
+.auxiliumStatLabel {
+  font-size: 12px;
+  color: rgba(231, 227, 255, 0.74);
+}
+
+.auxiliumFeatureList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.auxiliumFeatureList li {
+  position: relative;
+  padding-left: 16px;
+  font-size: clamp(13px, 1vw, 15px);
+  color: rgba(239, 235, 255, 0.92);
+}
+
+.auxiliumFeatureList li::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #8d7bf0;
+}
+
+.auxiliumFootnote {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(217, 210, 255, 0.66);
+}
+
+.auxiliumBottomSlider {
+  border: 1px solid rgba(158, 149, 245, 0.28);
+  border-radius: 16px;
+  padding: 10px 12px;
+  background: var(--aux-soft-bg);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08),
+  0 10px 24px rgba(8, 7, 24, 0.22);
+}
+
+.auxiliumBottomTitle {
+  margin: 0 0 8px;
+  font-size: 12px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: rgba(236, 232, 255, 0.74);
+}
+
+.auxiliumBottomViewport {
+  overflow: hidden;
+  border-radius: 10px;
+  border: 1px solid rgba(153, 143, 242, 0.22);
+  background: rgba(25, 22, 62, 0.58);
+}
+
+.auxiliumBottomTrack {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.auxiliumBottomSlide {
+  margin: 0;
+  min-width: 100%;
+  padding: 10px 12px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: rgba(240, 236, 255, 0.92);
+}
+
+.auxiliumBottomControls {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.auxiliumBottomButton {
+  border: 1px solid rgba(157, 148, 244, 0.46);
+  background: rgba(54, 48, 109, 0.5);
+  color: rgba(237, 232, 255, 0.92);
+  border-radius: 999px;
+  padding: 7px 11px;
+  font-size: 11px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.auxiliumBottomDots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.auxiliumBottomDot {
+  width: 7px;
+  height: 7px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(206, 199, 255, 0.36);
+  cursor: pointer;
+}
+
+.auxiliumBottomDot.isActive {
+  background: #f0ebff;
+}
+
+.auxiliumRightContent {
+  display: grid;
+  justify-items: end;
+  gap: 30px;
+}
+
+.auxiliumEmbedCard {
+  width: min(100%, 600px);
+  aspect-ratio: 16 / 9;
+  position: relative;
+  border-radius: 24px;
+  padding: 8px;
+  border: 1px solid var(--aux-border);
+  background: var(--aux-card-bg);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2),
+  0 22px 44px rgba(8, 7, 24, 0.5),
+  0 0 38px rgba(116, 103, 230, 0.24);
+}
+
+.auxiliumEmbedViewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #0b0927;
+}
+
+.auxiliumEmbedFrame {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: #0b0927;
+}
+
+/* LinkedIn embed includes extra UI; crop to keep only the video area. */
+.auxiliumEmbedFrameVideoOnly {
+  top: -62%;
+  left: -8%;
+  right: auto;
+  bottom: auto;
+  width: 116%;
+  height: 232%;
+}
+
+.auxiliumVideoMeta {
+  width: min(100%, 600px);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.auxiliumMetaPill {
+  border: 1px solid rgba(160, 152, 245, 0.5);
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(236, 232, 255, 0.94);
+  background: rgba(53, 49, 112, 0.62);
+}
+
+.auxiliumMetaText {
+  font-size: 13px;
+  color: rgba(232, 228, 255, 0.78);
+}
+
+.auxiliumPhotoGrid {
+  width: min(100%, 850px);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.auxiliumPhotoCard {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(154, 145, 240, 0.4);
+  background: var(--aux-card-bg);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12),
+  0 12px 24px rgba(8, 7, 24, 0.28);
+}
+
+.auxiliumPhotoCard::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+                  180deg,
+                  rgba(14, 11, 42, 0) 35%,
+                  rgba(14, 11, 42, 0.26) 100%
+  );
+}
+
+.auxiliumPhotoImage {
+  object-fit: cover;
+}
+
+.auxiliumReveal {
+  opacity: 0;
+  transform: translateY(14px);
+  animation: auxiliumEnter 0.56s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.auxiliumDelay1 {
+  animation-delay: 80ms;
+}
+
+.auxiliumDelay2 {
+  animation-delay: 140ms;
+}
+
+.auxiliumDelay3 {
+  animation-delay: 200ms;
+}
+
+.auxiliumDelay4 {
+  animation-delay: 260ms;
+}
+
+.auxiliumDelay5 {
+  animation-delay: 320ms;
+}
+
+.auxiliumDelay6 {
+  animation-delay: 380ms;
+}
+
+.auxiliumDelay7 {
+  animation-delay: 440ms;
+}
+
+.auxiliumDelay8 {
+  animation-delay: 500ms;
+}
+
+@keyframes auxiliumEnter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 980px) {
+  .auxiliumMain {
+    grid-template-columns: 1fr;
+  }
+
+  .auxiliumLeftContent {
+    padding-top: 0;
+  }
+
+  .auxiliumRightContent {
+    order: -1;
+    justify-items: stretch;
+  }
+}
+
+@media (max-width: 620px) {
+  .auxiliumSlide {
+    padding: 72px 12px 120px;
+  }
+
+  .auxiliumStatsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .auxiliumVideoMeta {
+    flex-wrap: wrap;
+  }
+
+  .auxiliumEmbedCard {
+    border-radius: 16px;
+    padding: 6px;
+  }
+
+  .auxiliumEmbedViewport {
+    border-radius: 10px;
+  }
+
+  .auxiliumEmbedFrameVideoOnly {
+    top: -65%;
+    left: -11%;
+    width: 122%;
+    height: 242%;
+  }
+
+  .auxiliumPhotoGrid {
+    gap: 8px;
+  }
+
+  .auxiliumBottomSlider {
+    padding: 8px 10px;
+  }
+
+  .auxiliumBottomSlide {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .auxiliumReveal {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .auxiliumBottomTrack {
+    transition: none;
+  }
+}
