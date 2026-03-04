@@ -18,7 +18,8 @@
   height: 100%;
   display: grid;
   align-content: center;
-  padding: clamp(72px, 9vh, 106px) clamp(16px, 3.2vw, 44px) clamp(124px, 15vh, 176px);
+  padding: clamp(68px, 8.4vh, 98px) clamp(16px, 3.2vw, 44px)
+    clamp(52px, 7vh, 98px);
 }
 
 .auxiliumMain {
@@ -362,7 +363,7 @@
 
 @media (max-width: 980px) {
   .auxiliumMain {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .auxiliumLeftContent {
@@ -377,7 +378,7 @@
 
 @media (max-width: 620px) {
   .auxiliumSlide {
-    padding: 72px 12px 120px;
+    padding: 68px 12px 32px;
   }
 
   .auxiliumStatsGrid {

@@ -56,6 +56,20 @@
   transform: translateZ(0);
 }
 
+@media (max-width: 420px) {
+  .heroSlideContent {
+    overflow: auto;
+  }
+
+  .heroSlideLayer > * {
+    --hero-layer-scale: clamp(0.72, calc(100vw / 420), 1);
+    width: calc(100% / var(--hero-layer-scale));
+    min-height: calc(100% / var(--hero-layer-scale));
+    transform: scale(var(--hero-layer-scale));
+    transform-origin: top left;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .heroSlideOverlay,
   .heroSlideContent,

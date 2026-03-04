@@ -1,4 +1,10 @@
 .ourProjectsSlide {
+  --our-projects-rail-bottom: clamp(8px, 1.8vh, 16px);
+  --our-projects-rail-height: clamp(172px, 29vh, 278px);
+  --our-projects-rail-clearance: calc(
+    var(--our-projects-rail-height) + var(--our-projects-rail-bottom) + 16px
+  );
+
   width: 100%;
   height: 100%;
   position: relative;
@@ -44,13 +50,19 @@
   left: 0;
   width: 100%;
   height: 100%;
+  padding-bottom: var(--our-projects-rail-clearance);
+  box-sizing: border-box;
+}
+
+.ourProjectsFullPage > * {
+  min-height: 100%;
 }
 
 .ourProjectsRailWrap {
   width: 50%;
   position: absolute;
   right: 24px;
-  bottom: 16px;
+  bottom: var(--our-projects-rail-bottom);
   z-index: 3;
   display: flex;
   align-items: center;
@@ -89,7 +101,7 @@
 .ourProjectsCardsViewport {
   position: relative;
   width: 100%;
-  height: 278px;
+  height: var(--our-projects-rail-height);
   perspective: 1200px;
 }
 
@@ -107,7 +119,7 @@
   position: relative;
   border: 1px solid rgba(168, 203, 255, 0.28);
   width: 200px;
-  min-height: 214px;
+  min-height: min(214px, calc(var(--our-projects-rail-height) - 24px));
   border-radius: 16px;
   padding: 12px;
   display: grid;
@@ -132,7 +144,7 @@
     filter 0.3s ease;
 
   & > svg {
-    margin-bottom: 55px;
+    margin-bottom: clamp(20px, 5.5vh, 55px);
   }
 }
 
@@ -233,6 +245,8 @@
 
 @media (max-width: 980px) {
   .ourProjectsSlide {
+    --our-projects-rail-bottom: 10px;
+    --our-projects-rail-height: 192px;
     padding: 82px 16px 168px;
   }
 
@@ -243,12 +257,12 @@
   }
 
   .ourProjectsCardsViewport {
-    height: 192px;
+    height: var(--our-projects-rail-height);
   }
 
   .ourProjectsCard {
     width: calc((100% - 14px) / 2);
-    min-height: 168px;
+    min-height: min(168px, calc(var(--our-projects-rail-height) - 20px));
   }
 
   .ourProjectsCardTitle {
@@ -258,6 +272,8 @@
 
 @media (max-width: 620px) {
   .ourProjectsSlide {
+    --our-projects-rail-bottom: 8px;
+    --our-projects-rail-height: 178px;
     padding: 74px 12px 146px;
   }
 
@@ -267,7 +283,7 @@
   }
 
   .ourProjectsCardsViewport {
-    height: 178px;
+    height: var(--our-projects-rail-height);
   }
 
   .ourProjectsCardsRail {
@@ -276,7 +292,7 @@
 
   .ourProjectsCard {
     width: calc((100% - 10px) / 2);
-    min-height: 156px;
+    min-height: min(156px, calc(var(--our-projects-rail-height) - 18px));
     border-radius: 14px;
     padding: 10px;
   }
@@ -288,5 +304,28 @@
   .ourProjectsArrowButton {
     width: 32px;
     height: 32px;
+  }
+}
+
+@media (max-height: 900px) {
+  .ourProjectsSlide {
+    --our-projects-rail-height: clamp(148px, 24vh, 220px);
+    --our-projects-rail-bottom: 8px;
+  }
+}
+
+@media (max-height: 760px) {
+  .ourProjectsSlide {
+    --our-projects-rail-height: clamp(130px, 22vh, 176px);
+    --our-projects-rail-bottom: 6px;
+  }
+
+  .ourProjectsCardTitle {
+    font-size: clamp(16px, 1.25vw, 22px);
+  }
+
+  .ourProjectsCardSubtitle,
+  .ourProjectsCardLocation {
+    font-size: 12px;
   }
 }
