@@ -7,6 +7,13 @@
   gap: clamp(18px, 3vw, 42px);
   padding: clamp(84px, 10vh, 122px) clamp(18px, 3.2vw, 46px) clamp(56px, 7vh, 104px);
   color: #eff4ff;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+
 }
 
 .curavelInfoSide {
@@ -18,6 +25,10 @@
   gap: clamp(12px, 1.6vh, 20px);
   position: relative;
   z-index: 2;
+
+  @media (max-width: 1200px) {
+    padding-top: 20px;
+  }
 }
 
 .curavelInfoSide > * {
@@ -176,14 +187,20 @@
 
 .curavelPicturesSide {
   width: 100%;
-  height: 90%;
+  height: auto;
+  min-height: 0;
   min-width: 0;
   display: flex;
+  align-items: stretch;
+  padding-top: 65px;
 }
 
 .curavelGalleryFrame {
   width: 100%;
-  height: 100%;
+  height: max-content;
+  min-height: 0;
+  max-height: none;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -232,13 +249,13 @@
 
 .curavelGalleryGrid {
   width: 100%;
-  flex: 1;
+  flex: 0 0 auto;
   min-height: 0;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-auto-rows: minmax(70px, 1fr);
+  grid-auto-rows: clamp(84px, 12.8vw, 132px);
   gap: 10px;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .curavelGalleryCard {
@@ -318,8 +335,28 @@
 }
 
 @media (max-width: 1200px) {
+  .curavelPicturesSide {
+    padding-top: 36px;
+  }
+
   .curavelGalleryGrid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 10px;
+  }
+
+  .curavelGalleryCard {
+    flex: 1 1 calc(50% - 5px);
+    min-width: calc(50% - 5px);
+    aspect-ratio: 16 / 10;
+  }
+
+  .curavelGalleryCardFeatured,
+  .curavelGalleryCardWide,
+  .curavelGalleryCardTall {
+    grid-column: auto;
+    grid-row: auto;
   }
 }
 
@@ -335,7 +372,9 @@
   }
 
   .curavelPicturesSide {
-    height: 380px;
+    height: auto;
+    min-height: 0;
+    padding-top: 0;
   }
 }
 
@@ -373,7 +412,8 @@
   }
 
   .curavelPicturesSide {
-    height: 330px;
+    height: auto;
+    min-height: 0;
   }
 
   .curavelGalleryHead > p {
@@ -381,17 +421,22 @@
   }
 
   .curavelGalleryGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-auto-rows: minmax(82px, 1fr);
+    gap: 8px;
+  }
+
+  .curavelGalleryCard {
+    flex-basis: 100%;
+    min-width: 100%;
+    aspect-ratio: 16 / 9;
   }
 
   .curavelGalleryCardWide {
-    grid-column: span 1;
-    grid-row: span 1;
+    grid-column: auto;
+    grid-row: auto;
   }
 
   .curavelGalleryCardTall {
-    grid-row: span 1;
+    grid-row: auto;
   }
 }
 

@@ -3,10 +3,12 @@
 import {
   useEffect,
   useMemo,
+  useRef,
   useState,
   type CSSProperties,
   type ComponentType,
   type PointerEvent,
+  type WheelEvent,
 } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
@@ -69,6 +71,7 @@ export default function OurProjectsSlide() {
   const dispatch = useAppDispatch();
   const projects = useAppSelector(selectProjects);
   const activeProjectId = useAppSelector(selectActiveProjectId);
+  const fullPageRef = useRef<HTMLDivElement | null>(null);
   const [windowStart, setWindowStart] = useState(0);
   const [slideDirection, setSlideDirection] = useState<1 | -1>(1);
   const [hoveredCardId, setHoveredCardId] = useState<string | null>(null);
@@ -178,6 +181,48 @@ export default function OurProjectsSlide() {
     setHoverTilt({ rotateX: 0, rotateY: 0 });
   };
 
+  const getProjectScrollHost = () => {
+    const root = fullPageRef.current;
+    if (!root) return null;
+
+    const directHost = root.firstElementChild as HTMLElement | null;
+    if (directHost && directHost.scrollHeight > directHost.clientHeight) {
+      return directHost;
+    }
+
+    const queue: HTMLElement[] = Array.from(root.children) as HTMLElement[];
+    while (queue.length > 0) {
+      const current = queue.shift();
+      if (!current) continue;
+
+      if (current.scrollHeight > current.clientHeight) {
+        return current;
+      }
+
+      queue.push(...(Array.from(current.children) as HTMLElement[]));
+    }
+
+    return directHost;
+  };
+
+  const handleCardsRailWheel = (event: WheelEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const scrollHost = getProjectScrollHost();
+    if (!scrollHost) return;
+
+    const deltaY =
+      event.deltaMode === 1
+        ? event.deltaY * 16
+        : event.deltaMode === 2
+          ? event.deltaY * scrollHost.clientHeight
+          : event.deltaY;
+
+    if (!deltaY) return;
+    scrollHost.scrollTop += deltaY;
+  };
+
   if (!activeProject || !ActiveProjectComponent) {
     return null;
   }
@@ -199,11 +244,11 @@ export default function OurProjectsSlide() {
         />
       </AnimatePresence>
 
-      <div className="ourProjectsFullPage">
+      <div ref={fullPageRef} className="ourProjectsFullPage">
         <ActiveProjectComponent />
       </div>
 
-      <div className="ourProjectsRailWrap">
+      <div className="ourProjectsRailWrap" onWheelCapture={handleCardsRailWheel}>
         <div className="ourProjectsCardsViewport">
           <AnimatePresence
             mode="popLayout"

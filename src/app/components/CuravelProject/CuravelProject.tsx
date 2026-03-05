@@ -3,9 +3,6 @@
 import Image from 'next/image';
 import Curavel1 from '@/app/assets/images/Curavel1.png';
 import Curavel2 from '@/app/assets/images/Curavel2.png';
-import Curavel3 from '@/app/assets/images/Curavel3.png';
-import Curavel4 from '@/app/assets/images/Curavel4.png';
-import Curavel5 from '@/app/assets/images/Curavel5.png';
 import Curavel6 from '@/app/assets/images/Curavel6.png';
 import Curavel7 from '@/app/assets/images/Curavel7.png';
 import Curavel8 from '@/app/assets/images/Curavel8.png';
@@ -40,12 +37,9 @@ const CURAVEL_HIGHLIGHTS = [
 const CURAVEL_GALLERY_IMAGES = [
   { id: 1, src: Curavel1, layoutClassName: 'curavelGalleryCardFeatured' },
   { id: 2, src: Curavel2, layoutClassName: 'curavelGalleryCardFeatured' },
-  { id: 3, src: Curavel3, layoutClassName: 'curavelGalleryCardWide' },
-  { id: 4, src: Curavel4, layoutClassName: '' },
-  { id: 5, src: Curavel5, layoutClassName: '' },
-  { id: 6, src: Curavel6, layoutClassName: 'curavelGalleryCardWide' },
-  { id: 7, src: Curavel7, layoutClassName: '' },
-  { id: 8, src: Curavel8, layoutClassName: '' },
+  { id: 3, src: Curavel6, layoutClassName: 'curavelGalleryCardWide' },
+  { id: 4, src: Curavel7, layoutClassName: '' },
+  { id: 5, src: Curavel8, layoutClassName: '' },
 ] as const;
 
 export default function CuravelProject() {
@@ -77,18 +71,12 @@ export default function CuravelProject() {
           ))}
         </div>
 
-        <p>
+        <p className="curavelLead">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. A commodi
           doloremque earum eum facere ipsam quam recusandae, repellendus
           repudiandae voluptates.
         </p>
 
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus
-          assumenda at distinctio eius et eum, eveniet expedita illo ipsam
-          maiores nobis odit perspiciatis porro quibusdam quod reiciendis, sequi
-          tempore ullam?
-        </p>
         <button
           type="button"
           className="curavelCtaButton"

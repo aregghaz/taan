@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { AnimatePresence, motion, type Variants } from 'motion/react';
 import { useAppSelector } from '@/app/store/hooks';
 import {
@@ -47,6 +47,18 @@ const slideVariants: Variants = {
 export default function HeroFullscreenSlide() {
   const isOpen = useAppSelector(selectIsHeroSlideOpen);
   const activeSlideId = useAppSelector(selectActiveSlideId);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    document.documentElement.classList.add('heroNoScroll');
+    document.body.classList.add('heroNoScroll');
+
+    return () => {
+      document.documentElement.classList.remove('heroNoScroll');
+      document.body.classList.remove('heroNoScroll');
+    };
+  }, [isOpen]);
 
   const ActiveSlide = useMemo(() => {
     if (!activeSlideId) return null;

@@ -8,7 +8,7 @@ type AuxiliumLogoIconProps = {
 };
 
 export const AuxiliumLogoIcon: FC<AuxiliumLogoIconProps> = ({
-  width = 164,
+  width = 144,
   height = 64,
 }) => (
   <svg

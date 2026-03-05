@@ -7,7 +7,7 @@ type IconType = {
 };
 
 export const CuravelLogoIcon: FC<IconType> = ({
-  width = 164,
+  width = 134,
   height = 64,
   className,
 }) => (
