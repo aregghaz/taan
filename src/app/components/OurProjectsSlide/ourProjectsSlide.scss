@@ -327,6 +327,34 @@
   }
 }
 
+@media (max-width: 720px) {
+  .ourProjectsSlide {
+    --our-projects-rail-height: 178px;
+    padding-bottom: calc(var(--our-projects-rail-height) + var(--our-projects-rail-bottom) + 18px);
+  }
+
+  .ourProjectsCardsViewport {
+    height: var(--our-projects-rail-height);
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-padding-inline: 12px;
+  }
+
+  .ourProjectsCardsRail {
+    inset: 10px auto 0 0;
+    width: max-content;
+    min-width: 100%;
+    justify-content: flex-start;
+    padding: 0 12px;
+  }
+
+  .ourProjectsCard {
+    flex: 0 0 176px;
+    width: 176px;
+  }
+}
+
 @media (max-height: 900px) {
   .ourProjectsSlide {
     --our-projects-rail-height: clamp(148px, 24vh, 220px);

@@ -72,10 +72,12 @@ export default function OurProjectsSlide() {
   const projects = useAppSelector(selectProjects);
   const activeProjectId = useAppSelector(selectActiveProjectId);
   const fullPageRef = useRef<HTMLDivElement | null>(null);
+  const cardsViewportRef = useRef<HTMLDivElement | null>(null);
   const [windowStart, setWindowStart] = useState(0);
   const [slideDirection, setSlideDirection] = useState<1 | -1>(1);
   const [hoveredCardId, setHoveredCardId] = useState<string | null>(null);
   const [hoverTilt, setHoverTilt] = useState({ rotateX: 0, rotateY: 0 });
+  const [isCompactRail, setIsCompactRail] = useState(false);
 
   const activeIndex = useMemo(() => {
     if (projects.length === 0) return -1;
@@ -106,6 +108,15 @@ export default function OurProjectsSlide() {
       dispatch(closeProject());
     };
   }, [dispatch]);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 720px)');
+    const update = () => setIsCompactRail(mediaQuery.matches);
+
+    update();
+    mediaQuery.addEventListener('change', update);
+    return () => mediaQuery.removeEventListener('change', update);
+  }, []);
 
   const maxWindowStart = Math.max(0, projects.length - VISIBLE_CARDS);
   const canSlide = projects.length > VISIBLE_CARDS;
@@ -206,6 +217,17 @@ export default function OurProjectsSlide() {
   };
 
   const handleCardsRailWheel = (event: WheelEvent<HTMLDivElement>) => {
+    const cardsViewport = cardsViewportRef.current;
+    if (cardsViewport && cardsViewport.scrollWidth > cardsViewport.clientWidth) {
+      const horizontalDelta = event.deltaX || event.deltaY;
+      if (horizontalDelta) {
+        event.preventDefault();
+        event.stopPropagation();
+        cardsViewport.scrollLeft += horizontalDelta;
+        return;
+      }
+    }
+
     event.preventDefault();
     event.stopPropagation();
 
@@ -249,7 +271,7 @@ export default function OurProjectsSlide() {
       </div>
 
       <div className="ourProjectsRailWrap" onWheelCapture={handleCardsRailWheel}>
-        <div className="ourProjectsCardsViewport">
+        <div ref={cardsViewportRef} className="ourProjectsCardsViewport">
           <AnimatePresence
             mode="popLayout"
             initial={false}
@@ -300,7 +322,7 @@ export default function OurProjectsSlide() {
                       handleCardPointerLeave(event, project.id)
                     }
                     animate={{
-                      y: isActive ? -12 : 0,
+                      y: isActive ? (isCompactRail ? 0 : -12) : 0,
                       scale: 1,
                       opacity: isActive ? 1 : 0.82,
                       rotateX,
