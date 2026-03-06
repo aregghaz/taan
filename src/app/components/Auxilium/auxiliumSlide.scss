@@ -18,6 +18,7 @@
   height: 100%;
   display: block;
   padding: clamp(68px, 8.4vh, 98px) clamp(16px, 3.2vw, 44px) clamp(52px, 7vh, 98px);
+  padding-top: 180px;
 }
 
 .auxiliumMain {
@@ -377,7 +378,7 @@
 @media (max-width: 980px) {
   .auxiliumSlide {
     margin-top: 0;
-    padding-top: 24px;
+    padding-top: 150px;
     padding-left: calc(14px + env(safe-area-inset-left));
     padding-right: calc(14px + env(safe-area-inset-right));
     padding-bottom: 30px;
@@ -397,6 +398,12 @@
     order: 1;
     justify-items: stretch;
     gap: 16px;
+  }
+}
+
+@media (max-width: 720px) {
+  .auxiliumSlide {
+    padding-top: 50px;
   }
 }
 
