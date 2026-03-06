@@ -12,6 +12,7 @@ export const CuravelLogoIcon: FC<IconType> = ({
   className,
 }) => (
   <svg
+    className={className}
     width={width}
     height={height}
     viewBox="0 0 184 66"

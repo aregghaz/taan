@@ -65,6 +65,7 @@
   overflow-x: hidden;
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
+  overflow-anchor: none;
 }
 
 .ourProjectsRailWrap {
@@ -161,7 +162,7 @@
   position: absolute;
   top: 12px;
   left: 12px;
-  width: 82px;
+  width: 122px;
   height: auto;
   opacity: 0.94;
   transform: translateZ(40px);
@@ -278,59 +279,61 @@
   }
 }
 
-@media (max-width: 620px) {
-  .ourProjectsSlide {
-    --our-projects-rail-bottom: 8px;
-    --our-projects-rail-height: 156px;
-    padding: 74px 12px 146px;
-  }
-
-  .ourProjectsRailWrap {
-    left: 12px;
-    right: 12px;
-  }
-
-  .ourProjectsCardsViewport {
-    height: var(--our-projects-rail-height);
-  }
-
-  .ourProjectsCardsRail {
-    gap: 10px;
-  }
-
-  .ourProjectsCard {
-    width: calc((100% - 10px) / 2);
-    min-height: min(136px, calc(var(--our-projects-rail-height) - 14px));
-    border-radius: 14px;
-    padding: 9px;
-  }
-
-  .ourProjectsCardTitle {
-    font-size: 16px;
-  }
-
-  .ourProjectsCardSubtitle,
-  .ourProjectsCardLocation,
-  .ourProjectsCardIndex {
-    font-size: 11px;
-  }
-
-  .ourProjectsCardLogo {
-    width: 70px;
-    top: 9px;
-    left: 9px;
-  }
-
-  .ourProjectsArrowButton {
-    width: 32px;
-    height: 32px;
-  }
-}
+//@media (max-width: 620px) {
+//  .ourProjectsSlide {
+//    --our-projects-rail-bottom: 8px;
+//    --our-projects-rail-height: 126px;
+//    padding: 74px 12px 146px;
+//  }
+//
+//  .ourProjectsRailWrap {
+//    left: 12px;
+//    right: 12px;
+//  }
+//
+//  .ourProjectsCardsViewport {
+//    height: var(--our-projects-rail-height);
+//  }
+//
+//  .ourProjectsCardsRail {
+//    gap: 10px;
+//  }
+//
+//  .ourProjectsCard {
+//    width: calc((100% - 10px) / 2);
+//    border-radius: 14px;
+//    padding: 9px;
+//  }
+//
+//  .ourProjectsCardTitle {
+//    font-size: 16px;
+//  }
+//
+//  .ourProjectsCardSubtitle,
+//  .ourProjectsCardLocation,
+//  .ourProjectsCardIndex {
+//    font-size: 11px;
+//  }
+//
+//  .ourProjectsCardLogo {
+//    width: 100px;
+//    top: 9px;
+//    left: 9px;
+//  }
+//
+//  .ourProjectsArrowButton {
+//    width: 32px;
+//    height: 32px;
+//  }
+//}
 
 @media (max-width: 720px) {
   .ourProjectsSlide {
     --our-projects-rail-height: 178px;
-    padding: 74px 12px calc(8px + env(safe-area-inset-bottom));
+    padding-top: 74px;
+    padding-bottom: calc(8px + env(safe-area-inset-bottom));
+    padding-left: calc(12px + env(safe-area-inset-left));
+    padding-right: calc(12px + env(safe-area-inset-right));
     display: flex;
     flex-direction: column;
     min-height: 0;
@@ -387,13 +390,13 @@
   }
 
   .ourProjectsCardsViewport {
-    min-height: var(--our-projects-rail-height);
+    //min-height: var(--our-projects-rail-height);
   }
 
   .ourProjectsCard {
     flex: 0 0 156px;
     width: 156px;
-    height: 150px;
+    //height: 150px;
     border-radius: 12px;
     padding: 8px;
   }
@@ -439,5 +442,57 @@
 
   .ourProjectsCard {
     padding: 9px;
+  }
+}
+
+@media (max-width: 620px) {
+  .ourProjectsSlide {
+    --our-projects-rail-height: 128px;
+    padding: 68px 10px calc(8px + env(safe-area-inset-bottom));
+  }
+
+  .ourProjectsRailWrap {
+    left: 10px;
+    right: 10px;
+  }
+
+  .ourProjectsCardsViewport {
+    //min-height: var(--our-projects-rail-height);
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+
+  .ourProjectsCardsRail {
+    gap: 8px;
+    padding: 0 10px;
+  }
+
+  .ourProjectsCard {
+    flex: 80px 100px;
+    width: 136px;
+    max-height: 80px !important;
+    border-radius: 11px;
+    padding: 7px;
+  }
+
+  .ourProjectsCardIndex,
+  .ourProjectsCardLocation {
+    display: none;
+  }
+
+  .ourProjectsCardTitle {
+    font-size: 12px;
+    line-height: 1.05;
+    letter-spacing: 0.2px;
+  }
+
+  .ourProjectsCardSubtitle {
+    font-size: 9px;
+  }
+
+  .ourProjectsCardLogo {
+    width: 100px;
+    top: 7px;
+    left: 7px;
   }
 }

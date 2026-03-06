@@ -10,8 +10,10 @@ type AuxiliumLogoIconProps = {
 export const AuxiliumLogoIcon: FC<AuxiliumLogoIconProps> = ({
   width = 144,
   height = 64,
+  className,
 }) => (
   <svg
+    className={className}
     width={width}
     height={height}
     viewBox="40 360 1820 365"

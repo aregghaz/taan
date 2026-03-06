@@ -2,6 +2,7 @@
 
 import {
   useEffect,
+  useLayoutEffect,
   useMemo,
   useRef,
   useState,
@@ -79,6 +80,21 @@ export default function OurProjectsSlide() {
   const [hoverTilt, setHoverTilt] = useState({ rotateX: 0, rotateY: 0 });
   const [isCompactRail, setIsCompactRail] = useState(false);
 
+  const resetProjectScroll = () => {
+    const root = fullPageRef.current;
+    if (!root) return;
+
+    const directHost = root.firstElementChild;
+
+    root.scrollTop = 0;
+    root.scrollLeft = 0;
+
+    if (directHost instanceof HTMLElement) {
+      directHost.scrollTop = 0;
+      directHost.scrollLeft = 0;
+    }
+  };
+
   const activeIndex = useMemo(() => {
     if (projects.length === 0) return -1;
     if (!activeProjectId) return 0;
@@ -108,6 +124,29 @@ export default function OurProjectsSlide() {
       dispatch(closeProject());
     };
   }, [dispatch]);
+
+  useLayoutEffect(() => {
+    resetProjectScroll();
+  }, [activeProjectId]);
+
+  useEffect(() => {
+    resetProjectScroll();
+
+    const frame1 = requestAnimationFrame(() => {
+      resetProjectScroll();
+      requestAnimationFrame(() => {
+        resetProjectScroll();
+      });
+    });
+    const timeoutId = setTimeout(() => {
+      resetProjectScroll();
+    }, 140);
+
+    return () => {
+      cancelAnimationFrame(frame1);
+      clearTimeout(timeoutId);
+    };
+  }, [activeProjectId]);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(max-width: 720px)');
@@ -267,7 +306,7 @@ export default function OurProjectsSlide() {
       </AnimatePresence>
 
       <div ref={fullPageRef} className="ourProjectsFullPage">
-        <ActiveProjectComponent />
+        <ActiveProjectComponent key={`project-${activeProject.id}`} />
       </div>
 
       <div className="ourProjectsRailWrap" onWheelCapture={handleCardsRailWheel}>
