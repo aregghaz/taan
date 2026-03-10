@@ -164,24 +164,6 @@ export default function AxuxiliumMobilApp() {
                   ))}
                 </ol>
               </article>
-
-              <article className="axmSummaryCard">
-                <h3>Design Direction</h3>
-                <p>
-                  The UI follows a consistent dark-blue system with compact
-                  input blocks, high-contrast action buttons, and focused modal
-                  dialogs for critical decisions.
-                </p>
-                <p>
-                  The app structure is optimized for older users and medical
-                  transportation contexts where every interaction must be clear
-                  and low-friction.
-                </p>
-                <p className="axmCallout">
-                  Key goal: reduce ride booking errors and improve member
-                  confidence during every transport request.
-                </p>
-              </article>
             </div>
 
             <div
@@ -201,80 +183,82 @@ export default function AxuxiliumMobilApp() {
             </div>
           </div>
 
-          <aside
-            className="axmSliderCard"
-            aria-label="Auxilium app screen slider"
-          >
-            <div className="axmSliderHeader">
-              <p>Interface Preview</p>
-              <span>
-                {String(activeSlide + 1).padStart(2, '0')} /{' '}
-                {String(MOBILE_SLIDES.length).padStart(2, '0')}
-              </span>
-            </div>
-
-            <div className="axmSliderViewport">
-              <div
-                className="axmSliderTrack"
-                style={{ transform: `translateX(-${activeSlide * 100}%)` }}
-              >
-                {MOBILE_SLIDES.map((slide) => (
-                  <article className="axmSlide" key={slide.id}>
-                    <div className="axmPhoneFrame">
-                      <div className="axmPhoneNotch" />
-                      <Image
-                        src={slide.image}
-                        alt={`${slide.title} screen`}
-                        fill
-                        className="axmPhoneImage"
-                      />
-                    </div>
-
-                    <div className="axmSlideCaption">
-                      <h4>{slide.title}</h4>
-                      <p>{slide.description}</p>
-                    </div>
-                  </article>
-                ))}
-              </div>
-            </div>
-
-            <div className="axmSliderControls">
-              <button
-                type="button"
-                className="axmSliderButton"
-                onClick={handlePrev}
-                aria-label="Previous screen"
-              >
-                Prev
-              </button>
-
-              <div
-                className="axmSliderDots"
-                role="tablist"
-                aria-label="Slide selector"
-              >
-                {MOBILE_SLIDES.map((slide, index) => (
-                  <button
-                    key={slide.id}
-                    type="button"
-                    className={`axmDot ${index === activeSlide ? 'isActive' : ''}`}
-                    aria-label={`Go to ${slide.title}`}
-                    onClick={() => setActiveSlide(index)}
-                  />
-                ))}
+          <div className="axmSliderWrapper">
+            <aside
+              className="axmSliderCard"
+              aria-label="Auxilium app screen slider"
+            >
+              <div className="axmSliderHeader">
+                <p>Interface Preview</p>
+                <span>
+                  {String(activeSlide + 1).padStart(2, '0')} /{' '}
+                  {String(MOBILE_SLIDES.length).padStart(2, '0')}
+                </span>
               </div>
 
-              <button
-                type="button"
-                className="axmSliderButton"
-                onClick={handleNext}
-                aria-label="Next screen"
-              >
-                Next
-              </button>
-            </div>
-          </aside>
+              <div className="axmSliderViewport">
+                <div
+                  className="axmSliderTrack"
+                  style={{ transform: `translateX(-${activeSlide * 100}%)` }}
+                >
+                  {MOBILE_SLIDES.map((slide) => (
+                    <article className="axmSlide" key={slide.id}>
+                      <div className="axmPhoneFrame">
+                        <div className="axmPhoneNotch" />
+                        <Image
+                          src={slide.image}
+                          alt={`${slide.title} screen`}
+                          fill
+                          className="axmPhoneImage"
+                        />
+                      </div>
+
+                      <div className="axmSlideCaption">
+                        <h4>{slide.title}</h4>
+                        <p>{slide.description}</p>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </div>
+
+              <div className="axmSliderControls">
+                <button
+                  type="button"
+                  className="axmSliderButton"
+                  onClick={handlePrev}
+                  aria-label="Previous screen"
+                >
+                  Prev
+                </button>
+
+                <div
+                  className="axmSliderDots"
+                  role="tablist"
+                  aria-label="Slide selector"
+                >
+                  {MOBILE_SLIDES.map((slide, index) => (
+                    <button
+                      key={slide.id}
+                      type="button"
+                      className={`axmDot ${index === activeSlide ? 'isActive' : ''}`}
+                      aria-label={`Go to ${slide.title}`}
+                      onClick={() => setActiveSlide(index)}
+                    />
+                  ))}
+                </div>
+
+                <button
+                  type="button"
+                  className="axmSliderButton"
+                  onClick={handleNext}
+                  aria-label="Next screen"
+                >
+                  Next
+                </button>
+              </div>
+            </aside>
+          </div>
         </div>
       </div>
     </section>

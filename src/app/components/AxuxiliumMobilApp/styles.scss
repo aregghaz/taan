@@ -1,15 +1,15 @@
 .axuxiliumMobilAppSlide {
   --axm-bg-card: linear-gradient(
                   156deg,
-                  rgba(18, 47, 100, 0.76) 0%,
-                  rgba(10, 31, 73, 0.92) 100%
+                  rgba(92, 18, 100, 0.76) 0%,
+                  rgba(60, 24, 57, 0.92) 100%
   );
   --axm-bg-soft: linear-gradient(
                   150deg,
-                  rgba(35, 70, 129, 0.44) 0%,
-                  rgba(17, 40, 90, 0.52) 100%
+                  rgba(209, 26, 129, 0.44) 0%,
+                  rgba(255, 0, 194, 0.52) 100%
   );
-  --axm-border: rgba(123, 182, 255, 0.32);
+  --axm-border: rgba(66, 39, 120, 0.32);
   --axm-text-main: #f2f8ff;
   --axm-text-soft: rgba(224, 237, 255, 0.88);
   --axm-text-muted: rgba(198, 218, 244, 0.74);
@@ -29,25 +29,29 @@
 .axmContent {
   width: 100%;
   margin: 0 auto;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 16px;
 }
 
 .axmTopLayout {
   width: 100%;
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(330px, 420px);
+  display: flex;
   align-items: start;
   gap: 12px;
 }
 
 .axmMainInfo {
-  display: grid;
+  width: 50%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
   gap: 12px;
 }
 
 .axmHero {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 12px;
 }
 
@@ -81,16 +85,19 @@
 }
 
 .axmMetricGrid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
 .axmMetricCard {
+  flex: 1 1 calc((100% - 20px) / 3);
+  min-width: 0;
   border: 1px solid rgba(138, 194, 255, 0.28);
   border-radius: 14px;
   padding: 11px 12px 10px;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 4px;
   background: var(--axm-bg-soft);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12),
@@ -110,8 +117,8 @@
 }
 
 .axmFlowLayout {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 12px;
 }
 
@@ -149,7 +156,8 @@
   padding: 0;
   list-style: none;
   counter-reset: axm-step;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 10px;
 }
 
@@ -167,8 +175,9 @@
   width: 26px;
   height: 26px;
   border-radius: 999px;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid rgba(138, 192, 255, 0.45);
   background: rgba(56, 110, 189, 0.42);
   font-size: 12px;
@@ -191,8 +200,8 @@
 }
 
 .axmSummaryCard {
-  display: grid;
-  align-content: start;
+  display: flex;
+  flex-direction: column;
   gap: 10px;
 }
 
@@ -210,10 +219,21 @@
   color: rgba(231, 244, 255, 0.95);
 }
 
+.axmSliderWrapper {
+  width: 50%;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .axmSliderCard {
+  width: 400px;
   padding: 12px;
-  display: grid;
   gap: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 .axmSliderHeader {
@@ -246,10 +266,10 @@
   border: 1px solid rgba(145, 194, 255, 0.28);
   background: linear-gradient(
                   155deg,
-                  rgba(40, 81, 158, 0.25),
+                  rgba(55, 0, 106, 0.25),
                   rgba(40, 81, 158, 0)
   ),
-  rgba(9, 25, 61, 0.78);
+  rgba(27, 5, 57, 0.78);
 }
 
 .axmSliderTrack {
@@ -260,7 +280,8 @@
 .axmSlide {
   min-width: 100%;
   padding: 12px;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 10px;
 }
 
@@ -350,12 +371,14 @@
 }
 
 .axmScreenGroups {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
 .axmScreenGroupCard {
+  flex: 1 1 calc((100% - 10px) / 2);
+  min-width: 0;
   padding: 12px;
 }
 
@@ -363,7 +386,8 @@
   margin: 10px 0 0;
   padding: 0;
   list-style: none;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 8px;
 }
 
@@ -396,21 +420,28 @@
   }
 
   .axmTopLayout {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .axmMainInfo,
+  .axmSliderWrapper {
+    width: 100%;
+  }
+
+  .axmSliderWrapper {
+    align-items: stretch;
+    justify-content: flex-start;
   }
 
   .axmSliderCard {
-    max-width: 520px;
+    width: min(100%, 520px);
   }
 }
 
 @media (max-width: 980px) {
-  .axmFlowLayout {
-    grid-template-columns: 1fr;
-  }
-
-  .axmScreenGroups {
-    grid-template-columns: 1fr;
+  .axmScreenGroupCard {
+    flex-basis: 100%;
   }
 }
 
@@ -422,20 +453,53 @@
     padding-bottom: 22px;
   }
 
-  .axmMetricGrid {
-    grid-template-columns: 1fr;
+  .axmMetricCard {
+    flex-basis: 100%;
   }
 
-  .axmScreenGroups {
-    grid-template-columns: 1fr;
+  .axmScreenGroupCard {
+    flex-basis: 100%;
+  }
+
+  .axmSliderCard {
+    width: min(100%, 360px);
+    margin: 0 auto;
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .axmSlide {
+    padding: 8px;
+  }
+
+  .axmSliderControls {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 10px;
+  }
+
+  .axmSliderDots {
+    order: 3;
+    width: 100%;
+    justify-content: center;
   }
 
   .axmPhoneFrame {
-    width: min(100%, 240px);
+    width: min(100%, 212px);
   }
 }
 
 @media (max-width: 420px) {
+  .heroSlideLayer > .axuxiliumMobilAppSlide {
+    width: 100%;
+    min-height: 0;
+    height: 100%;
+    transform: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
   .axuxiliumMobilAppSlide {
     padding-top: 26px;
     padding-left: calc(10px + env(safe-area-inset-left));
@@ -450,7 +514,30 @@
     border-radius: 14px;
   }
 
+  .axmSliderCard {
+    width: min(100%, 300px);
+    padding: 8px;
+  }
+
+  .axmSlide {
+    padding: 6px;
+  }
+
+  .axmPhoneFrame {
+    width: min(100%, 186px);
+  }
+
   .axmSliderButton {
     padding: 6px 10px;
+  }
+
+  .axmFlowList li {
+    padding-left: 34px;
+  }
+
+  .axmFlowList li::before {
+    width: 22px;
+    height: 22px;
+    font-size: 11px;
   }
 }

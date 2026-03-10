@@ -61,10 +61,10 @@ const PROJECTS: ProjectItem[] = [
     cardSubtitle: 'Mobile Experience',
     componentType: 'axuxiliumMobileApp',
     theme: {
-      surface: 'linear-gradient(148deg, #020a25 0%, #07265a 52%, #0d3a77 100%)',
+      surface: 'linear-gradient(148deg, #16001f 0%, #3b0f4d 52%, #5a1368 100%)',
       cardTone:
-        'linear-gradient(160deg, rgba(17, 43, 94, 0.92) 0%, rgba(13, 34, 78, 0.96) 100%)',
-      accentColor: '#4ea3ff',
+        'linear-gradient(160deg, rgba(76, 16, 104, 0.92) 0%, rgba(54, 18, 74, 0.96) 100%)',
+      accentColor: '#d11a81',
     },
   },
   {
