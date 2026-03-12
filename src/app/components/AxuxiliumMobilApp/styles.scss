@@ -20,6 +20,7 @@
   overflow-x: hidden;
   padding: clamp(74px, 9vh, 108px) clamp(16px, 3.2vw, 40px) clamp(28px, 5vh, 64px);
   color: var(--axm-text-main);
+  animation: axmProjectFadeIn 460ms ease-out both;
 }
 
 .axuxiliumMobilAppSlide * {
@@ -41,12 +42,40 @@
   gap: 12px;
 }
 
+.axmTopLayout > * {
+  animation: axmProjectRise 620ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.axmTopLayout > :first-child {
+  animation-delay: 90ms;
+}
+
+.axmTopLayout > :last-child {
+  animation-delay: 180ms;
+}
+
 .axmMainInfo {
   width: 50%;
   min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+
+.axmMainInfo > * {
+  animation: axmProjectRise 560ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.axmMainInfo > :nth-child(1) {
+  animation-delay: 120ms;
+}
+
+.axmMainInfo > :nth-child(2) {
+  animation-delay: 170ms;
+}
+
+.axmMainInfo > :nth-child(3) {
+  animation-delay: 220ms;
 }
 
 .axmHero {
@@ -222,6 +251,7 @@
 .axmSliderWrapper {
   width: 50%;
   min-width: 0;
+  padding-top: 25px;
   height: 100%;
   display: flex;
   align-items: center;
@@ -234,6 +264,51 @@
   gap: 10px;
   display: flex;
   flex-direction: column;
+}
+
+.axmSliderCard > * {
+  animation: axmProjectRise 520ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.axmSliderCard > :nth-child(1) {
+  animation-delay: 220ms;
+}
+
+.axmSliderCard > :nth-child(2) {
+  animation-delay: 260ms;
+}
+
+.axmSliderCard > :nth-child(3) {
+  animation-delay: 300ms;
+}
+
+@keyframes axmProjectFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes axmProjectRise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .axuxiliumMobilAppSlide,
+  .axmTopLayout > *,
+  .axmMainInfo > *,
+  .axmSliderCard > * {
+    animation: none;
+  }
 }
 
 .axmSliderHeader {
@@ -289,6 +364,7 @@
   width: min(100%, 260px);
   margin: 0 auto;
   aspect-ratio: 10 / 19;
+  min-height: 260px;
   position: relative;
   border-radius: 24px;
   border: 1px solid rgba(140, 189, 255, 0.38);
@@ -310,7 +386,11 @@
 }
 
 .axmPhoneImage {
+  width: 100%;
+  height: 100%;
+  display: block;
   object-fit: cover;
+  object-position: top center;
 }
 
 .axmSlideCaption h4 {
@@ -486,6 +566,7 @@
 
   .axmPhoneFrame {
     width: min(100%, 212px);
+    min-height: 212px;
   }
 }
 
@@ -525,6 +606,7 @@
 
   .axmPhoneFrame {
     width: min(100%, 186px);
+    min-height: 186px;
   }
 
   .axmSliderButton {

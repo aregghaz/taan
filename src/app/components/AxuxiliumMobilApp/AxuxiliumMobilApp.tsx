@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import Aux1 from '@/app/assets/images/Aux1.jpg';
-import Aux2 from '@/app/assets/images/Aux2.jpg';
-import Aux3 from '@/app/assets/images/Aux3.jpg';
-import Aux4 from '@/app/assets/images/Aux4.jpg';
+import AuxMob1 from '@/app/assets/images/AuxMob1.png';
+import AuxMob2 from '@/app/assets/images/AuxMob2.png';
+import AuxMob3 from '@/app/assets/images/AuxMob3.png';
+import AuxMob4 from '@/app/assets/images/AuxMob4.png';
 
 const APP_METRICS = [
   { value: '40+', label: 'Designed screens' },
@@ -82,28 +82,28 @@ const MOBILE_SLIDES = [
     title: 'Login & Verification',
     description:
       'Secure sign-in, email verification, and password recovery path for members.',
-    image: Aux1,
+    image: AuxMob1,
   },
   {
     id: 'rides',
     title: 'Ride Scheduling',
     description:
       'Create rides, select service details, and review pickup and drop-off plans.',
-    image: Aux2,
+    image: AuxMob2,
   },
   {
     id: 'tracking',
     title: 'Live Ride Detail',
     description:
       'Track route progress with status states, map context, and quick actions.',
-    image: Aux3,
+    image: AuxMob3,
   },
   {
     id: 'settings',
     title: 'Security & Settings',
     description:
       'Manage account protection, notifications, and authorized contact access.',
-    image: Aux4,
+    image: AuxMob4,
   },
 ] as const;
 
@@ -208,7 +208,9 @@ export default function AxuxiliumMobilApp() {
                         <Image
                           src={slide.image}
                           alt={`${slide.title} screen`}
-                          fill
+                          width={slide.image.width}
+                          height={slide.image.height}
+                          sizes="(max-width: 420px) 186px, (max-width: 720px) 212px, 260px"
                           className="axmPhoneImage"
                         />
                       </div>

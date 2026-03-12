@@ -1,34 +1,33 @@
 'use client';
 
 import {
+  type ComponentType,
+  type CSSProperties,
+  type PointerEvent,
   useEffect,
   useLayoutEffect,
   useMemo,
   useRef,
   useState,
-  type CSSProperties,
-  type ComponentType,
-  type PointerEvent,
   type WheelEvent,
 } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
-import { closeProject, openProject } from '@/app/store/ourProjectsSlice';
-import {
-  selectActiveProjectId,
-  selectProjects,
-} from '@/app/store/ourProjectsSelectors';
-import SliderArrowIcon from '@/app/assets/icons/SliderArrowIcon';
-import { CuravelLogoIcon } from '@/app/assets/icons/CuravelLogoIcon';
-import CuravelProject from '@/app/components/CuravelProject/CuravelProject';
-import Auxilium from '@/app/components/Auxilium/Auxilium';
-import AxuxiliumMobilApp from '@/app/components/AxuxiliumMobilApp/AxuxiliumMobilApp';
-import BioBac from '@/app/components/BioBac/BioBac';
 import type {
   ProjectComponentType,
   ProjectItem,
   ProjectLogoType,
 } from '@/app/store/ourProjectsSlice';
+import { closeProject, openProject } from '@/app/store/ourProjectsSlice';
+import {
+  selectActiveProjectId,
+  selectProjects,
+} from '@/app/store/ourProjectsSelectors';
+import { CuravelLogoIcon } from '@/app/assets/icons/CuravelLogoIcon';
+import CuravelProject from '@/app/components/CuravelProject/CuravelProject';
+import Auxilium from '@/app/components/Auxilium/Auxilium';
+import AxuxiliumMobilApp from '@/app/components/AxuxiliumMobilApp/AxuxiliumMobilApp';
+import BioBac from '@/app/components/BioBac/BioBac';
 import { AuxiliumLogoIcon } from '@/app/assets/icons/AuxiliumLogoIcon';
 
 const FULL_PAGE_COMPONENTS: Record<ProjectComponentType, ComponentType> = {
@@ -42,6 +41,7 @@ const LOGO_COMPONENTS: Partial<
 > = {
   curavel: CuravelLogoIcon,
   auxilium: AuxiliumLogoIcon,
+  axuxiliumMobileApp: AuxiliumLogoIcon,
 };
 
 const VISIBLE_CARDS = 4;
@@ -257,7 +257,10 @@ export default function OurProjectsSlide() {
 
   const handleCardsRailWheel = (event: WheelEvent<HTMLDivElement>) => {
     const cardsViewport = cardsViewportRef.current;
-    if (cardsViewport && cardsViewport.scrollWidth > cardsViewport.clientWidth) {
+    if (
+      cardsViewport &&
+      cardsViewport.scrollWidth > cardsViewport.clientWidth
+    ) {
       const horizontalDelta = event.deltaX || event.deltaY;
       if (horizontalDelta) {
         event.preventDefault();
@@ -309,7 +312,10 @@ export default function OurProjectsSlide() {
         <ActiveProjectComponent key={`project-${activeProject.id}`} />
       </div>
 
-      <div className="ourProjectsRailWrap" onWheelCapture={handleCardsRailWheel}>
+      <div
+        className="ourProjectsRailWrap"
+        onWheelCapture={handleCardsRailWheel}
+      >
         <div ref={cardsViewportRef} className="ourProjectsCardsViewport">
           <AnimatePresence
             mode="popLayout"

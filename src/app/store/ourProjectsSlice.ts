@@ -60,6 +60,7 @@ const PROJECTS: ProjectItem[] = [
     cardTitle: 'Axuxilium Mobil APP',
     cardSubtitle: 'Mobile Experience',
     componentType: 'axuxiliumMobileApp',
+    logoType: 'axuxiliumMobileApp',
     theme: {
       surface: 'linear-gradient(148deg, #16001f 0%, #3b0f4d 52%, #5a1368 100%)',
       cardTone:
