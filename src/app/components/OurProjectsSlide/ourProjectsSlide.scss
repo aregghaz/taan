@@ -141,7 +141,7 @@
   gap: 5px;
   text-align: left;
   cursor: pointer;
-  color: #f8fbff;
+  color: var(--project-card-text, #f8fbff);
   background: linear-gradient(
                   160deg,
                   rgba(37, 63, 112, 0.88) 0%,
@@ -170,6 +170,21 @@
   pointer-events: none;
 }
 
+.ourProjectsCardWordmark {
+  position: absolute;
+  top: 22px;
+  left: 12px;
+  z-index: 1;
+  max-width: calc(100% - 24px);
+  pointer-events: none;
+  transform: translateZ(40px);
+  font-size: 22px;
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+  font-weight: 700;
+  color: var(--project-card-text, #f8fbff);
+}
+
 .ourProjectsCard::before {
   content: '';
   position: absolute;
@@ -191,7 +206,7 @@
   inset: 0;
   border-radius: inherit;
   pointer-events: none;
-  box-shadow: inset 0 -32px 42px rgba(10, 24, 64, 0.34);
+  box-shadow: inset 0 -32px 42px var(--project-card-shade, rgba(10, 24, 64, 0.34));
   opacity: 0.7;
 }
 
@@ -221,7 +236,7 @@
   transform: translateZ(24px);
   font-size: 12px;
   letter-spacing: 2px;
-  color: rgba(230, 239, 255, 0.68);
+  color: var(--project-card-meta, rgba(230, 239, 255, 0.68));
 }
 
 .ourProjectsCardLocation {
@@ -229,7 +244,7 @@
   z-index: 1;
   transform: translateZ(30px);
   font-size: 13px;
-  color: rgba(231, 240, 255, 0.9);
+  color: var(--project-card-meta, rgba(231, 240, 255, 0.9));
 }
 
 .ourProjectsCardTitle {
@@ -248,7 +263,7 @@
   z-index: 1;
   transform: translateZ(24px);
   font-size: 12px;
-  color: rgba(229, 238, 255, 0.84);
+  color: var(--project-card-meta, rgba(229, 238, 255, 0.84));
 }
 
 @media (max-width: 980px) {
@@ -415,6 +430,12 @@
     width: 62px;
     top: 8px;
     left: 8px;
+  }
+
+  .ourProjectsCardWordmark {
+    top: 14px;
+    left: 8px;
+    font-size: 18px;
   }
 }
 

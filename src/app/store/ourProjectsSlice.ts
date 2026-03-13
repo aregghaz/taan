@@ -18,10 +18,14 @@ export type ProjectItem = {
   cardSubtitle: string;
   componentType: ProjectComponentType;
   logoType?: ProjectLogoType;
+  cardWordmark?: string;
   theme: {
     surface: string;
     cardTone: string;
     accentColor: string;
+    cardTextColor?: string;
+    cardMetaTextColor?: string;
+    cardShadeColor?: string;
   };
 };
 
@@ -74,11 +78,15 @@ const PROJECTS: ProjectItem[] = [
     cardTitle: 'BioBac',
     cardSubtitle: 'Project Slide',
     componentType: 'biobac',
+    cardWordmark: 'BioBac',
     theme: {
-      surface: 'linear-gradient(148deg, #020b2a 0%, #05285a 50%, #063f78 100%)',
+      surface: 'linear-gradient(180deg, #f6f6f7 0%, #ededee 100%)',
       cardTone:
-        'linear-gradient(160deg, rgba(15, 39, 90, 0.92) 0%, rgba(11, 31, 70, 0.96) 100%)',
-      accentColor: '#48d7c8',
+        'linear-gradient(160deg, rgba(252, 252, 253, 0.96) 0%, rgba(240, 241, 243, 0.98) 100%)',
+      accentColor: '#3b82f6',
+      cardTextColor: '#171717',
+      cardMetaTextColor: 'rgba(23, 23, 23, 0.66)',
+      cardShadeColor: 'rgba(72, 83, 108, 0.12)',
     },
   },
 ];

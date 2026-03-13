@@ -1,13 +1,715 @@
 .bioBacSlide {
+  --bio-bg: #f1f1f2;
+  --bio-bg-soft: #f7f7f8;
+  --bio-surface: rgba(255, 255, 255, 0.86);
+  --bio-surface-strong: #ffffff;
+  --bio-border: rgba(25, 25, 28, 0.1);
+  --bio-border-strong: rgba(25, 25, 28, 0.14);
+  --bio-text: #161616;
+  --bio-text-soft: rgba(22, 22, 22, 0.72);
+  --bio-text-muted: rgba(22, 22, 22, 0.46);
+  --bio-accent: #3b82f6;
+  --bio-accent-soft: rgba(59, 130, 246, 0.12);
+  --bio-danger: #ff6d57;
+
+  position: relative;
   width: 100%;
-  height: 100%;
-  display: grid;
-  place-items: center;
-  background-color: rgba(97, 67, 26, 0.96);
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  isolation: isolate;
+  padding: clamp(18px, 2.8vh, 30px) clamp(18px, 3vw, 44px) clamp(56px, 7vh, 88px);
+  padding-top: 100px;
+  color: var(--bio-text);
+  background: radial-gradient(
+                  34% 44% at 100% 0%,
+                  rgba(59, 130, 246, 0.1),
+                  rgba(59, 130, 246, 0) 72%
+  ),
+  radial-gradient(
+                  28% 36% at 0% 100%,
+                  rgba(17, 17, 17, 0.05),
+                  rgba(17, 17, 17, 0) 68%
+  ),
+  linear-gradient(180deg, #f6f6f7 0%, #eeeeef 100%);
 }
 
-.bioBacSlide h1 {
+.bioBacSlide::before,
+.bioBacSlide::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.bioBacSlide::before {
+  background: linear-gradient(
+                  90deg,
+                  rgba(0, 0, 0, 0.04) 0,
+                  rgba(0, 0, 0, 0.04) 1px,
+                  transparent 1px,
+                  transparent 320px
+  ),
+  linear-gradient(
+                  180deg,
+                  rgba(255, 255, 255, 0.34) 0%,
+                  rgba(255, 255, 255, 0) 16%
+  );
+  opacity: 0.9;
+}
+
+.bioBacSlide::after {
+  inset: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.74);
+  border-radius: 34px;
+  opacity: 0.9;
+}
+
+.bioBacGlow {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(24px);
+  pointer-events: none;
+}
+
+.bioBacGlowPrimary {
+  top: 4%;
+  right: 10%;
+  width: clamp(180px, 24vw, 320px);
+  height: clamp(180px, 24vw, 320px);
+  background: radial-gradient(
+                  circle,
+                  rgba(59, 130, 246, 0.12) 0%,
+                  rgba(59, 130, 246, 0) 72%
+  );
+}
+
+.bioBacGlowSecondary {
+  left: -4%;
+  bottom: 10%;
+  width: clamp(160px, 22vw, 260px);
+  height: clamp(160px, 22vw, 260px);
+  background: radial-gradient(
+                  circle,
+                  rgba(0, 0, 0, 0.06) 0%,
+                  rgba(0, 0, 0, 0) 72%
+  );
+}
+
+.bioBacShell {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 1520px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(320px, 470px) minmax(0, 1fr);
+  gap: clamp(24px, 2.8vw, 40px);
+  align-items: start;
+}
+
+.bioBacContent,
+.bioBacVisualPanel {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: bioBacReveal 0.7s cubic-bezier(0.22, 0.9, 0.2, 1) forwards;
+}
+
+.bioBacVisualPanel {
+  animation-delay: 0.12s;
+}
+
+.bioBacContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  max-width: 470px;
+}
+
+.bioBacEyebrow {
   margin: 0;
-  font-size: clamp(40px, 7vw, 94px);
-  color: #eef5ff;
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(25, 25, 28, 0.08);
+  background: rgba(255, 255, 255, 0.62);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(22, 22, 22, 0.58);
+}
+
+.bioBacContent > h1 {
+  margin: 0;
+  font-size: clamp(54px, 8vw, 104px);
+  line-height: 0.92;
+  letter-spacing: -0.06em;
+  font-weight: 800;
+  color: #111111;
+}
+
+.bioBacSubtitle {
+  margin: 0;
+  max-width: 18ch;
+  font-size: clamp(21px, 2vw, 30px);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  font-weight: 650;
+  color: rgba(20, 20, 20, 0.9);
+}
+
+.bioBacLead {
+  margin: 0;
+  max-width: 60ch;
+  font-size: clamp(15px, 1.05vw, 18px);
+  line-height: 1.72;
+  color: var(--bio-text-soft);
+}
+
+.bioBacTagRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.bioBacTag {
+  border-radius: 999px;
+  padding: 9px 12px;
+  border: 1px solid rgba(25, 25, 28, 0.08);
+  background: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  color: rgba(22, 22, 22, 0.78);
+}
+
+.bioBacStatsGrid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.bioBacStatCard,
+.bioBacNarrativeCard,
+.bioBacVisualPanel,
+.bioBacScreenCard {
+  background: linear-gradient(
+                  180deg,
+                  rgba(255, 255, 255, 0.92),
+                  rgba(248, 248, 249, 0.96)
+  );
+  border: 1px solid var(--bio-border);
+  box-shadow: 0 18px 36px rgba(19, 19, 21, 0.06),
+  inset 0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+.bioBacStatCard {
+  border-radius: 18px;
+  padding: 16px;
+}
+
+.bioBacStatCard strong {
+  display: block;
+  font-size: clamp(24px, 2vw, 34px);
+  line-height: 1;
+  color: #161616;
+}
+
+.bioBacStatCard span {
+  display: block;
+  margin-top: 8px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bio-text-muted);
+}
+
+.bioBacNarrativeCard {
+  width: 100%;
+  border-radius: 24px;
+  padding: clamp(18px, 2vw, 28px);
+}
+
+.bioBacSectionLabel {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(22, 22, 22, 0.48);
+}
+
+.bioBacNarrativeCard > h2 {
+  margin: 10px 0 0;
+  font-size: clamp(25px, 2.4vw, 38px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: #141414;
+}
+
+.bioBacNarrativeCard > p:last-of-type {
+  margin: 12px 0 0;
+  max-width: 58ch;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--bio-text-soft);
+}
+
+.bioBacChecklist {
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.bioBacChecklist li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 14px;
+  line-height: 1.58;
+  color: rgba(22, 22, 22, 0.84);
+}
+
+.bioBacChecklist li::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--bio-accent);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
+}
+
+.bioBacVisualSide {
+  min-width: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.bioBacVisualPanel {
+  width: min(100%, 980px);
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.bioBacChromeBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 18px;
+  border-bottom: 1px solid rgba(25, 25, 28, 0.08);
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.bioBacChromeLeft,
+.bioBacChromeRight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.bioBacChromeMenu {
+  width: 18px;
+  height: 12px;
+  position: relative;
+}
+
+.bioBacChromeMenu::before,
+.bioBacChromeMenu::after,
+.bioBacChromeMenu {
+  display: block;
+  border-top: 2px solid #1a1a1a;
+}
+
+.bioBacChromeMenu::before,
+.bioBacChromeMenu::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+}
+
+.bioBacChromeMenu::before {
+  top: 4px;
+}
+
+.bioBacChromeMenu::after {
+  top: 8px;
+}
+
+.bioBacChromeBack {
+  font-size: 14px;
+  font-weight: 700;
+  color: #161616;
+}
+
+.bioBacChromeFlag,
+.bioBacChromeAvatar {
+  display: inline-block;
+  border-radius: 999px;
+}
+
+.bioBacChromeFlag {
+  width: 26px;
+  height: 26px;
+  background: linear-gradient(180deg, #ffffff 0 33%, #2350d7 33% 66%, #df2b32 66% 100%);
+  border: 1px solid rgba(25, 25, 28, 0.08);
+}
+
+.bioBacChromeAvatar {
+  width: 30px;
+  height: 30px;
+  background: #b0b0b1;
+}
+
+.bioBacWorkspace {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  min-height: clamp(430px, 46vh, 540px);
+}
+
+.bioBacMiniSidebar {
+  padding: 18px 14px;
+  border-right: 1px solid rgba(25, 25, 28, 0.08);
+  background: linear-gradient(180deg, rgba(244, 244, 245, 0.95), rgba(239, 239, 240, 0.95));
+}
+
+.bioBacSidebarBrand {
+  margin: 0 0 18px;
+  font-size: 26px;
+  line-height: 1;
+  font-weight: 800;
+  color: #151515;
+}
+
+.bioBacSidebarList {
+  display: grid;
+  gap: 10px;
+}
+
+.bioBacSidebarItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 8px;
+  border-radius: 12px;
+  color: rgba(22, 22, 22, 0.78);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.bioBacSidebarItem:nth-child(6) {
+  color: var(--bio-accent);
+  background: rgba(59, 130, 246, 0.08);
+}
+
+.bioBacSidebarDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(22, 22, 22, 0.22);
+}
+
+.bioBacPreviewStack {
+  padding: 16px;
+  background: linear-gradient(180deg, rgba(241, 241, 242, 0.94), rgba(235, 235, 236, 0.98));
+  display: grid;
+  gap: 12px;
+}
+
+.bioBacScreenCard {
+  border-radius: 22px;
+  padding: 14px;
+}
+
+.bioBacScreenCardTable {
+  min-height: clamp(220px, 28vh, 268px);
+}
+
+.bioBacScreenHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.bioBacScreenHeadCompact {
+  margin-bottom: 12px;
+}
+
+.bioBacScreenLabel {
+  margin: 0;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(22, 22, 22, 0.44);
+}
+
+.bioBacScreenHead h3 {
+  margin: 6px 0 0;
+  font-size: 28px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: #151515;
+}
+
+.bioBacScreenActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bioBacScreenActions > span,
+.bioBacScreenActions > strong {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(25, 25, 28, 0.12);
+  background: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(22, 22, 22, 0.64);
+}
+
+.bioBacScreenActions > strong {
+  min-width: 36px;
+  padding: 0;
+  background: var(--bio-accent);
+  border-color: rgba(59, 130, 246, 0.28);
+  color: #ffffff;
+}
+
+.bioBacTablePreview {
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(25, 25, 28, 0.08);
+}
+
+.bioBacTableColumns,
+.bioBacTableRow {
+  display: grid;
+  grid-template-columns: 1.2fr 1.1fr 0.95fr 1.25fr 0.55fr;
+  gap: 12px;
+  align-items: center;
+}
+
+.bioBacTableColumns {
+  padding: 12px 14px;
+  background: rgba(245, 245, 246, 0.92);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(22, 22, 22, 0.5);
+}
+
+.bioBacTableRows {
+  display: grid;
+}
+
+.bioBacTableRow {
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.92);
+  border-top: 1px solid rgba(25, 25, 28, 0.06);
+  font-size: 12px;
+  color: rgba(22, 22, 22, 0.78);
+}
+
+.bioBacActionPair {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bioBacActionPair > i {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1.5px solid rgba(22, 22, 22, 0.78);
+}
+
+.bioBacBottomGrid {
+  display: grid;
+  grid-template-columns: 1.12fr 0.88fr;
+  gap: 12px;
+}
+
+.bioBacFormGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.bioBacField {
+  display: grid;
+  gap: 6px;
+}
+
+.bioBacField label {
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(22, 22, 22, 0.58);
+}
+
+.bioBacField span {
+  height: 38px;
+  border-radius: 12px;
+  background: rgba(241, 241, 242, 0.98);
+  border: 1px solid rgba(25, 25, 28, 0.05);
+}
+
+.bioBacCatalogRows {
+  display: grid;
+  gap: 10px;
+}
+
+.bioBacCatalogRow {
+  display: grid;
+  gap: 6px;
+  padding: 12px;
+  border-radius: 14px;
+  background: rgba(244, 244, 245, 0.88);
+  border: 1px solid rgba(25, 25, 28, 0.06);
+}
+
+.bioBacCatalogRow strong {
+  font-size: 14px;
+  color: #161616;
+}
+
+.bioBacCatalogRow span,
+.bioBacCatalogRow em {
+  font-size: 12px;
+  font-style: normal;
+  color: rgba(22, 22, 22, 0.62);
+}
+
+@media (max-width: 1240px) {
+  .bioBacShell {
+    grid-template-columns: 1fr;
+  }
+
+  .bioBacContent {
+    max-width: 100%;
+  }
+
+  .bioBacVisualPanel {
+    width: 100%;
+  }
+}
+
+@media (max-width: 900px) {
+  .bioBacWorkspace {
+    grid-template-columns: 1fr;
+  }
+
+  .bioBacMiniSidebar {
+    border-right: 0;
+    border-bottom: 1px solid rgba(25, 25, 28, 0.08);
+  }
+
+  .bioBacSidebarList {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .bioBacBottomGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1440px) and (min-width: 1241px) {
+  .bioBacShell {
+    grid-template-columns: minmax(300px, 420px) minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .bioBacContent > h1 {
+    font-size: clamp(48px, 6.6vw, 88px);
+  }
+
+  .bioBacSubtitle {
+    font-size: clamp(20px, 1.8vw, 28px);
+  }
+}
+
+@media (max-width: 720px) {
+  .bioBacSlide {
+    width: auto;
+    margin-left: calc(-12px - env(safe-area-inset-left));
+    margin-right: calc(-12px - env(safe-area-inset-right));
+  }
+
+  .bioBacSlide::before {
+    background: linear-gradient(
+                    180deg,
+                    rgba(255, 255, 255, 0.28) 0%,
+                    rgba(255, 255, 255, 0) 18%
+    );
+  }
+
+  .bioBacSlide::after {
+    content: none;
+  }
+
+
+  .bioBacSidebarList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .bioBacTableColumns,
+  .bioBacTableRow {
+    grid-template-columns: 1.1fr 1fr;
+  }
+
+  .bioBacTableColumns span:nth-child(n + 3),
+  .bioBacTableRow span:nth-child(n + 3) {
+    display: none;
+  }
+
+  .bioBacScreenActions {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .bioBacStatsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .bioBacStatCard:last-child {
+    grid-column: span 2;
+  }
+
+  .bioBacChromeBar,
+  .bioBacPreviewStack,
+  .bioBacScreenCard {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .bioBacSidebarBrand {
+    font-size: 22px;
+  }
+}
+
+@keyframes bioBacReveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
 }

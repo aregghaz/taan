@@ -65,6 +65,12 @@ function getBackgroundLayerStyle(project: ProjectItem): CSSProperties {
 function getCardStyle(project: ProjectItem): CSSProperties {
   return {
     backgroundImage: `${CARD_OVERLAY}, ${project.theme.cardTone}`,
+    ['--project-card-text' as string]:
+      project.theme.cardTextColor ?? '#f8fbff',
+    ['--project-card-meta' as string]:
+      project.theme.cardMetaTextColor ?? 'rgba(230, 239, 255, 0.76)',
+    ['--project-card-shade' as string]:
+      project.theme.cardShadeColor ?? 'rgba(10, 24, 64, 0.34)',
   };
 }
 
@@ -377,7 +383,13 @@ export default function OurProjectsSlide() {
                     transition={{ duration: 0.28, ease: [0.2, 0.8, 0.2, 1] }}
                     whileTap={{ scale: 0.995 }}
                   >
-                    {Logo ? <Logo className="ourProjectsCardLogo" /> : null}
+                    {Logo ? (
+                      <Logo className="ourProjectsCardLogo" />
+                    ) : project.cardWordmark ? (
+                      <span className="ourProjectsCardWordmark">
+                        {project.cardWordmark}
+                      </span>
+                    ) : null}
                     <span className="ourProjectsCardIndex">
                       {String(absoluteIndex + 1).padStart(2, '0')}
                     </span>
