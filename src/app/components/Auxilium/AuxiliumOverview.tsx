@@ -3,6 +3,8 @@ import {
   AUXILIUM_FEATURES,
   AUXILIUM_HIGHLIGHTS,
   AUXILIUM_STATS,
+  AUXILIUM_TAGS,
+  AUXILIUM_WORKSTREAMS,
 } from '@/app/components/Auxilium/auxilium.data';
 
 export default function AuxiliumOverview() {
@@ -24,7 +26,15 @@ export default function AuxiliumOverview() {
         clear operational picture.
       </p>
 
-      <div className="auxiliumStatsGrid auxiliumReveal auxiliumDelay5">
+      <div className="auxiliumTagRow auxiliumReveal auxiliumDelay5">
+        {AUXILIUM_TAGS.map((tag) => (
+          <span className="auxiliumTag" key={tag}>
+            {tag}
+          </span>
+        ))}
+      </div>
+
+      <div className="auxiliumStatsGrid auxiliumReveal auxiliumDelay6">
         {AUXILIUM_STATS.map((stat) => (
           <article className="auxiliumStatCard" key={stat.label}>
             <span className="auxiliumStatValue">{stat.value}</span>
@@ -33,20 +43,42 @@ export default function AuxiliumOverview() {
         ))}
       </div>
 
-      <ul className="auxiliumFeatureList auxiliumReveal auxiliumDelay6">
-        {AUXILIUM_FEATURES.map((feature) => (
-          <li key={feature}>{feature}</li>
-        ))}
-      </ul>
+      <div className="auxiliumDetailsGrid auxiliumReveal auxiliumDelay7">
+        <article className="auxiliumDetailCard">
+          <p className="auxiliumDetailLabel">Core Capabilities</p>
 
-      <p className="auxiliumFootnote auxiliumReveal auxiliumDelay7">
-        Auxilium helps coordinators act early, communicate faster, and keep
-        service quality consistent across every shift.
-      </p>
+          <ul className="auxiliumFeatureList">
+            {AUXILIUM_FEATURES.map((feature) => (
+              <li key={feature}>{feature}</li>
+            ))}
+          </ul>
+        </article>
+
+        <article className="auxiliumDetailCard">
+          <p className="auxiliumDetailLabel">Operational Coverage</p>
+
+          <div className="auxiliumCoverageGrid">
+            {AUXILIUM_WORKSTREAMS.map((item) => (
+              <div className="auxiliumCoverageItem" key={item.title}>
+                <strong>{item.title}</strong>
+                <span>{item.description}</span>
+              </div>
+            ))}
+          </div>
+        </article>
+      </div>
+
+      <article className="auxiliumOutcomeCard auxiliumReveal auxiliumDelay8">
+        <p className="auxiliumDetailLabel">Outcome</p>
+        <p className="auxiliumFootnote">
+          Auxilium helps coordinators act early, communicate faster, and keep
+          service quality consistent across every shift.
+        </p>
+      </article>
 
       <AuxiliumHighlightsSlider
         items={AUXILIUM_HIGHLIGHTS}
-        className="auxiliumReveal auxiliumDelay8"
+        className="auxiliumReveal auxiliumDelay9"
       />
     </div>
   );

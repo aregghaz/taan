@@ -28,7 +28,7 @@
 }
 
 .axmContent {
-  width: 100%;
+  width: min(100%, 1460px);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -39,6 +39,7 @@
   width: 100%;
   display: flex;
   align-items: start;
+  justify-content: center;
   gap: 12px;
 }
 
@@ -55,7 +56,8 @@
 }
 
 .axmMainInfo {
-  width: 50%;
+  width: auto;
+  flex: 0 1 760px;
   min-width: 0;
   display: flex;
   flex-direction: column;
@@ -249,7 +251,8 @@
 }
 
 .axmSliderWrapper {
-  width: 50%;
+  width: auto;
+  flex: 0 1 460px;
   min-width: 0;
   padding-top: 25px;
   height: 100%;
@@ -259,7 +262,7 @@
 }
 
 .axmSliderCard {
-  width: 400px;
+  width: min(100%, 400px);
   padding: 12px;
   gap: 10px;
   display: flex;

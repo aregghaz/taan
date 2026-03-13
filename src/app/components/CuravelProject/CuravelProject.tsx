@@ -34,6 +34,25 @@ const CURAVEL_HIGHLIGHTS = [
   'Accessible interaction patterns',
 ];
 
+const CURAVEL_STATS = [
+  { value: '03', label: 'core user lanes' },
+  { value: '05', label: 'featured screens' },
+  { value: 'B2C', label: 'patient-first access' },
+] as const;
+
+const CURAVEL_SCOPE_POINTS = [
+  'Service overview with clearer trust signals',
+  'Ride coordination and support entry points',
+  'Responsive layouts across desktop and mobile',
+  'Conversion-focused calls to action and navigation',
+] as const;
+
+const CURAVEL_AUDIENCE = [
+  'Patients',
+  'Families',
+  'Care coordinators',
+] as const;
+
 const CURAVEL_GALLERY_IMAGES = [
   { id: 1, src: Curavel1, layoutClassName: 'curavelGalleryCardFeatured' },
   { id: 2, src: Curavel2, layoutClassName: 'curavelGalleryCardFeatured' },
@@ -62,6 +81,15 @@ export default function CuravelProject() {
           ))}
         </ul>
 
+        <div className="curavelStatsGrid" aria-label="Curavel content summary">
+          {CURAVEL_STATS.map((item) => (
+            <article key={item.label} className="curavelStatCard">
+              <strong>{item.value}</strong>
+              <span>{item.label}</span>
+            </article>
+          ))}
+        </div>
+
         <div className="curavelFeatureGrid">
           {CURAVEL_FEATURE_CARDS.map((feature) => (
             <article key={feature.id} className="curavelFeatureCard">
@@ -71,10 +99,38 @@ export default function CuravelProject() {
           ))}
         </div>
 
-        <p className="curavelLead">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. A commodi
-          doloremque earum eum facere ipsam quam recusandae, repellendus
-          repudiandae voluptates.
+        <div className="curavelNarrativeGrid">
+          <article className="curavelNarrativeCard">
+            <p className="curavelCardLabel">Project Focus</p>
+            <h3>Patient-friendly transportation journeys.</h3>
+            <p>
+              Curavel balances medical service credibility with a calmer visual
+              tone, clearer service explanation, and easier decision-making for
+              users who need transportation support quickly.
+            </p>
+
+            <div className="curavelAudienceRow" aria-label="Primary audiences">
+              {CURAVEL_AUDIENCE.map((item) => (
+                <span key={item}>{item}</span>
+              ))}
+            </div>
+          </article>
+
+          <article className="curavelNarrativeCard">
+            <p className="curavelCardLabel">Delivery Scope</p>
+
+            <ul className="curavelScopeList">
+              {CURAVEL_SCOPE_POINTS.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
+        </div>
+
+        <p className="curavelLead curavelClosingLead">
+          The implementation focused on making complex service information easier
+          to scan, keeping actions visible, and preserving a clean, trustworthy
+          interface across every section of the site.
         </p>
 
         <button

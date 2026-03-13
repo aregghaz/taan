@@ -6,10 +6,10 @@ import Aux4 from '@/app/assets/images/Aux4.jpg';
 import { AUXILIUM_VIDEO_URL } from '@/app/components/Auxilium/auxilium.data';
 
 const AUXILIUM_GALLERY = [
-  { src: Aux1, alt: 'Auxilium dashboard view 1' },
-  { src: Aux2, alt: 'Auxilium dashboard view 2' },
-  { src: Aux3, alt: 'Auxilium dashboard view 3' },
-  { src: Aux4, alt: 'Auxilium dashboard view 4' },
+  { src: Aux1, alt: 'Auxilium dashboard view 1', caption: 'Dispatcher overview' },
+  { src: Aux2, alt: 'Auxilium dashboard view 2', caption: 'Live ride tracking' },
+  { src: Aux3, alt: 'Auxilium dashboard view 3', caption: 'Status and alerts' },
+  { src: Aux4, alt: 'Auxilium dashboard view 4', caption: 'Operations summary' },
 ];
 
 const DELAY_CLASSES = [
@@ -19,9 +19,28 @@ const DELAY_CLASSES = [
   'auxiliumDelay7',
 ];
 
+const AUXILIUM_MEDIA_TAGS = [
+  'Ride board',
+  'Member ops',
+  'Status alerts',
+  'Shift visibility',
+] as const;
+
 export default function AuxiliumMediaPanel() {
   return (
     <div className="auxiliumRightContent">
+      <div className="auxiliumMediaIntro auxiliumReveal auxiliumDelay1">
+        <p className="auxiliumMediaEyebrow">Product Surfaces</p>
+
+        <div className="auxiliumMediaTagRow">
+          {AUXILIUM_MEDIA_TAGS.map((tag) => (
+            <span className="auxiliumMediaTag" key={tag}>
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+
       <div className="auxiliumEmbedCard auxiliumReveal auxiliumDelay2">
         <div className="auxiliumEmbedViewport">
           <iframe
@@ -53,6 +72,7 @@ export default function AuxiliumMediaPanel() {
               className="auxiliumPhotoImage"
               sizes="(max-width: 960px) 48vw, 280px"
             />
+            <span className="auxiliumPhotoCaption">{photo.caption}</span>
           </article>
         ))}
       </div>

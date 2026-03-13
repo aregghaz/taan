@@ -22,16 +22,20 @@
 }
 
 .auxiliumMain {
+  width: min(100%, 1460px);
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(280px, 1fr) minmax(360px, 1.1fr);
+  grid-template-columns: minmax(320px, 560px) minmax(420px, 760px);
   gap: clamp(20px, 3vw, 40px);
+  justify-content: center;
   align-items: start;
   min-width: 0;
 }
 
 .auxiliumLeftContent {
   min-width: 0;
-  max-width: 560px;
+  width: 100%;
+  max-width: none;
   display: grid;
   gap: 14px;
   padding-top: clamp(10px, 1.8vw, 42px);
@@ -73,6 +77,23 @@
   font-size: clamp(12px, 1vw, 15px);
   line-height: 1.5;
   color: var(--aux-text-muted);
+}
+
+.auxiliumTagRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.auxiliumTag {
+  border-radius: 999px;
+  border: 1px solid rgba(167, 157, 246, 0.28);
+  padding: 7px 11px;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(241, 237, 255, 0.82);
+  background: rgba(56, 50, 116, 0.4);
 }
 
 .auxiliumStatsGrid {
@@ -136,9 +157,64 @@
 
 .auxiliumFootnote {
   margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(233, 229, 255, 0.8);
+}
+
+.auxiliumDetailsGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  gap: 12px;
+}
+
+.auxiliumDetailCard,
+.auxiliumOutcomeCard {
+  border: 1px solid rgba(160, 151, 245, 0.24);
+  border-radius: 18px;
+  padding: 14px;
+  background: linear-gradient(
+                  160deg,
+                  rgba(57, 52, 116, 0.38) 0%,
+                  rgba(35, 31, 82, 0.44) 100%
+  );
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08),
+  0 12px 24px rgba(8, 7, 24, 0.2);
+}
+
+.auxiliumDetailLabel {
+  margin: 0 0 10px;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(232, 228, 255, 0.62);
+}
+
+.auxiliumCoverageGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.auxiliumCoverageItem {
+  border-radius: 14px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.auxiliumCoverageItem > strong {
+  display: block;
+  font-size: 13px;
+  line-height: 1.35;
+  color: #f4f1ff;
+}
+
+.auxiliumCoverageItem > span {
+  display: block;
+  margin-top: 6px;
   font-size: 12px;
-  line-height: 1.5;
-  color: rgba(217, 210, 255, 0.66);
+  line-height: 1.55;
+  color: rgba(231, 226, 255, 0.76);
 }
 
 .auxiliumBottomSlider {
@@ -218,14 +294,44 @@
 
 .auxiliumRightContent {
   min-width: 0;
+  width: 100%;
   display: grid;
-  justify-items: end;
-  gap: 30px;
+  justify-items: stretch;
+  gap: 18px;
+}
+
+.auxiliumMediaIntro {
+  width: 100%;
+  display: grid;
+  gap: 10px;
+}
+
+.auxiliumMediaEyebrow {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(236, 231, 255, 0.64);
+}
+
+.auxiliumMediaTagRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.auxiliumMediaTag {
+  border-radius: 999px;
+  border: 1px solid rgba(160, 152, 245, 0.24);
+  padding: 7px 10px;
+  font-size: 11px;
+  color: rgba(241, 236, 255, 0.82);
+  background: rgba(53, 49, 112, 0.34);
 }
 
 .auxiliumEmbedCard {
   min-width: 0;
-  width: min(100%, 600px);
+  width: 100%;
   aspect-ratio: 16 / 9;
   position: relative;
   border-radius: 24px;
@@ -264,7 +370,7 @@
 }
 
 .auxiliumVideoMeta {
-  width: min(100%, 600px);
+  width: 100%;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -288,7 +394,7 @@
 
 .auxiliumPhotoGrid {
   min-width: 0;
-  width: min(100%, 850px);
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 10px;
@@ -317,12 +423,24 @@
   background: linear-gradient(
                   180deg,
                   rgba(14, 11, 42, 0) 35%,
-                  rgba(14, 11, 42, 0.26) 100%
+                  rgba(14, 11, 42, 0.68) 100%
   );
 }
 
 .auxiliumPhotoImage {
   object-fit: cover;
+}
+
+.auxiliumPhotoCaption {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  z-index: 1;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(244, 239, 255, 0.88);
 }
 
 .auxiliumReveal {
@@ -363,6 +481,10 @@
   animation-delay: 500ms;
 }
 
+.auxiliumDelay9 {
+  animation-delay: 560ms;
+}
+
 @keyframes auxiliumEnter {
   from {
     opacity: 0;
@@ -399,11 +521,19 @@
     justify-items: stretch;
     gap: 16px;
   }
+
+  .auxiliumDetailsGrid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 720px) {
   .auxiliumSlide {
     padding-top: 50px;
+  }
+
+  .auxiliumCoverageGrid {
+    grid-template-columns: 1fr;
   }
 }
 

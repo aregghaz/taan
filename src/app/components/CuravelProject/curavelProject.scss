@@ -3,7 +3,7 @@
   height: 100%;
   position: relative;
   display: grid;
-  grid-template-columns: minmax(400px, 1fr) minmax(340px, 0.95fr);
+  grid-template-columns: minmax(360px, 620px) minmax(420px, 760px);
   gap: clamp(18px, 3vw, 42px);
   padding: clamp(84px, 10vh, 122px) clamp(18px, 3.2vw, 46px) clamp(56px, 7vh, 104px);
   color: #eff4ff;
@@ -13,11 +13,12 @@
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
   touch-action: pan-y;
+  justify-content: center;
 
 }
 
 .curavelInfoSide {
-  max-width: 780px;
+  max-width: none;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -117,8 +118,46 @@
   color: rgba(232, 241, 255, 0.9);
 }
 
+.curavelStatsGrid {
+  animation-delay: 0.48s;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.curavelStatCard {
+  border: 1px solid rgba(164, 199, 255, 0.24);
+  border-radius: 16px;
+  padding: 14px;
+  background: radial-gradient(
+                  120% 120% at 100% 0%,
+                  rgba(134, 168, 255, 0.18),
+                  rgba(134, 168, 255, 0) 56%
+  ),
+  linear-gradient(160deg, rgba(14, 28, 76, 0.62), rgba(9, 18, 55, 0.82));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12),
+  0 10px 24px rgba(4, 10, 35, 0.28);
+}
+
+.curavelStatCard > strong {
+  display: block;
+  font-size: clamp(22px, 2vw, 32px);
+  line-height: 1;
+  color: #ffffff;
+}
+
+.curavelStatCard > span {
+  display: block;
+  margin-top: 8px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(225, 236, 255, 0.72);
+}
+
 .curavelFeatureGrid {
-  animation-delay: 0.52s;
+  animation-delay: 0.56s;
   width: 100%;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -155,8 +194,99 @@
   color: rgba(224, 235, 255, 0.84);
 }
 
+.curavelNarrativeGrid {
+  animation-delay: 0.64s;
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1.04fr) minmax(0, 0.96fr);
+  gap: 12px;
+}
+
+.curavelNarrativeCard {
+  border: 1px solid rgba(162, 198, 255, 0.24);
+  border-radius: 18px;
+  padding: 16px;
+  background: linear-gradient(
+                  160deg,
+                  rgba(13, 27, 72, 0.66),
+                  rgba(8, 17, 52, 0.82)
+  );
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+  0 12px 26px rgba(4, 10, 35, 0.26);
+}
+
+.curavelCardLabel {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(214, 229, 255, 0.62);
+}
+
+.curavelNarrativeCard > h3 {
+  margin: 10px 0 0;
+  font-size: clamp(22px, 2vw, 34px);
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  color: #f7fbff;
+}
+
+.curavelNarrativeCard > p:last-of-type {
+  margin: 12px 0 0;
+  font-size: 14px;
+  line-height: 1.65;
+  color: rgba(226, 237, 255, 0.84);
+}
+
+.curavelAudienceRow {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.curavelAudienceRow > span {
+  border-radius: 999px;
+  padding: 8px 11px;
+  border: 1px solid rgba(157, 193, 255, 0.24);
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 12px;
+  color: rgba(234, 242, 255, 0.86);
+}
+
+.curavelScopeList {
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.curavelScopeList > li {
+  position: relative;
+  padding-left: 17px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(230, 239, 255, 0.88);
+}
+
+.curavelScopeList > li::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #97c1ff;
+}
+
+.curavelClosingLead {
+  animation-delay: 0.72s;
+}
+
 .curavelCtaButton {
-  animation-delay: 0.6s;
+  animation-delay: 0.8s;
   width: auto;
   border: 0;
   border-radius: 14px;
@@ -191,6 +321,7 @@
   min-height: 0;
   min-width: 0;
   display: flex;
+  justify-content: flex-end;
   align-items: stretch;
   padding-top: 65px;
 }
@@ -329,8 +460,13 @@
 }
 
 @media (max-width: 1320px) {
+  .curavelStatsGrid,
   .curavelFeatureGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .curavelNarrativeGrid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -379,6 +515,7 @@
 }
 
 @media (max-width: 900px) {
+  .curavelStatsGrid,
   .curavelFeatureGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -402,6 +539,7 @@
     gap: 12px;
   }
 
+  .curavelStatsGrid,
   .curavelFeatureGrid {
     grid-template-columns: 1fr;
   }
