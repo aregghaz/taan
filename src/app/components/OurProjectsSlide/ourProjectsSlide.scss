@@ -78,6 +78,7 @@
   align-items: center;
   flex-direction: column;
   gap: 12px;
+  pointer-events: none;
 }
 
 .ourProjectsArrowButtonsWrapper {
@@ -97,6 +98,7 @@
   border-radius: 999px;
   display: grid;
   place-items: center;
+  pointer-events: auto;
 
   &:first-child {
     transform: rotate(180deg);
@@ -114,6 +116,7 @@
   //height: var(--our-projects-rail-height);
   height: 176px;
   perspective: 1200px;
+  pointer-events: none;
 }
 
 .ourProjectsCardsRail {
@@ -124,6 +127,7 @@
   transform-style: preserve-3d;
   justify-content: flex-end;
   padding-right: 22px;
+  pointer-events: none;
 }
 
 .ourProjectsCard {
@@ -155,6 +159,7 @@
   transition: box-shadow 0.35s ease,
   border-color 0.3s ease,
   filter 0.3s ease;
+  pointer-events: auto;
 
 }
 
@@ -371,6 +376,7 @@
     bottom: auto;
     margin-top: 8px;
     gap: 0;
+    pointer-events: auto;
   }
 
   .ourProjectsCardsViewport {
@@ -382,6 +388,7 @@
     scroll-padding-inline: 12px;
     padding-top: 6px;
     padding-bottom: 6px;
+    pointer-events: auto;
   }
 
   .ourProjectsCardsRail {
@@ -391,6 +398,7 @@
     min-width: 100%;
     justify-content: flex-start;
     padding: 0 12px;
+    pointer-events: auto;
   }
 
   .ourProjectsCard {
