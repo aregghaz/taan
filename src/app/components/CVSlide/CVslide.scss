@@ -1,81 +1,642 @@
 .cvSlide {
+  --cv-border: rgba(151, 159, 255, 0.18);
+  --cv-border-strong: rgba(171, 179, 255, 0.26);
+  --cv-surface: rgba(12, 15, 30, 0.88);
+  --cv-surface-soft: rgba(255, 255, 255, 0.035);
+  --cv-text: #f5f7ff;
+  --cv-muted: rgba(224, 229, 255, 0.72);
+  --cv-accent: #7d75ff;
+  --cv-accent-soft: #6aa5ff;
+  position: relative;
   width: 100%;
   height: 100%;
-  display: grid;
-  align-content: center;
-  gap: 14px;
-  padding: 48px;
-  background: linear-gradient(
-    160deg,
-    rgba(20, 30, 120, 0.7),
-    rgba(11, 15, 59, 0.85)
-  );
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 130px 0 88px;
+  color: var(--cv-text);
+  isolation: isolate;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 }
 
 .cvSlideTheme {
-  background:
-    radial-gradient(
-      92% 80% at 50% 6%,
-      rgba(253, 182, 255, 0.3),
-      transparent 60%
-    ),
-    radial-gradient(
-      72% 72% at 16% 88%,
-      rgba(94, 156, 255, 0.22),
-      transparent 62%
-    ),
-    linear-gradient(160deg, rgba(20, 30, 120, 0.7), rgba(11, 15, 59, 0.85));
+  background: radial-gradient(46% 32% at 50% 18%, rgba(101, 92, 255, 0.2), transparent 72%),
+  radial-gradient(28% 26% at 82% 20%, rgba(97, 167, 255, 0.14), transparent 74%),
+  linear-gradient(180deg, #04060f 0%, #090d1c 42%, #05070f 100%);
 }
 
-.cvSlideKicker {
+.cvAmbient {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.cvGlow {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(46px);
+  opacity: 0.62;
+}
+
+.cvGlowPrimary {
+  top: 110px;
+  left: 20%;
+  width: 360px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(126, 117, 255, 0.24), transparent 72%);
+}
+
+.cvGlowSecondary {
+  top: 186px;
+  right: 10%;
+  width: 280px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(107, 164, 255, 0.16), transparent 74%);
+}
+
+.cvCircuit {
+  position: absolute;
+  width: 260px;
+  height: 110px;
+  border-top: 1px solid rgba(214, 220, 255, 0.28);
+  border-right: 1px solid rgba(214, 220, 255, 0.14);
+  opacity: 0.5;
+}
+
+.cvCircuit::before,
+.cvCircuit::after {
+  content: '';
+  position: absolute;
+  border-radius: 999px;
+}
+
+.cvCircuit::before {
+  top: -1px;
+  right: -1px;
+  width: 82px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9));
+}
+
+.cvCircuit::after {
+  top: -7px;
+  right: 72px;
+  width: 12px;
+  height: 12px;
+  border: 1px solid rgba(219, 224, 255, 0.2);
+  background: rgba(10, 14, 27, 0.8);
+}
+
+.cvCircuitLeft {
+  top: 220px;
+  left: -30px;
+  transform: scaleX(-1);
+}
+
+.cvCircuitRight {
+  top: 220px;
+  right: -30px;
+}
+
+.cvShell {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.cvBackdropWord {
+  position: absolute;
+  top: 42px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: clamp(132px, 18vw, 240px);
+  line-height: 0.9;
+  font-weight: 800;
+  letter-spacing: -10px;
+  color: rgba(239, 243, 255, 0.055);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.cvGrid {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1fr);
+  align-items: end;
+  gap: 24px;
+  padding-top: 84px;
+}
+
+.cvInfoColumn,
+.cvFormColumn {
+  position: relative;
+}
+
+.cvInfoColumn {
+  display: grid;
+  gap: 20px;
+}
+
+.cvIntro {
+  max-width: 550px;
+  padding: 24px 0 4px;
+}
+
+.cvBadge,
+.cvSectionEyebrow,
+.cvFormEyebrow {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  width: fit-content;
   margin: 0;
-  font-size: 16px;
-  color: rgba(225, 231, 255, 0.82);
-  letter-spacing: 1px;
+  padding: 0 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(197, 204, 255, 0.12);
+  background: rgba(255, 255, 255, 0.035);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  color: rgba(246, 248, 255, 0.92);
+  font-size: 14px;
+  letter-spacing: 0.4px;
+}
+
+.cvTitle,
+.cvSectionTitle,
+.cvFormTitle,
+.cvProcessCopy > strong {
+  margin: 0;
+  color: #fafbff;
+}
+
+.cvTitle {
+  margin-top: 22px;
+  font-size: 44px;
+  line-height: 0.98;
+  letter-spacing: -2px;
+}
+
+.cvText,
+.cvProcessCopy > p {
+  margin: 0;
+  color: var(--cv-muted);
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.cvText {
+  max-width: 510px;
+  margin-top: 18px;
+}
+
+.cvChipRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.cvChip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(158, 166, 255, 0.12);
+  background: linear-gradient(135deg, rgba(123, 114, 255, 0.12), rgba(96, 167, 255, 0.06));
+  color: rgba(239, 242, 255, 0.86);
+  font-size: 12px;
+  letter-spacing: 0.8px;
   text-transform: uppercase;
 }
 
-.cvSlideTitle {
-  margin: 0;
-  font-size: 80px;
-  color: #f6f8ff;
-  letter-spacing: 2px;
+.cvProcessCard,
+.cvFormPanel {
+  position: relative;
+  border-radius: 30px;
+  border: 1px solid var(--cv-border);
+  background: linear-gradient(180deg, rgba(16, 20, 40, 0.92) 0%, rgba(9, 13, 28, 0.96) 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05),
+  0 16px 38px rgba(0, 0, 0, 0.24);
+  overflow: hidden;
 }
 
-.cvSlideText {
-  margin: 0;
-  max-width: 58%;
-  color: rgba(221, 227, 255, 0.78);
-  font-size: 21px;
+.cvProcessCard::before,
+.cvFormPanel::before {
+  content: '';
+  position: absolute;
+  top: -30px;
+  right: -6px;
+  width: 124px;
+  height: 124px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(124, 115, 255, 0.22), transparent 72%);
+  filter: blur(20px);
+  opacity: 0.74;
+  pointer-events: none;
 }
 
-@media (max-width: 980px) {
+.cvProcessCard {
+  padding: 26px;
+}
+
+.cvProcessHeader {
+  display: grid;
+  gap: 16px;
+  max-width: 520px;
+}
+
+.cvSectionTitle {
+  font-size: 32px;
+  line-height: 1.02;
+  letter-spacing: -1.4px;
+}
+
+.cvProcessList {
+  display: grid;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.cvProcessItem {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+  padding: 18px;
+  border-radius: 24px;
+  border: 1px solid rgba(164, 172, 255, 0.1);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.02));
+}
+
+.cvProcessIndex {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  min-width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  border: 1px solid rgba(188, 194, 255, 0.14);
+  background: rgba(8, 11, 24, 0.74);
+  color: rgba(249, 250, 255, 0.96);
+  font-size: 14px;
+  letter-spacing: 0.9px;
+}
+
+.cvProcessCopy {
+  display: grid;
+  gap: 8px;
+}
+
+.cvProcessCopy > strong {
+  font-size: 20px;
+  line-height: 1.1;
+}
+
+.cvProcessCopy > p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.cvFormPanel {
+  padding: 26px;
+  background: linear-gradient(180deg, rgba(17, 22, 42, 0.5) 0%, rgba(9, 13, 28, 0.36) 100%);
+}
+
+.cvFormHeader {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.cvFormHeader > div:first-child {
+  display: grid;
+  gap: 16px;
+}
+
+.cvFormTitle {
+  font-size: 34px;
+  line-height: 1.02;
+  letter-spacing: -1.4px;
+}
+
+.cvFormStatusBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(166, 174, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(240, 243, 255, 0.88);
+  font-size: 12px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.cvForm {
+  display: grid;
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.cvFormGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.cvField {
+  display: grid;
+  gap: 8px;
+}
+
+.cvFieldWide {
+  grid-column: 1 / -1;
+}
+
+.cvFieldLarge {
+  align-self: stretch;
+}
+
+.cvField > span,
+.cvUploadField > span:first-child {
+  color: rgba(243, 245, 255, 0.92);
+  font-size: 13px;
+  letter-spacing: 0.3px;
+}
+
+.cvField input,
+.cvField textarea,
+.cvUploadSurface {
+  width: 100%;
+  border-radius: 22px;
+  border: 1px solid rgba(169, 176, 255, 0.12);
+  background: rgba(7, 10, 21, 0.54);
+  color: #f6f7ff;
+  font: inherit;
+  transition: border-color 180ms ease,
+  background-color 180ms ease,
+  box-shadow 180ms ease,
+  transform 180ms ease;
+}
+
+.cvField input,
+.cvField textarea {
+  appearance: none;
+  padding: 16px 18px;
+}
+
+.cvField textarea {
+  min-height: 176px;
+  resize: vertical;
+}
+
+.cvField input::placeholder,
+.cvField textarea::placeholder {
+  color: rgba(201, 208, 255, 0.42);
+}
+
+.cvField input:focus,
+.cvField textarea:focus,
+.cvUploadField:focus-within .cvUploadSurface {
+  outline: none;
+  border-color: rgba(183, 190, 255, 0.24);
+  background: rgba(12, 16, 31, 0.72);
+  box-shadow: 0 0 0 1px rgba(183, 190, 255, 0.08);
+}
+
+.cvUploadField {
+  position: relative;
+  display: grid;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.cvUploadInput {
+  position: absolute;
+  inset: auto 0 0 0;
+  width: 100%;
+  height: calc(100% - 27px);
+  opacity: 0;
+  cursor: pointer;
+}
+
+.cvUploadSurface {
+  display: grid;
+  gap: 6px;
+  padding: 18px;
+}
+
+.cvUploadSurface > strong {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.cvUploadSurface > small {
+  color: rgba(214, 220, 255, 0.66);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.cvFormMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.cvFormMeta > span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(167, 175, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(231, 235, 255, 0.76);
+  font-size: 12px;
+  letter-spacing: 0.4px;
+}
+
+.cvFormStatus {
+  min-height: 26px;
+  color: rgba(227, 232, 255, 0.74);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.cvFormStatusSending {
+  color: rgba(222, 227, 255, 0.86);
+}
+
+.cvFormStatusSuccess {
+  color: #c9f0dd;
+}
+
+.cvFormStatusError {
+  color: #ffb4c2;
+}
+
+.cvSubmitButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 58px;
+  width: 100%;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f5f7ff 0%, #d6deff 100%);
+  color: #0b1124;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 180ms ease,
+  box-shadow 180ms ease,
+  opacity 180ms ease;
+  box-shadow: 0 18px 34px rgba(9, 11, 24, 0.28),
+  inset 0 1px 0 rgba(255, 255, 255, 0.56);
+}
+
+.cvSubmitButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 20px 40px rgba(9, 11, 24, 0.32),
+  inset 0 1px 0 rgba(255, 255, 255, 0.56);
+}
+
+.cvSubmitButton:disabled {
+  cursor: wait;
+  opacity: 0.76;
+}
+
+.cvField input:-webkit-autofill,
+.cvField input:-webkit-autofill:hover,
+.cvField input:-webkit-autofill:focus,
+.cvField textarea:-webkit-autofill,
+.cvField textarea:-webkit-autofill:hover,
+.cvField textarea:-webkit-autofill:focus {
+  -webkit-text-fill-color: #f6f7ff;
+  box-shadow: 0 0 0 1000px rgba(7, 10, 21, 0.54) inset;
+  transition: background-color 999999s ease-in-out 0s;
+}
+
+.cvReveal,
+.cvSubtleReveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 420ms ease,
+  transform 420ms ease,
+  filter 420ms ease;
+  transition-delay: var(--cv-delay, 0ms);
+  filter: blur(4px);
+  will-change: opacity, transform, filter;
+}
+
+.cvSubtleReveal {
+  transform: translateY(12px);
+  transition-duration: 360ms;
+}
+
+.cvReveal.isVisible,
+.cvSubtleReveal.isVisible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+@media (max-width: 1180px) {
+  .cvGrid {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .cvInfoColumn {
+    max-width: 860px;
+  }
+}
+
+@media (max-width: 860px) {
   .cvSlide {
-    padding: 32px;
+    padding: 118px 0 74px;
   }
 
-  .cvSlideTitle {
-    font-size: 56px;
+  .cvShell {
+    padding: 0 14px;
   }
 
-  .cvSlideText {
-    max-width: 72%;
-    font-size: 18px;
+  .cvBackdropWord {
+    top: 58px;
+    font-size: clamp(96px, 24vw, 180px);
+    letter-spacing: -6px;
+  }
+
+  .cvGrid {
+    padding-top: 70px;
+    gap: 18px;
+  }
+
+  .cvProcessCard,
+  .cvFormPanel {
+    padding: 20px;
+    border-radius: 26px;
+  }
+
+  .cvFormHeader {
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .cvFormGrid {
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 620px) {
   .cvSlide {
-    gap: 12px;
-    padding: 20px;
+    padding: 104px 0 62px;
   }
 
-  .cvSlideTitle {
-    font-size: 36px;
+  .cvShell {
+    padding: 0 12px;
   }
 
-  .cvSlideText {
-    max-width: 100%;
+  .cvTitle {
+    font-size: 38px;
+  }
+
+  .cvText,
+  .cvProcessCopy > p {
     font-size: 16px;
+  }
+
+  .cvSectionTitle,
+  .cvFormTitle {
+    font-size: 28px;
+  }
+
+  .cvBadge,
+  .cvSectionEyebrow,
+  .cvFormEyebrow,
+  .cvFormStatusBadge {
+    min-height: 40px;
+  }
+
+  .cvProcessItem {
+    grid-template-columns: 1fr;
+  }
+
+  .cvProcessIndex {
+    width: 42px;
+    min-width: 42px;
+    height: 42px;
   }
 }
