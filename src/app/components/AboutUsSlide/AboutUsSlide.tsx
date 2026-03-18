@@ -129,81 +129,100 @@ export default function AboutUsSlide() {
 
   return (
     <article ref={rootRef} className="aboutUsSlide aboutUsSlideTheme">
+      <div className="aboutUsAmbient" aria-hidden="true">
+        <span className="aboutUsGlow aboutUsGlowPrimary" />
+        <span className="aboutUsGlow aboutUsGlowSecondary" />
+        <span className="aboutUsCircuit aboutUsCircuitLeft" />
+        <span className="aboutUsCircuit aboutUsCircuitRight" />
+      </div>
+
       <div className="aboutUsShell">
+        <div className="aboutUsBackdropWord" aria-hidden="true">
+          ABOUT
+        </div>
+
         <section className="aboutUsHero aboutUsReveal">
-          <p className="aboutUsEyebrow">About Us</p>
+          <div className="aboutUsHeroGrid">
+            <div className="aboutUsHeroIntro">
+              <p className="aboutUsEyebrow">About Us</p>
 
-          <h1 className="aboutUsHeroTitle">
-            Yerevan office creating modern websites for teams in different
-            markets.
-          </h1>
+              <h1 className="aboutUsHeroTitle">
+                Yerevan office creating modern websites for teams in different
+                markets.
+              </h1>
 
-          <p className="aboutUsHeroText">
-            We build company websites, landing pages, product presentations, and
-            service-focused experiences for projects connected to the United
-            States, Russia, and Armenia. The focus is always the same: sharp
-            visuals, clear structure, and delivery that feels finished.
-          </p>
+              <p className="aboutUsHeroText">
+                We build company websites, landing pages, product
+                presentations, and service-focused experiences for projects
+                connected to the United States, Russia, and Armenia. The focus
+                is always the same: sharp visuals, clear structure, and
+                delivery that feels finished.
+              </p>
 
-          <div className="aboutUsHeroChipRow" aria-label="Office highlights">
-            {ABOUT_US_HERO_CHIPS.map((item, index) => (
-              <span
-                className="aboutUsHeroChip aboutUsSubtleReveal"
-                key={item}
-                style={getSubtleDelay(`${80 + index * 45}ms`)}
+              <div
+                className="aboutUsHeroChipRow"
+                aria-label="Office highlights"
               >
-                {item}
-              </span>
-            ))}
-          </div>
-
-          <div className="aboutUsHeroStage">
-            <div
-              className="aboutUsHeroMockup aboutUsSubtleReveal"
-              style={getSubtleDelay('120ms')}
-            >
-              <div className="aboutUsHeroMockupHeader">
-                <span className="aboutUsHeroMockupBrand">Taan Office</span>
-                <span className="aboutUsHeroMockupStatus">Yerevan</span>
+                {ABOUT_US_HERO_CHIPS.map((item, index) => (
+                  <span
+                    className="aboutUsHeroChip aboutUsSubtleReveal"
+                    key={item}
+                    style={getSubtleDelay(`${80 + index * 45}ms`)}
+                  >
+                    {item}
+                  </span>
+                ))}
               </div>
 
-              <div className="aboutUsHeroMockupPanel">
-                <p className="aboutUsHeroMockupLabel">Current Focus</p>
-                <div className="aboutUsHeroMockupBubble">
-                  Websites that feel modern, structured, and market-aware from
-                  the first view.
-                </div>
-
-                <p className="aboutUsHeroMockupLabel">Project Types</p>
-                <div className="aboutUsHeroMockupTags">
-                  {ABOUT_US_MOCKUP_TAGS.map((item) => (
-                    <span key={item}>{item}</span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="aboutUsHeroMockupFooter">
-                <span>USA / RU / AM</span>
-                <span>Launch-ready workflow</span>
+              <div className="aboutUsHeroActions">
+                <Link
+                  className="aboutUsPrimaryAction aboutUsSubtleReveal"
+                  href="/our-projects"
+                  style={getSubtleDelay('120ms')}
+                >
+                  View Projects
+                </Link>
+                <Link
+                  className="aboutUsSecondaryAction aboutUsSubtleReveal"
+                  href="/contact-us"
+                  style={getSubtleDelay('170ms')}
+                >
+                  Contact Office
+                </Link>
               </div>
             </div>
-          </div>
 
-          <div className="aboutUsHeroActions">
-            <Link
-              className="aboutUsPrimaryAction aboutUsSubtleReveal"
-              href="/our-projects"
-              style={getSubtleDelay('120ms')}
-            >
-              View Projects
-            </Link>
-            <Link
-              className="aboutUsSecondaryAction aboutUsSubtleReveal"
-              href="/contact-us"
-              style={getSubtleDelay('170ms')}
-            >
-              Contact Office
-            </Link>
+            <div className="aboutUsHeroStage">
+              <div
+                className="aboutUsHeroMockup aboutUsSubtleReveal"
+                style={getSubtleDelay('120ms')}
+              >
+                <div className="aboutUsHeroMockupHeader">
+                  <span className="aboutUsHeroMockupBrand">Taan Office</span>
+                  <span className="aboutUsHeroMockupStatus">Yerevan</span>
+                </div>
+
+                <div className="aboutUsHeroMockupPanel">
+                  <p className="aboutUsHeroMockupLabel">Current Focus</p>
+                  <div className="aboutUsHeroMockupBubble">
+                    Websites that feel modern, structured, and market-aware
+                    from the first view.
+                  </div>
+
+                  <p className="aboutUsHeroMockupLabel">Project Types</p>
+                  <div className="aboutUsHeroMockupTags">
+                    {ABOUT_US_MOCKUP_TAGS.map((item) => (
+                      <span key={item}>{item}</span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="aboutUsHeroMockupFooter">
+                  <span>USA / RU / AM</span>
+                  <span>Launch-ready workflow</span>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
         <section className="aboutUsNetwork aboutUsReveal">
