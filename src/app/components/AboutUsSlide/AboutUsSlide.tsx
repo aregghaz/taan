@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, type CSSProperties } from 'react';
 import Link from 'next/link';
 
 const ABOUT_US_HERO_CHIPS = [
@@ -93,17 +93,17 @@ const ABOUT_US_NETWORK_RIGHT = [
   },
 ] as const;
 
-const HERO_ORBIT_MARKERS = [0, 1, 2, 3] as const;
-
 export default function AboutUsSlide() {
   const rootRef = useRef<HTMLElement | null>(null);
+  const getSubtleDelay = (delay: string): CSSProperties =>
+    ({ '--about-us-delay': delay }) as CSSProperties;
 
   useEffect(() => {
     const root = rootRef.current;
     if (!root) return;
 
     const revealItems = Array.from(
-      root.querySelectorAll<HTMLElement>('.aboutUsReveal')
+      root.querySelectorAll<HTMLElement>('.aboutUsReveal, .aboutUsSubtleReveal')
     );
 
     const observer = new IntersectionObserver(
@@ -129,14 +129,8 @@ export default function AboutUsSlide() {
 
   return (
     <article ref={rootRef} className="aboutUsSlide aboutUsSlideTheme">
-      <div className="aboutUsAmbient" aria-hidden="true">
-        <span className="aboutUsAmbientGlow aboutUsAmbientGlowLeft" />
-        <span className="aboutUsAmbientGlow aboutUsAmbientGlowRight" />
-        <span className="aboutUsAmbientMesh" />
-      </div>
-
       <div className="aboutUsShell">
-        <section className="aboutUsHero aboutUsReveal aboutUsDelay1">
+        <section className="aboutUsHero aboutUsReveal">
           <p className="aboutUsEyebrow">About Us</p>
 
           <h1 className="aboutUsHeroTitle">
@@ -152,8 +146,12 @@ export default function AboutUsSlide() {
           </p>
 
           <div className="aboutUsHeroChipRow" aria-label="Office highlights">
-            {ABOUT_US_HERO_CHIPS.map((item) => (
-              <span className="aboutUsHeroChip" key={item}>
+            {ABOUT_US_HERO_CHIPS.map((item, index) => (
+              <span
+                className="aboutUsHeroChip aboutUsSubtleReveal"
+                key={item}
+                style={getSubtleDelay(`${80 + index * 45}ms`)}
+              >
                 {item}
               </span>
             ))}
@@ -161,29 +159,9 @@ export default function AboutUsSlide() {
 
           <div className="aboutUsHeroStage">
             <div
-              className="aboutUsHeroOrbit aboutUsHeroOrbitLeft"
-              aria-hidden="true"
+              className="aboutUsHeroMockup aboutUsSubtleReveal"
+              style={getSubtleDelay('120ms')}
             >
-              {HERO_ORBIT_MARKERS.map((marker) => (
-                <span key={`left-orbit-${marker}`} />
-              ))}
-            </div>
-
-            <div
-              className="aboutUsHeroOrbit aboutUsHeroOrbitRight"
-              aria-hidden="true"
-            >
-              {HERO_ORBIT_MARKERS.map((marker) => (
-                <span key={`right-orbit-${marker}`} />
-              ))}
-            </div>
-
-            <div
-              className="aboutUsHeroMockup aboutUsReveal"
-              style={{ transitionDelay: '140ms' }}
-            >
-              <div className="aboutUsHeroMockupGlow" aria-hidden="true" />
-
               <div className="aboutUsHeroMockupHeader">
                 <span className="aboutUsHeroMockupBrand">Taan Office</span>
                 <span className="aboutUsHeroMockupStatus">Yerevan</span>
@@ -212,15 +190,23 @@ export default function AboutUsSlide() {
           </div>
 
           <div className="aboutUsHeroActions">
-            <Link className="aboutUsPrimaryAction" href="/our-projects">
+            <Link
+              className="aboutUsPrimaryAction aboutUsSubtleReveal"
+              href="/our-projects"
+              style={getSubtleDelay('120ms')}
+            >
               View Projects
             </Link>
-            <Link className="aboutUsSecondaryAction" href="/contact-us">
+            <Link
+              className="aboutUsSecondaryAction aboutUsSubtleReveal"
+              href="/contact-us"
+              style={getSubtleDelay('170ms')}
+            >
               Contact Office
             </Link>
           </div>
         </section>
-        <section className="aboutUsNetwork aboutUsReveal aboutUsDelay3">
+        <section className="aboutUsNetwork aboutUsReveal">
           <div className="aboutUsNetworkIntro">
             <p className="aboutUsSectionEyebrow">Connected Workflow</p>
             <h2 className="aboutUsSectionTitle">
@@ -237,9 +223,9 @@ export default function AboutUsSlide() {
             <div className="aboutUsNetworkColumn aboutUsNetworkColumnLeft">
               {ABOUT_US_NETWORK_LEFT.map((item, index) => (
                 <article
-                  className="aboutUsNetworkNode aboutUsReveal"
+                  className="aboutUsNetworkNode aboutUsSubtleReveal"
                   key={item.title}
-                  style={{ transitionDelay: `${80 + index * 60}ms` }}
+                  style={getSubtleDelay(`${70 + index * 45}ms`)}
                 >
                   <strong>{item.title}</strong>
                   <span>{item.description}</span>
@@ -249,8 +235,8 @@ export default function AboutUsSlide() {
 
             <div className="aboutUsNetworkCenter">
               <div
-                className="aboutUsNetworkCore aboutUsReveal"
-                style={{ transitionDelay: '140ms' }}
+                className="aboutUsNetworkCore aboutUsSubtleReveal"
+                style={getSubtleDelay('120ms')}
               >
                 <span className="aboutUsNetworkCoreBadge">Yerevan</span>
                 <strong>Taan Office</strong>
@@ -264,9 +250,9 @@ export default function AboutUsSlide() {
             <div className="aboutUsNetworkColumn aboutUsNetworkColumnRight">
               {ABOUT_US_NETWORK_RIGHT.map((item, index) => (
                 <article
-                  className="aboutUsNetworkNode aboutUsReveal"
+                  className="aboutUsNetworkNode aboutUsSubtleReveal"
                   key={item.title}
-                  style={{ transitionDelay: `${80 + index * 60}ms` }}
+                  style={getSubtleDelay(`${90 + index * 45}ms`)}
                 >
                   <strong>{item.title}</strong>
                   <span>{item.description}</span>
@@ -276,8 +262,8 @@ export default function AboutUsSlide() {
           </div>
 
           <div
-            className="aboutUsNetworkFooter aboutUsReveal"
-            style={{ transitionDelay: '180ms' }}
+            className="aboutUsNetworkFooter aboutUsSubtleReveal"
+            style={getSubtleDelay('180ms')}
           >
             <p>
               The goal is simple: every website should look sharp, read clearly,
@@ -289,7 +275,7 @@ export default function AboutUsSlide() {
             </Link>
           </div>
         </section>
-        <section className="aboutUsCapabilities aboutUsReveal aboutUsDelay2">
+        <section className="aboutUsCapabilities aboutUsReveal">
           <div className="aboutUsCapabilitiesIntro">
             <p className="aboutUsSectionEyebrow">Office Focus</p>
             <h2 className="aboutUsSectionTitle">
@@ -301,7 +287,11 @@ export default function AboutUsSlide() {
               the audience and efficient for the business behind it.
             </p>
 
-            <Link className="aboutUsSecondaryAction" href="/contact-us">
+            <Link
+              className="aboutUsSecondaryAction aboutUsSubtleReveal"
+              href="/contact-us"
+              style={getSubtleDelay('100ms')}
+            >
               Discuss A Project
             </Link>
           </div>
@@ -309,9 +299,9 @@ export default function AboutUsSlide() {
           <div className="aboutUsCapabilitiesGrid">
             {ABOUT_US_CAPABILITY_CARDS.map((item, index) => (
               <article
-                className={`aboutUsCapabilityCard aboutUsReveal ${'layout' in item && item.layout === 'wide' ? 'isWide' : ''}`}
+                className={`aboutUsCapabilityCard aboutUsSubtleReveal ${'layout' in item && item.layout === 'wide' ? 'isWide' : ''}`}
                 key={item.id}
-                style={{ transitionDelay: `${80 + index * 70}ms` }}
+                style={getSubtleDelay(`${80 + index * 55}ms`)}
               >
                 <span className="aboutUsCapabilityIndex">{item.id}</span>
                 <h3>{item.title}</h3>

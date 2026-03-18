@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import TaanMiniLogo from '@/app/assets/icons/TaanMiniLogo';
 import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
 import { setActiveMenu } from '@/app/store/heroSliderSlice';
@@ -14,7 +14,6 @@ import { getPathFromMenuIndex } from '@/app/helpers/heroRoutes';
 export default function HeroHeader() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const dispatch = useAppDispatch();
-  const router = useRouter();
   const pathname = usePathname();
   const navItems = useAppSelector(selectHeroMenuItems);
   const activeMenuIndex = useAppSelector(selectActiveMenuIndex);
@@ -26,7 +25,7 @@ export default function HeroHeader() {
     dispatch(setActiveMenu(index));
 
     if (pathname !== nextPath) {
-      router.push(nextPath);
+      window.history.pushState(null, '', nextPath);
     }
   };
 

@@ -14,31 +14,28 @@ const SCROLL_EASE = [0.16, 1, 0.3, 1] as const;
 const slideVariants: Variants = {
   enter: {
     zIndex: 2,
-    y: '118%',
-    scale: 1.01,
+    y: '100%',
     opacity: 1,
     transition: {
-      duration: 1.5,
+      duration: 0.8,
       ease: SCROLL_EASE,
     },
   },
   center: {
     zIndex: 2,
     y: '0%',
-    scale: 1,
     opacity: 1,
     transition: {
-      duration: 1.5,
+      duration: 0.8,
       ease: SCROLL_EASE,
     },
   },
   exit: {
     zIndex: 1,
-    y: '-24%',
-    scale: 0.995,
+    y: '-10%',
     opacity: 1,
     transition: {
-      duration: 1.5,
+      duration: 0.62,
       ease: SCROLL_EASE,
     },
   },
