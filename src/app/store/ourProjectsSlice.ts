@@ -23,6 +23,7 @@ export type ProjectItem = {
     surface: string;
     cardTone: string;
     accentColor: string;
+    disableBackgroundOverlays?: boolean;
     cardTextColor?: string;
     cardMetaTextColor?: string;
     cardShadeColor?: string;
@@ -80,10 +81,11 @@ const PROJECTS: ProjectItem[] = [
     componentType: 'biobac',
     cardWordmark: 'BioBac',
     theme: {
-      surface: 'linear-gradient(180deg, #f6f6f7 0%, #ededee 100%)',
+      surface: 'linear-gradient(180deg, #ffffff 0%, #ffffff 100%)',
       cardTone:
         'linear-gradient(160deg, rgba(252, 252, 253, 0.96) 0%, rgba(240, 241, 243, 0.98) 100%)',
       accentColor: '#3b82f6',
+      disableBackgroundOverlays: true,
       cardTextColor: '#171717',
       cardMetaTextColor: 'rgba(23, 23, 23, 0.66)',
       cardShadeColor: 'rgba(72, 83, 108, 0.12)',

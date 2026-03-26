@@ -10,9 +10,21 @@
 @use './components/AxuxiliumMobilApp/styles.scss';
 @use './components/BioBac/bioBac.scss';
 
+:root {
+  --app-min-viewport-height: 900px;
+  --app-height-reference: max(100vh, var(--app-min-viewport-height));
+}
+
+@supports (height: 100dvh) {
+  :root {
+    --app-height-reference: max(100dvh, var(--app-min-viewport-height));
+  }
+}
+
 html,
 body {
   height: 100%;
+  min-height: 100%;
 }
 
 * {
@@ -22,6 +34,7 @@ body {
 }
 
 body {
+  min-height: var(--app-height-reference);
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   background-color: #0d0b2b;

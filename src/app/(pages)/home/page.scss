@@ -1,7 +1,6 @@
 .homePage {
   position: relative;
-  //min-height: 100%;
-  min-height: 100vh;
+  min-height: var(--app-height-reference);
   overflow: hidden;
   isolation: isolate;
   display: grid;
@@ -122,6 +121,7 @@
   animation: homePageContentIn 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.55s forwards;
 
   & > .homePageContentLeft {
+    min-width: 0;
     width: 44%;
     height: 100%;
     display: flex;
@@ -181,6 +181,7 @@
   }
 
   & > .homePageContentRight {
+    min-width: 0;
     width: 56%;
     height: 100%;
     display: flex;
@@ -190,7 +191,7 @@
 
 
     & > .homeFeatureGrid {
-      height: 60vh;
+      height: calc(var(--app-height-reference) * 0.6);
       width: min(860px, 100%);
       aspect-ratio: 1.55;
       display: flex;
@@ -673,12 +674,112 @@
   }
 }
 
+.homePageButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+}
+
+@media (max-width: 1550px) and (min-width: 1201px) {
+  .homePageContent {
+    & > .homePageContentLeft {
+      padding-left: clamp(38px, 3.8vw, 58px);
+      gap: 16px;
+
+      .homePageTitle {
+        font-size: clamp(38px, 3vw, 50px);
+        line-height: 0.96;
+        letter-spacing: clamp(5px, 0.55vw, 8px);
+      }
+
+      .homePageKicker {
+        max-width: 20ch;
+        font-size: clamp(21px, 1.7vw, 24px);
+      }
+
+      .text2 {
+        max-width: 34ch;
+        font-size: clamp(15px, 1.05vw, 17px);
+      }
+
+      .homePageButton {
+        width: 188px;
+        padding: 13px 32px;
+      }
+    }
+
+    & > .homePageContentRight {
+      padding: 20px 22px 20px 6px;
+
+      & > .homeFeatureGrid {
+        width: min(780px, 100%);
+        gap: 16px;
+      }
+
+      .homeFeatureCard {
+        padding: 14px 16px;
+
+        h3 {
+          font-size: 24px;
+        }
+      }
+
+      .cleanCode .cleanCodeMark {
+        width: 76px;
+        height: 76px;
+      }
+
+      .cleanCode .cleanCodeMark span {
+        font-size: 28px;
+      }
+
+      .uxFocused .uxFlow {
+        margin-top: 20px;
+      }
+
+      .uxFocused .uxBubble.user {
+        width: 52px;
+        height: 52px;
+      }
+
+      .uxFocused .uxBubble.button {
+        min-width: 94px;
+        padding: 12px 18px;
+      }
+
+      .reliableSupport .supportChat {
+        margin-bottom: 10px;
+      }
+
+      .fastDevelopment .speedCells {
+        margin-top: 14px;
+      }
+
+      .fastDevelopment .speedCells span {
+        height: 38px;
+        font-size: 11px;
+      }
+
+      .modernStack {
+        height: 360px;
+      }
+
+      .modernStack .stackBadge {
+        padding: 8px 9px;
+        font-size: 11px;
+      }
+    }
+  }
+}
+
 @media (max-width: 1200px) {
   .homePageContent {
     position: relative;
     top: 0;
     left: 0;
-    min-height: calc(100vh - 100px);
+    min-height: calc(var(--app-height-reference) - 100px);
     flex-direction: column;
     gap: 26px;
     padding: 18px 18px 34px;

@@ -6,6 +6,7 @@ import HeroHeader from '@/app/components/HeroHeader/HeroHeader';
 import HeroFullscreenSlide from '@/app/components/HeroFullscreenSlide/HeroFullscreenSlide';
 import HeroRouteSync from '@/app/components/HeroRouteSync/HeroRouteSync';
 import HomeFeatureCards from '@/app/components/HomeFeatureCards/HomeFeatureCards';
+import Link from 'next/link';
 
 const HOME_PATH = '/home';
 const HOME_HEADER_ANIMATED_KEY = 'taan_home_header_animated';
@@ -60,7 +61,9 @@ export default function Home() {
           <p className="homePageKicker text2">
             From idea to release clean code, clear systems, real results.
           </p>
-          <button className="homePageButton">Buttonik</button>
+          <Link className="homePageButton" href="/contact-us">
+            Contact Us
+          </Link>
         </div>
         <HomeFeatureCards />
       </div>

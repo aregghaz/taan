@@ -1,16 +1,9 @@
 .bioBacSlide {
-  --bio-bg: #f1f1f2;
-  --bio-bg-soft: #f7f7f8;
-  --bio-surface: rgba(255, 255, 255, 0.86);
-  --bio-surface-strong: #ffffff;
   --bio-border: rgba(25, 25, 28, 0.1);
-  --bio-border-strong: rgba(25, 25, 28, 0.14);
   --bio-text: #161616;
   --bio-text-soft: rgba(22, 22, 22, 0.72);
   --bio-text-muted: rgba(22, 22, 22, 0.46);
   --bio-accent: #3b82f6;
-  --bio-accent-soft: rgba(59, 130, 246, 0.12);
-  --bio-danger: #ff6d57;
 
   position: relative;
   width: 100%;
@@ -21,82 +14,9 @@
   -webkit-overflow-scrolling: touch;
   touch-action: pan-y;
   isolation: isolate;
-  padding: clamp(18px, 2.8vh, 30px) clamp(18px, 3vw, 44px) clamp(56px, 7vh, 88px);
-  padding-top: 100px;
+
   color: var(--bio-text);
-  background: radial-gradient(
-                  34% 44% at 100% 0%,
-                  rgba(59, 130, 246, 0.1),
-                  rgba(59, 130, 246, 0) 72%
-  ),
-  radial-gradient(
-                  28% 36% at 0% 100%,
-                  rgba(17, 17, 17, 0.05),
-                  rgba(17, 17, 17, 0) 68%
-  ),
-  linear-gradient(180deg, #f6f6f7 0%, #eeeeef 100%);
-}
-
-.bioBacSlide::before,
-.bioBacSlide::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.bioBacSlide::before {
-  background: linear-gradient(
-                  90deg,
-                  rgba(0, 0, 0, 0.04) 0,
-                  rgba(0, 0, 0, 0.04) 1px,
-                  transparent 1px,
-                  transparent 320px
-  ),
-  linear-gradient(
-                  180deg,
-                  rgba(255, 255, 255, 0.34) 0%,
-                  rgba(255, 255, 255, 0) 16%
-  );
-  opacity: 0.9;
-}
-
-.bioBacSlide::after {
-  inset: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.74);
-  border-radius: 34px;
-  opacity: 0.9;
-}
-
-.bioBacGlow {
-  position: absolute;
-  border-radius: 999px;
-  filter: blur(24px);
-  pointer-events: none;
-}
-
-.bioBacGlowPrimary {
-  top: 4%;
-  right: 10%;
-  width: clamp(180px, 24vw, 320px);
-  height: clamp(180px, 24vw, 320px);
-  background: radial-gradient(
-                  circle,
-                  rgba(59, 130, 246, 0.12) 0%,
-                  rgba(59, 130, 246, 0) 72%
-  );
-}
-
-.bioBacGlowSecondary {
-  left: -4%;
-  bottom: 10%;
-  width: clamp(160px, 22vw, 260px);
-  height: clamp(160px, 22vw, 260px);
-  background: radial-gradient(
-                  circle,
-                  rgba(0, 0, 0, 0.06) 0%,
-                  rgba(0, 0, 0, 0) 72%
-  );
+  background: #ffffff;
 }
 
 .bioBacShell {
@@ -122,11 +42,11 @@
 }
 
 .bioBacContent {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 14px;
-  max-width: 470px;
 }
 
 .bioBacEyebrow {
@@ -138,7 +58,7 @@
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(22, 22, 22, 0.58);
+  color: #111111;
 }
 
 .bioBacContent > h1 {
@@ -157,7 +77,7 @@
   line-height: 1.08;
   letter-spacing: -0.03em;
   font-weight: 650;
-  color: rgba(20, 20, 20, 0.9);
+  color: #111111;
 }
 
 .bioBacLead {
@@ -165,7 +85,7 @@
   max-width: 60ch;
   font-size: clamp(15px, 1.05vw, 18px);
   line-height: 1.72;
-  color: var(--bio-text-soft);
+  color: rgba(17, 17, 17, 0.78);
 }
 
 .bioBacTagRow {
@@ -261,26 +181,26 @@
   list-style: none;
   display: grid;
   gap: 10px;
-}
 
-.bioBacChecklist li {
-  position: relative;
-  padding-left: 18px;
-  font-size: 14px;
-  line-height: 1.58;
-  color: rgba(22, 22, 22, 0.84);
-}
+  li {
+    position: relative;
+    padding-left: 18px;
+    font-size: 14px;
+    line-height: 1.58;
+    color: rgba(22, 22, 22, 0.84);
+  }
 
-.bioBacChecklist li::before {
-  content: '';
-  position: absolute;
-  top: 8px;
-  left: 0;
-  width: 8px;
-  height: 8px;
-  border-radius: 999px;
-  background: var(--bio-accent);
-  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
+  li::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--bio-accent);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
+  }
 }
 
 .bioBacVisualSide {
@@ -316,29 +236,25 @@
   width: 18px;
   height: 12px;
   position: relative;
-}
-
-.bioBacChromeMenu::before,
-.bioBacChromeMenu::after,
-.bioBacChromeMenu {
   display: block;
   border-top: 2px solid #1a1a1a;
-}
 
-.bioBacChromeMenu::before,
-.bioBacChromeMenu::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  width: 100%;
-}
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    border-top: 2px solid #1a1a1a;
+  }
 
-.bioBacChromeMenu::before {
-  top: 4px;
-}
+  &::before {
+    top: 4px;
+  }
 
-.bioBacChromeMenu::after {
-  top: 8px;
+  &::after {
+    top: 8px;
+  }
 }
 
 .bioBacChromeBack {
@@ -369,7 +285,7 @@
 .bioBacWorkspace {
   display: grid;
   grid-template-columns: 180px minmax(0, 1fr);
-  min-height: clamp(430px, 46vh, 540px);
+  min-height: clamp(430px, calc(var(--app-height-reference) * 0.46), 540px);
 }
 
 .bioBacMiniSidebar {
@@ -427,7 +343,7 @@
 }
 
 .bioBacScreenCardTable {
-  min-height: clamp(220px, 28vh, 268px);
+  min-height: clamp(220px, calc(var(--app-height-reference) * 0.28), 268px);
 }
 
 .bioBacScreenHead {
@@ -552,19 +468,19 @@
 .bioBacField {
   display: grid;
   gap: 6px;
-}
 
-.bioBacField label {
-  font-size: 11px;
-  font-weight: 700;
-  color: rgba(22, 22, 22, 0.58);
-}
+  label {
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(22, 22, 22, 0.58);
+  }
 
-.bioBacField span {
-  height: 38px;
-  border-radius: 12px;
-  background: rgba(241, 241, 242, 0.98);
-  border: 1px solid rgba(25, 25, 28, 0.05);
+  span {
+    height: 38px;
+    border-radius: 12px;
+    background: rgba(241, 241, 242, 0.98);
+    border: 1px solid rgba(25, 25, 28, 0.05);
+  }
 }
 
 .bioBacCatalogRows {
@@ -579,18 +495,18 @@
   border-radius: 14px;
   background: rgba(244, 244, 245, 0.88);
   border: 1px solid rgba(25, 25, 28, 0.06);
-}
 
-.bioBacCatalogRow strong {
-  font-size: 14px;
-  color: #161616;
-}
+  strong {
+    font-size: 14px;
+    color: #161616;
+  }
 
-.bioBacCatalogRow span,
-.bioBacCatalogRow em {
-  font-size: 12px;
-  font-style: normal;
-  color: rgba(22, 22, 22, 0.62);
+  span,
+  em {
+    font-size: 12px;
+    font-style: normal;
+    color: rgba(22, 22, 22, 0.62);
+  }
 }
 
 @media (max-width: 1240px) {
@@ -647,19 +563,6 @@
     margin-left: calc(-12px - env(safe-area-inset-left));
     margin-right: calc(-12px - env(safe-area-inset-right));
   }
-
-  .bioBacSlide::before {
-    background: linear-gradient(
-                    180deg,
-                    rgba(255, 255, 255, 0.28) 0%,
-                    rgba(255, 255, 255, 0) 18%
-    );
-  }
-
-  .bioBacSlide::after {
-    content: none;
-  }
-
 
   .bioBacSidebarList {
     grid-template-columns: repeat(2, minmax(0, 1fr));

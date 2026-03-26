@@ -3,13 +3,11 @@
 import {
   type ComponentType,
   type CSSProperties,
-  type PointerEvent,
   useEffect,
   useLayoutEffect,
   useMemo,
   useRef,
   useState,
-  type WheelEvent,
 } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
@@ -36,6 +34,7 @@ const FULL_PAGE_COMPONENTS: Record<ProjectComponentType, ComponentType> = {
   axuxiliumMobileApp: AxuxiliumMobilApp,
   biobac: BioBac,
 };
+
 const LOGO_COMPONENTS: Partial<
   Record<ProjectLogoType, ComponentType<{ className?: string }>>
 > = {
@@ -44,11 +43,11 @@ const LOGO_COMPONENTS: Partial<
   axuxiliumMobileApp: AuxiliumLogoIcon,
 };
 
-const VISIBLE_CARDS = 4;
 const BACKGROUND_OVERLAYS =
   'radial-gradient(70% 62% at 72% 100%, rgba(132, 111, 255, 0.22), transparent 70%), radial-gradient(56% 58% at 26% 16%, rgba(88, 148, 255, 0.2), transparent 72%)';
 const CARD_OVERLAY =
   'linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 46%)';
+const SIDEBAR_OPEN_MEDIA_QUERY = '(min-width: 1400px)';
 
 function getSlideStyle(project: ProjectItem): CSSProperties {
   return {
@@ -58,7 +57,9 @@ function getSlideStyle(project: ProjectItem): CSSProperties {
 
 function getBackgroundLayerStyle(project: ProjectItem): CSSProperties {
   return {
-    backgroundImage: `${BACKGROUND_OVERLAYS}, ${project.theme.surface}`,
+    backgroundImage: project.theme.disableBackgroundOverlays
+      ? project.theme.surface
+      : `${BACKGROUND_OVERLAYS}, ${project.theme.surface}`,
   };
 }
 
@@ -79,12 +80,8 @@ export default function OurProjectsSlide() {
   const projects = useAppSelector(selectProjects);
   const activeProjectId = useAppSelector(selectActiveProjectId);
   const fullPageRef = useRef<HTMLDivElement | null>(null);
-  const cardsViewportRef = useRef<HTMLDivElement | null>(null);
-  const [windowStart, setWindowStart] = useState(0);
-  const [slideDirection, setSlideDirection] = useState<1 | -1>(1);
-  const [hoveredCardId, setHoveredCardId] = useState<string | null>(null);
-  const [hoverTilt, setHoverTilt] = useState({ rotateX: 0, rotateY: 0 });
-  const [isCompactRail, setIsCompactRail] = useState(false);
+  const [isDesktopSidebar, setIsDesktopSidebar] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const resetProjectScroll = () => {
     const root = fullPageRef.current;
@@ -104,6 +101,7 @@ export default function OurProjectsSlide() {
   const activeIndex = useMemo(() => {
     if (projects.length === 0) return -1;
     if (!activeProjectId) return 0;
+
     return projects.findIndex((project) => project.id === activeProjectId);
   }, [activeProjectId, projects]);
 
@@ -155,142 +153,39 @@ export default function OurProjectsSlide() {
   }, [activeProjectId]);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(max-width: 720px)');
-    const update = () => setIsCompactRail(mediaQuery.matches);
+    const mediaQuery = window.matchMedia(SIDEBAR_OPEN_MEDIA_QUERY);
 
-    update();
-    mediaQuery.addEventListener('change', update);
-    return () => mediaQuery.removeEventListener('change', update);
+    const syncSidebarState = (matches: boolean) => {
+      setIsDesktopSidebar(matches);
+      setIsSidebarOpen(matches);
+    };
+
+    syncSidebarState(mediaQuery.matches);
+
+    const handleChange = (event: MediaQueryListEvent) => {
+      syncSidebarState(event.matches);
+    };
+
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
 
-  const maxWindowStart = Math.max(0, projects.length - VISIBLE_CARDS);
-  const canSlide = projects.length > VISIBLE_CARDS;
-
-  useEffect(() => {
-    setWindowStart((prev) => Math.min(prev, maxWindowStart));
-  }, [maxWindowStart]);
-
-  useEffect(() => {
-    if (!canSlide) return;
-
-    setWindowStart((current) => {
-      if (normalizedActiveIndex < current) {
-        return normalizedActiveIndex;
-      }
-
-      if (normalizedActiveIndex > current + VISIBLE_CARDS - 1) {
-        return normalizedActiveIndex - VISIBLE_CARDS + 1;
-      }
-
-      return current;
-    });
-  }, [normalizedActiveIndex, canSlide]);
-
-  const visibleProjects = canSlide
-    ? projects.slice(windowStart, windowStart + VISIBLE_CARDS)
-    : projects;
-
-  // TODO this part is for slider next
-
-  //   const handlePrevWindow = () => {
-  //       if (!canSlide || windowStart <= 0) return;
-  //       setSlideDirection(-1);
-  //       setWindowStart((prev) => Math.max(0, prev - 1));
-  //   };
-  //
-  // const handleNextWindow = () => {
-  //   if (!canSlide || windowStart >= maxWindowStart) return;
-  //   setSlideDirection(1);
-  //   setWindowStart((prev) => Math.min(maxWindowStart, prev + 1));
-  // };
-
-  const handleCardPointerMove = (
-    event: PointerEvent<HTMLButtonElement>,
-    projectId: string
-  ) => {
-    if (event.pointerType === 'touch') return;
-
-    const target = event.currentTarget;
-    const rect = target.getBoundingClientRect();
-    const x = (event.clientX - rect.left) / rect.width;
-    const y = (event.clientY - rect.top) / rect.height;
-
-    const rotateY = (x - 0.5) * 22;
-    const rotateX = (0.5 - y) * 22;
-
-    target.style.setProperty('--pointer-x', `${(x * 100).toFixed(2)}%`);
-    target.style.setProperty('--pointer-y', `${(y * 100).toFixed(2)}%`);
-
-    setHoveredCardId(projectId);
-    setHoverTilt({ rotateX, rotateY });
-  };
-
-  const handleCardPointerLeave = (
-    event: PointerEvent<HTMLButtonElement>,
-    projectId: string
-  ) => {
-    const target = event.currentTarget;
-    target.style.removeProperty('--pointer-x');
-    target.style.removeProperty('--pointer-y');
-
-    setHoveredCardId((current) => (current === projectId ? null : current));
-    setHoverTilt({ rotateX: 0, rotateY: 0 });
-  };
-
-  const getProjectScrollHost = () => {
-    const root = fullPageRef.current;
-    if (!root) return null;
-
-    const directHost = root.firstElementChild as HTMLElement | null;
-    if (directHost && directHost.scrollHeight > directHost.clientHeight) {
-      return directHost;
+  const handleProjectSelect = (projectId: string) => {
+    if (projectId !== activeProjectId) {
+      dispatch(openProject(projectId));
     }
 
-    const queue: HTMLElement[] = Array.from(root.children) as HTMLElement[];
-    while (queue.length > 0) {
-      const current = queue.shift();
-      if (!current) continue;
-
-      if (current.scrollHeight > current.clientHeight) {
-        return current;
-      }
-
-      queue.push(...(Array.from(current.children) as HTMLElement[]));
+    if (!isDesktopSidebar) {
+      setIsSidebarOpen(false);
     }
-
-    return directHost;
   };
 
-  const handleCardsRailWheel = (event: WheelEvent<HTMLDivElement>) => {
-    const cardsViewport = cardsViewportRef.current;
-    if (
-      cardsViewport &&
-      cardsViewport.scrollWidth > cardsViewport.clientWidth
-    ) {
-      const horizontalDelta = event.deltaX || event.deltaY;
-      if (horizontalDelta) {
-        event.preventDefault();
-        event.stopPropagation();
-        cardsViewport.scrollLeft += horizontalDelta;
-        return;
-      }
-    }
+  const toggleSidebar = () => {
+    setIsSidebarOpen((current) => !current);
+  };
 
-    event.preventDefault();
-    event.stopPropagation();
-
-    const scrollHost = getProjectScrollHost();
-    if (!scrollHost) return;
-
-    const deltaY =
-      event.deltaMode === 1
-        ? event.deltaY * 16
-        : event.deltaMode === 2
-          ? event.deltaY * scrollHost.clientHeight
-          : event.deltaY;
-
-    if (!deltaY) return;
-    scrollHost.scrollTop += deltaY;
+  const closeSidebar = () => {
+    setIsSidebarOpen(false);
   };
 
   if (!activeProject || !ActiveProjectComponent) {
@@ -299,7 +194,7 @@ export default function OurProjectsSlide() {
 
   return (
     <section
-      className="ourProjectsSlide ourProjectsTheme"
+      className={`ourProjectsSlide ourProjectsTheme ${isDesktopSidebar ? 'ourProjectsSlideDesktopSidebar' : 'ourProjectsSlideMobileSidebar'} ${isSidebarOpen ? 'ourProjectsSlideSidebarOpen' : ''} ${activeProject.id === 'biobac' ? 'ourProjectsSlideLightChrome' : ''}`}
       style={getSlideStyle(activeProject)}
     >
       <AnimatePresence>
@@ -314,74 +209,65 @@ export default function OurProjectsSlide() {
         />
       </AnimatePresence>
 
-      <div ref={fullPageRef} className="ourProjectsFullPage">
-        <ActiveProjectComponent key={`project-${activeProject.id}`} />
-      </div>
+      <button
+        type="button"
+        className={`ourProjectsSidebarBackdrop ${!isDesktopSidebar && isSidebarOpen ? 'ourProjectsSidebarBackdropVisible' : ''}`}
+        onClick={closeSidebar}
+        aria-label="Close project navigation"
+        tabIndex={!isDesktopSidebar && isSidebarOpen ? 0 : -1}
+      />
 
-      <div
-        className="ourProjectsRailWrap"
-        onWheelCapture={handleCardsRailWheel}
-      >
-        <div ref={cardsViewportRef} className="ourProjectsCardsViewport">
-          <AnimatePresence
-            mode="popLayout"
-            initial={false}
-            custom={slideDirection}
-          >
-            <motion.div
-              key={windowStart}
-              className="ourProjectsCardsRail"
-              custom={slideDirection}
-              initial={{ x: slideDirection > 0 ? 46 : -46, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: slideDirection > 0 ? -46 : 46, opacity: 0 }}
-              transition={{ duration: 0.35, ease: [0.2, 0.8, 0.2, 1] }}
-              aria-label="Our projects"
-            >
-              {visibleProjects.map((project, localIndex) => {
-                const absoluteIndex = canSlide
-                  ? windowStart + localIndex
-                  : localIndex;
+      <div className="ourProjectsShell">
+        <aside
+          id="our-projects-sidebar"
+          className="ourProjectsSidebar"
+          aria-label="Project navigation"
+        >
+          <div className="ourProjectsSidebarPanel">
+            <div className="ourProjectsSidebarHeader">
+              <div className="ourProjectsSidebarHeaderText">
+                <p className="ourProjectsSidebarEyebrow">Projects</p>
+                <strong>Case studies</strong>
+                <span>Vertical project list with quick switching.</span>
+              </div>
+
+              <button
+                type="button"
+                className="ourProjectsSidebarCloseButton"
+                onClick={toggleSidebar}
+                aria-label={
+                  isSidebarOpen
+                    ? 'Hide project navigation'
+                    : 'Show project navigation'
+                }
+              >
+                {isSidebarOpen ? 'Hide' : 'Show'}
+              </button>
+            </div>
+
+            <div className="ourProjectsSidebarCards">
+              {projects.map((project, index) => {
                 const isActive = project.id === activeProject.id;
-                const isHovered = hoveredCardId === project.id;
                 const Logo = project.logoType
                   ? LOGO_COMPONENTS[project.logoType]
                   : null;
 
-                const rotateX = isHovered
-                  ? hoverTilt.rotateX
-                  : isActive
-                    ? 7
-                    : 0;
-                const rotateY = isHovered
-                  ? hoverTilt.rotateY
-                  : isActive
-                    ? -6
-                    : 0;
-
                 return (
                   <motion.button
-                    key={`${project.id}-${absoluteIndex}`}
+                    key={project.id}
                     type="button"
-                    className={`ourProjectsCard ${isActive ? 'ourProjectsCardActive' : ''} ${isHovered ? 'ourProjectsCardHover' : ''}`}
+                    className={`ourProjectsCard ${isActive ? 'ourProjectsCardActive' : ''}`}
                     style={getCardStyle(project)}
-                    onClick={() => dispatch(openProject(project.id))}
-                    onPointerMove={(event) =>
-                      handleCardPointerMove(event, project.id)
-                    }
-                    onPointerLeave={(event) =>
-                      handleCardPointerLeave(event, project.id)
-                    }
+                    onClick={() => handleProjectSelect(project.id)}
                     animate={{
-                      y: isActive ? (isCompactRail ? 0 : -12) : 0,
-                      scale: 1,
-                      opacity: isActive ? 1 : 0.82,
-                      rotateX,
-                      rotateY,
-                      z: isHovered ? 52 : isActive ? 32 : 0,
+                      opacity: isActive ? 1 : 0.84,
+                      scale: isActive ? 1 : 0.985,
+                      x: isActive ? 6 : 0,
                     }}
-                    transition={{ duration: 0.28, ease: [0.2, 0.8, 0.2, 1] }}
+                    transition={{ duration: 0.26, ease: [0.2, 0.8, 0.2, 1] }}
+                    whileHover={{ y: -2, opacity: 1, scale: 1 }}
                     whileTap={{ scale: 0.995 }}
+                    aria-pressed={isActive}
                   >
                     {Logo ? (
                       <Logo className="ourProjectsCardLogo" />
@@ -390,8 +276,9 @@ export default function OurProjectsSlide() {
                         {project.cardWordmark}
                       </span>
                     ) : null}
+
                     <span className="ourProjectsCardIndex">
-                      {String(absoluteIndex + 1).padStart(2, '0')}
+                      {String(index + 1).padStart(2, '0')}
                     </span>
                     <span className="ourProjectsCardLocation">
                       {project.cardLocation}
@@ -405,30 +292,33 @@ export default function OurProjectsSlide() {
                   </motion.button>
                 );
               })}
-            </motion.div>
-          </AnimatePresence>
+            </div>
+          </div>
+        </aside>
+
+        <div className="ourProjectsMain">
+          <div className="ourProjectsToolbar">
+            <button
+              type="button"
+              className="ourProjectsMainToggle"
+              onClick={toggleSidebar}
+              aria-controls="our-projects-sidebar"
+              aria-expanded={isSidebarOpen}
+            >
+              {isSidebarOpen ? 'Hide Projects' : 'Show Projects'}
+            </button>
+
+            <div className="ourProjectsActiveMeta">
+              <span className="ourProjectsActiveEyebrow">Active project</span>
+              <strong>{activeProject.cardTitle}</strong>
+              <em>{activeProject.cardSubtitle}</em>
+            </div>
+          </div>
+
+          <div ref={fullPageRef} className="ourProjectsFullPage">
+            <ActiveProjectComponent key={`project-${activeProject.id}`} />
+          </div>
         </div>
-        {/*TODO this part is commented because we dont have much projects*/}
-        {/*<div className="ourProjectsArrowButtonsWrapper">*/}
-        {/*    <button*/}
-        {/*        type="button"*/}
-        {/*        className="ourProjectsArrowButton"*/}
-        {/*        onClick={handlePrevWindow}*/}
-        {/*        disabled={!canSlide || windowStart === 0}*/}
-        {/*        aria-label="Previous cards"*/}
-        {/*    >*/}
-        {/*        <SliderArrowIcon width={30} height={30}/>*/}
-        {/*    </button>*/}
-        {/*    <button*/}
-        {/*        type="button"*/}
-        {/*        className="ourProjectsArrowButton"*/}
-        {/*        onClick={handleNextWindow}*/}
-        {/*        disabled={!canSlide || windowStart >= maxWindowStart}*/}
-        {/*        aria-label="Next cards"*/}
-        {/*    >*/}
-        {/*        <SliderArrowIcon width={30} height={30}/>*/}
-        {/*    </button>*/}
-        {/*</div>*/}
       </div>
     </section>
   );

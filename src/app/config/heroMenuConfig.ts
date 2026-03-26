@@ -25,7 +25,7 @@ export const HERO_MENU_CONFIG = [
   },
   {
     id: 'cv',
-    label: 'CV',
+    label: 'Careers',
     path: '/cv',
     slideId: 'cv',
   },

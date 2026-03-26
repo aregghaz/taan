@@ -18,7 +18,6 @@
   height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: clamp(74px, 9vh, 108px) clamp(16px, 3.2vw, 40px) clamp(28px, 5vh, 64px);
   color: var(--axm-text-main);
   animation: axmProjectFadeIn 460ms ease-out both;
 }
@@ -498,9 +497,6 @@
 }
 
 @media (max-width: 1200px) {
-  .axuxiliumMobilAppSlide {
-    padding-top: 156px;
-  }
 
   .axmTopLayout {
     flex-direction: column;
@@ -529,12 +525,6 @@
 }
 
 @media (max-width: 720px) {
-  .axuxiliumMobilAppSlide {
-    padding-top: 58px;
-    padding-left: calc(12px + env(safe-area-inset-left));
-    padding-right: calc(12px + env(safe-area-inset-right));
-    padding-bottom: 22px;
-  }
 
   .axmMetricCard {
     flex-basis: 100%;

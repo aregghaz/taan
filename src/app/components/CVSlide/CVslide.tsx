@@ -153,13 +153,13 @@ export default function CVslide() {
 
       <div className="cvShell">
         <div className="cvBackdropWord" aria-hidden="true">
-          CV
+          Careers
         </div>
 
         <div className="cvGrid">
           <section className="cvInfoColumn">
             <div className="cvIntro cvReveal">
-              <div className="cvBadge">CV</div>
+              <div className="cvBadge">Careers</div>
               <h1 className="cvTitle">
                 Send your profile in the format that is easiest for you.
               </h1>

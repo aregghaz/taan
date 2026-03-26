@@ -77,9 +77,6 @@ const BIOBAC_PRODUCTS = [
 export default function BioBac() {
   return (
     <section className="bioBacSlide">
-      <div className="bioBacGlow bioBacGlowPrimary" />
-      <div className="bioBacGlow bioBacGlowSecondary" />
-
       <div className="bioBacShell">
         <div className="bioBacContent">
           <p className="bioBacEyebrow">Admin Platform</p>
