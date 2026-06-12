@@ -433,7 +433,9 @@
 
   .curavelSlide,
   .auxiliumMain,
-  .bioBacShell {
+  .bioBacShell,
+  .socialPodcastShell,
+  .joeProfileShell {
     grid-template-columns: minmax(0, 1fr);
   }
 
@@ -493,11 +495,21 @@
     gap: 24px;
   }
 
+  .socialPodcastShell {
+    gap: 24px;
+  }
+
+  .joeProfileShell {
+    gap: 24px;
+  }
+
   .bioBacVisualSide {
     justify-content: flex-start;
   }
 
-  .bioBacVisualPanel {
+  .bioBacVisualPanel,
+  .socialPodcastBrowser,
+  .joeProfileMotionStage {
     width: min(100%, 980px);
   }
 }

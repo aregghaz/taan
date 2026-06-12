@@ -1,0 +1,578 @@
+.socialPodcastSlide {
+  --podcast-border: rgba(255, 213, 166, 0.28);
+  --podcast-card: linear-gradient(
+                  160deg,
+                  rgba(33, 28, 54, 0.86) 0%,
+                  rgba(20, 21, 43, 0.96) 100%
+  );
+  --podcast-card-soft: linear-gradient(
+                  160deg,
+                  rgba(255, 189, 112, 0.13) 0%,
+                  rgba(104, 98, 255, 0.12) 100%
+  );
+  --podcast-text: #fff9f0;
+  --podcast-soft: rgba(255, 245, 231, 0.8);
+  --podcast-muted: rgba(255, 239, 217, 0.64);
+  --podcast-accent: #ffb45f;
+
+  width: 100%;
+  height: 100%;
+  display: block;
+  color: var(--podcast-text);
+}
+
+.socialPodcastShell {
+  width: min(100%, 1460px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(320px, 550px) minmax(420px, 780px);
+  gap: clamp(20px, 3vw, 42px);
+  align-items: start;
+  justify-content: center;
+  min-width: 0;
+}
+
+.socialPodcastContent {
+  min-width: 0;
+  display: grid;
+  gap: 14px;
+  padding-top: clamp(8px, 1.8vw, 38px);
+}
+
+.socialPodcastEyebrow,
+.socialPodcastSectionLabel {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--podcast-muted);
+}
+
+.socialPodcastContent > h1 {
+  margin: 0;
+  font-size: clamp(34px, 4.2vw, 64px);
+  line-height: 0.96;
+  letter-spacing: -0.04em;
+  color: var(--podcast-text);
+}
+
+.socialPodcastSubtitle {
+  margin: 0;
+  max-width: 56ch;
+  font-size: clamp(15px, 1.25vw, 19px);
+  line-height: 1.55;
+  color: var(--podcast-soft);
+}
+
+.socialPodcastLead {
+  margin: 0;
+  max-width: 58ch;
+  font-size: clamp(13px, 1vw, 15px);
+  line-height: 1.65;
+  color: var(--podcast-muted);
+}
+
+.socialPodcastTagRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.socialPodcastTag {
+  border: 1px solid rgba(255, 213, 166, 0.24);
+  border-radius: 999px;
+  padding: 7px 11px;
+  background: rgba(255, 180, 95, 0.08);
+  color: rgba(255, 245, 231, 0.86);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.socialPodcastStatsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.socialPodcastStatCard,
+.socialPodcastNarrativeCard,
+.socialPodcastQuizBanner,
+.socialPodcastBrowser,
+.socialPodcastMiniGrid > article {
+  border: 1px solid var(--podcast-border);
+  background: var(--podcast-card);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12),
+  0 18px 36px rgba(0, 0, 0, 0.28);
+}
+
+.socialPodcastStatCard {
+  border-radius: 16px;
+  padding: 13px;
+  display: grid;
+  gap: 4px;
+}
+
+.socialPodcastStatCard > strong {
+  font-size: clamp(21px, 2.2vw, 34px);
+  line-height: 1;
+  color: #fff6e8;
+}
+
+.socialPodcastStatCard > span {
+  font-size: 12px;
+  color: var(--podcast-muted);
+}
+
+.socialPodcastNarrativeCard {
+  border-radius: 18px;
+  padding: 16px;
+  display: grid;
+  gap: 11px;
+}
+
+.socialPodcastNarrativeCard > h2 {
+  margin: 0;
+  font-size: clamp(20px, 1.8vw, 28px);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: #fff7ec;
+}
+
+.socialPodcastFeatureList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 9px;
+}
+
+.socialPodcastFeatureList li {
+  position: relative;
+  padding-left: 18px;
+  font-size: clamp(13px, 1vw, 15px);
+  line-height: 1.55;
+  color: var(--podcast-soft);
+}
+
+.socialPodcastFeatureList li::before {
+  content: '';
+  position: absolute;
+  top: 9px;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--podcast-accent);
+  box-shadow: 0 0 16px rgba(255, 180, 95, 0.58);
+}
+
+.socialPodcastQuizBanner {
+  position: relative;
+  overflow: hidden;
+  border-radius: 26px;
+  padding: clamp(22px, 2.4vw, 34px);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(20px, 2.2vw, 30px);
+}
+
+.socialPodcastQuizBanner::before {
+  content: '';
+  position: absolute;
+  inset: auto -8% -46% 28%;
+  height: 92%;
+  background: radial-gradient(circle, rgba(255, 180, 95, 0.26), transparent 66%);
+  pointer-events: none;
+}
+
+.socialPodcastQuizBanner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+                  90deg,
+                  rgba(255, 255, 255, 0.04),
+                  rgba(255, 255, 255, 0)
+  );
+  pointer-events: none;
+}
+
+.socialPodcastQuizCopy {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+  max-width: 880px;
+}
+
+.socialPodcastQuizCopy > h2 {
+  margin: 0;
+  max-width: 18ch;
+  font-size: clamp(30px, 3.6vw, 54px);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  color: #fff7ec;
+}
+
+.socialPodcastQuizCopy > p:last-child {
+  margin: 0;
+  max-width: 76ch;
+  font-size: clamp(14px, 1.2vw, 18px);
+  line-height: 1.58;
+  color: var(--podcast-muted);
+}
+
+.socialPodcastQuizScreens {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: clamp(12px, 1.4vw, 20px);
+  align-items: stretch;
+}
+
+.socialPodcastQuizScreen {
+  min-width: 0;
+  min-height: 320px;
+  border: 1px solid rgba(255, 230, 201, 0.2);
+  border-radius: 24px;
+  padding: 14px;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 14px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.04)),
+    linear-gradient(150deg, rgba(255, 180, 95, 0.18), rgba(104, 98, 255, 0.12));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14),
+  0 14px 24px rgba(0, 0, 0, 0.22);
+}
+
+.socialPodcastQuizScreenHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.socialPodcastQuizScreenHead > span {
+  width: fit-content;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  padding: 6px 9px;
+  background: rgba(12, 13, 32, 0.44);
+  color: rgba(255, 239, 217, 0.78);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+}
+
+.socialPodcastQuizScreenHead > strong {
+  min-width: 0;
+  font-size: clamp(14px, 1.15vw, 18px);
+  line-height: 1.25;
+  text-align: right;
+  color: rgba(255, 248, 238, 0.94);
+}
+
+.socialPodcastQuizShot {
+  position: relative;
+  width: 100%;
+  min-height: 230px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 230, 201, 0.2);
+  border-radius: 18px;
+  background: rgba(255, 245, 231, 0.08);
+}
+
+.socialPodcastQuizShot::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  box-shadow: inset 0 -48px 64px rgba(6, 7, 20, 0.18),
+  inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  pointer-events: none;
+}
+
+.socialPodcastQuizImage {
+  object-fit: cover;
+  object-position: top center;
+}
+
+.socialPodcastVisitLink {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 213, 166, 0.42);
+  border-radius: 999px;
+  padding: 11px 16px;
+  background: linear-gradient(135deg, #ffb45f, #ffdb9d);
+  color: #17111f;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 14px 28px rgba(255, 180, 95, 0.22);
+  transition: transform 0.24s ease, box-shadow 0.24s ease;
+}
+
+.socialPodcastVisitLink:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 34px rgba(255, 180, 95, 0.3);
+}
+
+.socialPodcastVisualSide {
+  min-width: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.socialPodcastBrowser {
+  position: relative;
+  overflow: hidden;
+  border-radius: 26px;
+  padding: 12px;
+}
+
+.socialPodcastBrowser::before {
+  content: '';
+  position: absolute;
+  inset: -20% -10% auto 22%;
+  height: 58%;
+  background: radial-gradient(circle, rgba(255, 180, 95, 0.28), transparent 64%);
+  pointer-events: none;
+}
+
+.socialPodcastBrowserBar {
+  position: relative;
+  z-index: 1;
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid rgba(255, 213, 166, 0.18);
+  border-radius: 16px 16px 8px 8px;
+  padding: 8px 12px;
+  background: rgba(11, 12, 29, 0.72);
+}
+
+.socialPodcastBrowserDots {
+  display: flex;
+  gap: 6px;
+}
+
+.socialPodcastBrowserDots > span {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 222, 183, 0.36);
+}
+
+.socialPodcastUrl {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: rgba(255, 245, 231, 0.68);
+  font-size: 12px;
+}
+
+.socialPodcastSlider {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 10px 10px 18px 18px;
+  border: 1px solid rgba(255, 213, 166, 0.18);
+  border-top: 0;
+  background: #090a1d;
+}
+
+.socialPodcastTrack {
+  display: flex;
+  transition: transform 0.38s cubic-bezier(0.22, 0.9, 0.2, 1);
+}
+
+.socialPodcastScreen {
+  position: relative;
+  min-width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #050508;
+}
+
+.socialPodcastScreen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  box-shadow: inset 0 -44px 58px rgba(5, 5, 8, 0.22),
+  inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  pointer-events: none;
+}
+
+.socialPodcastScreenImage {
+  object-fit: contain;
+  object-position: center;
+}
+
+.socialPodcastSliderMeta {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 14px;
+  padding-top: 12px;
+}
+
+.socialPodcastSliderMeta p {
+  margin: 0 0 5px;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--podcast-muted);
+}
+
+.socialPodcastSliderMeta strong {
+  display: block;
+  max-width: 48ch;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--podcast-soft);
+}
+
+.socialPodcastSliderControls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+
+.socialPodcastSliderControls > button {
+  border: 1px solid rgba(255, 213, 166, 0.28);
+  border-radius: 999px;
+  padding: 7px 10px;
+  background: rgba(255, 180, 95, 0.08);
+  color: rgba(255, 245, 231, 0.86);
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.socialPodcastDots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.socialPodcastDots > button {
+  width: 7px;
+  height: 7px;
+  border: 0;
+  border-radius: 999px;
+  padding: 0;
+  background: rgba(255, 229, 198, 0.28);
+  cursor: pointer;
+}
+
+.socialPodcastDots > button.isActive {
+  background: #ffcf8d;
+}
+
+.socialPodcastMiniGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.socialPodcastMiniGrid > article {
+  border-radius: 18px;
+  padding: 15px;
+  display: grid;
+  gap: 8px;
+  background: var(--podcast-card-soft);
+}
+
+.socialPodcastMiniGrid span {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--podcast-muted);
+}
+
+.socialPodcastMiniGrid strong {
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--podcast-soft);
+}
+
+@media (max-width: 980px) {
+  .socialPodcastShell {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  .socialPodcastContent {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .socialPodcastStatsGrid,
+  .socialPodcastMiniGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .socialPodcastQuizCopy > h2 {
+    max-width: 100%;
+  }
+
+  .socialPodcastQuizScreens {
+    grid-template-columns: 1fr;
+  }
+
+  .socialPodcastSliderMeta {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .socialPodcastSliderControls {
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 540px) {
+  .socialPodcastSlide {
+    padding-top: 12px;
+    padding-left: calc(10px + env(safe-area-inset-left));
+    padding-right: calc(10px + env(safe-area-inset-right));
+    padding-bottom: 24px;
+  }
+
+  .socialPodcastBrowser {
+    border-radius: 18px;
+    padding: 8px;
+  }
+
+  .socialPodcastScreen {
+    aspect-ratio: 4 / 5;
+  }
+
+  .socialPodcastQuizScreen {
+    min-height: 280px;
+    border-radius: 14px;
+    padding: 12px;
+  }
+
+  .socialPodcastQuizShot {
+    min-height: 210px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .socialPodcastTrack,
+  .socialPodcastVisitLink {
+    transition: none;
+  }
+}

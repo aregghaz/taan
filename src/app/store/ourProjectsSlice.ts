@@ -4,12 +4,16 @@ export type ProjectComponentType =
   | 'curavel'
   | 'auxilium'
   | 'axuxiliumMobileApp'
-  | 'biobac';
+  | 'biobac'
+  | 'socialVenturePodcast'
+  | 'joeMkProfile';
 export type ProjectLogoType =
   | 'curavel'
   | 'auxilium'
   | 'axuxiliumMobileApp'
-  | 'biobac';
+  | 'biobac'
+  | 'socialVenturePodcast'
+  | 'joeMkProfile';
 
 export type ProjectItem = {
   id: string;
@@ -62,7 +66,7 @@ const PROJECTS: ProjectItem[] = [
   {
     id: 'axuxilium-mobile-app',
     cardLocation: 'Auxilium App',
-    cardTitle: 'Axuxilium Mobil APP',
+    cardTitle: 'Axuxilium Mobile APP',
     cardSubtitle: 'Mobile Experience',
     componentType: 'axuxiliumMobileApp',
     logoType: 'axuxiliumMobileApp',
@@ -89,6 +93,36 @@ const PROJECTS: ProjectItem[] = [
       cardTextColor: '#171717',
       cardMetaTextColor: 'rgba(23, 23, 23, 0.66)',
       cardShadeColor: 'rgba(72, 83, 108, 0.12)',
+    },
+  },
+  {
+    id: 'social-venture-podcast',
+    cardLocation: 'Podcast',
+    cardTitle: 'Social Venture Podcast',
+    cardSubtitle: 'Website + Design',
+    componentType: 'socialVenturePodcast',
+    cardWordmark: 'SVP',
+    theme: {
+      surface: 'linear-gradient(146deg, #0a1026 0%, #161432 50%, #3b2233 100%)',
+      cardTone:
+        'linear-gradient(160deg, rgba(42, 34, 63, 0.94) 0%, rgba(20, 22, 47, 0.96) 100%)',
+      accentColor: '#ffb45f',
+      cardShadeColor: 'rgba(18, 12, 28, 0.38)',
+    },
+  },
+  {
+    id: 'joe-mk-profile',
+    cardLocation: 'Profile',
+    cardTitle: 'Joe Mkhitaryan',
+    cardSubtitle: 'Profile Website + Motion',
+    componentType: 'joeMkProfile',
+    cardWordmark: 'Joe MK',
+    theme: {
+      surface: 'linear-gradient(146deg, #06140b 0%, #102d18 52%, #26412b 100%)',
+      cardTone:
+        'linear-gradient(160deg, rgba(28, 70, 39, 0.94) 0%, rgba(8, 24, 13, 0.96) 100%)',
+      accentColor: '#4f8f63',
+      cardShadeColor: 'rgba(4, 18, 9, 0.42)',
     },
   },
 ];

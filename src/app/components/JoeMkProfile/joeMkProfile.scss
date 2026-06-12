@@ -1,0 +1,427 @@
+.joeProfileSlide {
+  --joe-border: rgba(126, 177, 136, 0.28);
+  --joe-card: linear-gradient(
+                  160deg,
+                  rgba(17, 43, 24, 0.9) 0%,
+                  rgba(7, 19, 11, 0.97) 100%
+  );
+  --joe-card-soft: linear-gradient(
+                  155deg,
+                  rgba(73, 129, 93, 0.16) 0%,
+                  rgba(193, 169, 104, 0.12) 100%
+  );
+  --joe-text: #f6f1e5;
+  --joe-soft: rgba(235, 232, 217, 0.82);
+  --joe-muted: rgba(214, 207, 186, 0.64);
+  --joe-accent: #4f8f63;
+
+  width: 100%;
+  height: 100%;
+  display: block;
+  color: var(--joe-text);
+}
+
+.joeProfileShell {
+  width: min(100%, 1460px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(320px, 550px) minmax(420px, 780px);
+  gap: clamp(20px, 3vw, 42px);
+  align-items: start;
+  justify-content: center;
+  min-width: 0;
+}
+
+.joeProfileContent {
+  min-width: 0;
+  display: grid;
+  gap: 14px;
+  padding-top: clamp(8px, 1.8vw, 38px);
+}
+
+.joeProfileEyebrow,
+.joeProfileSectionLabel {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--joe-muted);
+}
+
+.joeProfileContent > h1 {
+  margin: 0;
+  font-size: clamp(34px, 4.2vw, 64px);
+  line-height: 0.96;
+  letter-spacing: -0.045em;
+  color: var(--joe-text);
+}
+
+.joeProfileSubtitle {
+  margin: 0;
+  max-width: 58ch;
+  font-size: clamp(15px, 1.25vw, 19px);
+  line-height: 1.55;
+  color: var(--joe-soft);
+}
+
+.joeProfileLead {
+  margin: 0;
+  max-width: 59ch;
+  font-size: clamp(13px, 1vw, 15px);
+  line-height: 1.65;
+  color: var(--joe-muted);
+}
+
+.joeProfileTagRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.joeProfileTag {
+  border: 1px solid rgba(126, 177, 136, 0.25);
+  border-radius: 999px;
+  padding: 7px 11px;
+  background: rgba(73, 129, 93, 0.1);
+  color: rgba(244, 239, 224, 0.86);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.joeProfileStatsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.joeProfileStatCard,
+.joeProfileNarrativeCard,
+.joeProfileMotionStage,
+.joeProfileMotionGrid > article {
+  border: 1px solid var(--joe-border);
+  background: var(--joe-card);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12),
+  0 18px 36px rgba(0, 0, 0, 0.28);
+}
+
+.joeProfileStatCard {
+  border-radius: 16px;
+  padding: 13px;
+  display: grid;
+  gap: 4px;
+}
+
+.joeProfileStatCard > strong {
+  font-size: clamp(21px, 2.2vw, 34px);
+  line-height: 1;
+  color: #f6f1e5;
+}
+
+.joeProfileStatCard > span {
+  font-size: 12px;
+  color: var(--joe-muted);
+}
+
+.joeProfileNarrativeCard {
+  border-radius: 18px;
+  padding: 16px;
+  display: grid;
+  gap: 11px;
+}
+
+.joeProfileNarrativeCard > h2 {
+  margin: 0;
+  font-size: clamp(20px, 1.8vw, 28px);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: #f6f1e5;
+}
+
+.joeProfileFeatureList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 9px;
+}
+
+.joeProfileFeatureList li {
+  position: relative;
+  padding-left: 18px;
+  font-size: clamp(13px, 1vw, 15px);
+  line-height: 1.55;
+  color: var(--joe-soft);
+}
+
+.joeProfileFeatureList li::before {
+  content: '';
+  position: absolute;
+  top: 9px;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--joe-accent);
+  box-shadow: 0 0 16px rgba(73, 129, 93, 0.58);
+}
+
+.joeProfileVisitLink {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(126, 177, 136, 0.42);
+  border-radius: 999px;
+  padding: 11px 16px;
+  background: linear-gradient(135deg, #4f8f63, #e8dfc4);
+  color: #07140b;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 14px 28px rgba(73, 129, 93, 0.22);
+  transition: transform 0.24s ease, box-shadow 0.24s ease;
+}
+
+.joeProfileVisitLink:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 34px rgba(73, 129, 93, 0.3);
+}
+
+.joeProfileVisualSide {
+  min-width: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.joeProfileMotionStage {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  padding: clamp(16px, 1.8vw, 24px);
+}
+
+.joeProfileMotionStage::before {
+  content: '';
+  position: absolute;
+  inset: -18% -12% auto 20%;
+  height: 70%;
+  background:
+    radial-gradient(circle at 35% 42%, rgba(73, 129, 93, 0.28), transparent 58%),
+    radial-gradient(circle at 70% 18%, rgba(193, 169, 104, 0.2), transparent 64%);
+  pointer-events: none;
+}
+
+.joeProfileStageHeader {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.joeProfileStageHeader p {
+  margin: 0 0 5px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--joe-muted);
+}
+
+.joeProfileStageHeader strong {
+  display: block;
+  font-size: clamp(22px, 2.2vw, 34px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--joe-text);
+}
+
+.joeProfileStageHeader > span {
+  border: 1px solid rgba(126, 177, 136, 0.24);
+  border-radius: 999px;
+  padding: 7px 10px;
+  background: rgba(73, 129, 93, 0.1);
+  color: rgba(244, 239, 224, 0.72);
+  font-size: 11px;
+}
+
+.joeProfileLayerPreview {
+  position: relative;
+  z-index: 1;
+  margin-top: 18px;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border: 1px solid rgba(126, 177, 136, 0.2);
+  border-radius: 24px;
+  background: #07120b;
+}
+
+.joeProfileLayerPreview::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  box-shadow: inset 0 -54px 70px rgba(7, 18, 11, 0.2),
+  inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  pointer-events: none;
+}
+
+.joeProfileScreenImage {
+  object-fit: contain;
+  object-position: center;
+  animation: joeProfileScreenReveal 0.38s cubic-bezier(0.22, 0.9, 0.2, 1);
+}
+
+.joeProfileStageMeta {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 14px;
+  padding-top: 14px;
+}
+
+.joeProfileStageMeta > p {
+  margin: 0;
+  max-width: 52ch;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--joe-soft);
+}
+
+.joeProfileStageControls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+
+.joeProfileStageControls > button {
+  border: 1px solid rgba(126, 177, 136, 0.28);
+  border-radius: 999px;
+  padding: 7px 10px;
+  background: rgba(73, 129, 93, 0.1);
+  color: rgba(244, 239, 224, 0.86);
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.joeProfileDots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.joeProfileDots > button {
+  width: 7px;
+  height: 7px;
+  border: 0;
+  border-radius: 999px;
+  padding: 0;
+  background: rgba(219, 211, 187, 0.28);
+  cursor: pointer;
+}
+
+.joeProfileDots > button.isActive {
+  background: #cdbb7a;
+}
+
+.joeProfileMotionGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.joeProfileMotionGrid > article {
+  border-radius: 18px;
+  padding: 15px;
+  display: grid;
+  gap: 8px;
+  background: var(--joe-card-soft);
+}
+
+.joeProfileMotionGrid span {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--joe-muted);
+}
+
+.joeProfileMotionGrid strong {
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--joe-soft);
+}
+
+@keyframes joeProfileScreenReveal {
+  from {
+    opacity: 0;
+    transform: scale(1.02);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 980px) {
+  .joeProfileShell {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  .joeProfileContent {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .joeProfileStatsGrid,
+  .joeProfileMotionGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .joeProfileStageMeta {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .joeProfileStageControls {
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 540px) {
+  .joeProfileSlide {
+    padding-top: 12px;
+    padding-left: calc(10px + env(safe-area-inset-left));
+    padding-right: calc(10px + env(safe-area-inset-right));
+    padding-bottom: 24px;
+  }
+
+  .joeProfileMotionStage {
+    border-radius: 18px;
+    padding: 12px;
+  }
+
+  .joeProfileLayerPreview {
+    aspect-ratio: 4 / 5;
+    border-radius: 18px;
+  }
+
+  .joeProfileStageHeader {
+    flex-direction: column;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .joeProfileVisitLink,
+  .joeProfileScreenImage {
+    transition: none;
+    animation: none;
+  }
+}

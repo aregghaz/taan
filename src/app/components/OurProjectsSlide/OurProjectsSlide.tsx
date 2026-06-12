@@ -26,6 +26,8 @@ import CuravelProject from '@/app/components/CuravelProject/CuravelProject';
 import Auxilium from '@/app/components/Auxilium/Auxilium';
 import AxuxiliumMobilApp from '@/app/components/AxuxiliumMobilApp/AxuxiliumMobilApp';
 import BioBac from '@/app/components/BioBac/BioBac';
+import SocialVenturePodcast from '@/app/components/SocialVenturePodcast/SocialVenturePodcast';
+import JoeMkProfile from '@/app/components/JoeMkProfile/JoeMkProfile';
 import { AuxiliumLogoIcon } from '@/app/assets/icons/AuxiliumLogoIcon';
 
 const FULL_PAGE_COMPONENTS: Record<ProjectComponentType, ComponentType> = {
@@ -33,6 +35,8 @@ const FULL_PAGE_COMPONENTS: Record<ProjectComponentType, ComponentType> = {
   auxilium: Auxilium,
   axuxiliumMobileApp: AxuxiliumMobilApp,
   biobac: BioBac,
+  socialVenturePodcast: SocialVenturePodcast,
+  joeMkProfile: JoeMkProfile,
 };
 
 const LOGO_COMPONENTS: Partial<
