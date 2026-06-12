@@ -2,73 +2,64 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
-import BioBacMobileCompany from '@/app/assets/images/BioBacMobileCompany.jpeg';
-import BioBacMobileHome from '@/app/assets/images/BioBacMobileHome.jpeg';
-import BioBacMobileReceipt from '@/app/assets/images/BioBacMobileReceipt.jpeg';
-import BioBacMobileReturn from '@/app/assets/images/BioBacMobileReturn.jpeg';
-import BioBacMobileSales from '@/app/assets/images/BioBacMobileSales.jpeg';
+import BioBacMobileNewCompanies from '@/app/assets/images/BioBacMobileNewCompanies.jpeg';
+import BioBacMobileNewReceiptPreview from '@/app/assets/images/BioBacMobileNewReceiptPreview.jpeg';
+import BioBacMobileNewReturn from '@/app/assets/images/BioBacMobileNewReturn.jpeg';
+import BioBacMobileNewSales from '@/app/assets/images/BioBacMobileNewSales.jpeg';
 
 const MOBILE_TAGS = [
   'Mobile ERP',
   'Companies',
   'Sales',
-  'Returns',
   'Receipts',
-  'Field workflow',
+  'Search',
+  'Returns',
 ] as const;
 
 const MOBILE_STATS = [
-  { value: '06', label: 'core mobile screens' },
+  { value: '04', label: 'updated mobile screens' },
   { value: 'B2B', label: 'operations app' },
   { value: 'RU', label: 'receipt-ready flow' },
 ] as const;
 
 const MOBILE_FEATURES = [
-  'Home navigation for Company, Warehouse, Pre-order, and Account List modules.',
-  'Company profile screen with balance, history, Sales, Payment, Return, Pre-order, Task, and Phone actions.',
-  'Sales and return flows with product selection, quantities, prices, totals, and receipt preview.',
+  'Company list with search, filtering, add action, balances, addresses, and contact details.',
+  'Sales flow with selected product chips, quantity and price inputs, total cost, and received amount.',
+  'Receipt preview and return-product flow for creating documents and correcting product operations.',
 ] as const;
 
 const MOBILE_SCREENS = [
   {
-    label: 'Home',
-    title: 'Module launcher',
+    label: 'Companies',
+    title: 'Company registry',
     caption:
-      'Fast entry into companies, warehouse, pre-orders, and account lists.',
-    image: BioBacMobileHome,
-    alt: 'BioBac mobile app home module screen',
-  },
-  {
-    label: 'Company',
-    title: 'Company operations',
-    caption:
-      'Sales, payment, return, pre-order, task, and call actions in one hub.',
-    image: BioBacMobileCompany,
-    alt: 'BioBac mobile app company detail screen',
+      'Search-ready customer list with balances, addresses, phone numbers, and quick add action.',
+    image: BioBacMobileNewCompanies,
+    alt: 'BioBac mobile companies search screen',
   },
   {
     label: 'Sales',
     title: 'Sales builder',
     caption:
-      'Product chips, quantity fields, price inputs, total price, and received amount.',
-    image: BioBacMobileSales,
-    alt: 'BioBac mobile app sales product screen',
+      'Selected product chips, quantity controls, price fields, total cost, and received amount.',
+    image: BioBacMobileNewSales,
+    alt: 'BioBac mobile sales builder screen',
   },
   {
     label: 'Receipt',
     title: 'Receipt preview',
     caption:
-      'Supplier, buyer, product table, totals, balance, signature fields, and print actions.',
-    image: BioBacMobileReceipt,
-    alt: 'BioBac mobile app receipt preview screen',
+      'Supplier, buyer, product table, totals, balance, signature fields, and document actions.',
+    image: BioBacMobileNewReceiptPreview,
+    alt: 'BioBac mobile receipt preview screen',
   },
   {
     label: 'Returns',
     title: 'Return products',
     caption:
-      'Return date, comment, item rows, price calculation, and create action.',
-    image: BioBacMobileReturn,
-    alt: 'BioBac mobile app return products screen',
+      'Return date, comment, item rows, quantity, return price, related sale, and create action.',
+    image: BioBacMobileNewReturn,
+    alt: 'BioBac mobile return products screen',
   },
 ] as const;
 
@@ -98,9 +89,9 @@ export default function BioBacMobileApp() {
           </p>
           <p className="bioBacMobileLead">
             The app brings everyday B2B workflows into a phone-first interface:
-            operators can find a company, open its history, create sales or
-            returns, preview receipt data, and move through the work with a
-            simple bottom navigation.
+            operators can find a company, prepare a sales order, review the
+            receipt, and create or print documents without leaving the mobile
+            workflow.
           </p>
 
           <div
@@ -126,7 +117,7 @@ export default function BioBacMobileApp() {
           <article className="bioBacMobileNarrativeCard">
             <p className="bioBacMobileSectionLabel">What the App Covers</p>
             <h2>
-              Mobile workflows for company, sales, return, and receipt
+              Mobile workflows for company search, sales, and receipt
               operations.
             </h2>
             <ul className="bioBacMobileFeatureList">
@@ -194,7 +185,7 @@ export default function BioBacMobileApp() {
             <article>
               <span>Company Hub</span>
               <strong>
-                Balances, history, actions, and contact shortcuts.
+                Search, balances, addresses, contact details, and fast add.
               </strong>
             </article>
             <article>
