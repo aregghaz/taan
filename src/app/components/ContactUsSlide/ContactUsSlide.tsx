@@ -17,15 +17,15 @@ const CONTACT_CARDS = [
   {
     id: 'email',
     title: 'Email us',
-    value: 'team@taan.tech',
+    value: 'info@taan-tech.com',
     hint: 'Best for briefs, timelines, and project scope.',
-    href: 'mailto:team@taan.tech?subject=Project%20Brief',
+    href: 'mailto:info@taan-tech.com?subject=Project%20Brief',
     icon: EmailIcon,
   },
   {
     id: 'phone',
     title: 'Call us',
-    value: '+374 41 200 410',
+    value: '+374 94 80 60 80',
     hint: 'Quick intro calls for active projects and handoff.',
     href: 'tel:+37441200410',
     icon: PhoneIcon,
@@ -33,7 +33,7 @@ const CONTACT_CARDS = [
   {
     id: 'location',
     title: 'Our location',
-    value: 'Yerevan, Armenia',
+    value: '12 Vagharsh Vagharshyan St, Yerevan 0012',
     hint: 'Office-based workflow with remote delivery across markets.',
     href: 'https://maps.google.com/?q=Yerevan%2C%20Armenia',
     icon: LocationIcon,

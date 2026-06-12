@@ -281,11 +281,13 @@
   justify-content: space-between;
   gap: 14px;
   padding-top: 14px;
+  min-height: 74px;
 }
 
 .joeProfileStageMeta > p {
   margin: 0;
   max-width: 52ch;
+  min-height: 40px;
   font-size: 13px;
   line-height: 1.5;
   color: var(--joe-soft);
@@ -296,6 +298,7 @@
   align-items: center;
   gap: 8px;
   flex: 0 0 auto;
+  min-height: 36px;
 }
 
 .joeProfileStageControls > button {
@@ -387,6 +390,11 @@
   .joeProfileStageMeta {
     align-items: stretch;
     flex-direction: column;
+    min-height: 0;
+  }
+
+  .joeProfileStageMeta > p {
+    min-height: 0;
   }
 
   .joeProfileStageControls {

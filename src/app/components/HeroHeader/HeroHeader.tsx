@@ -91,9 +91,9 @@ export default function HeroHeader() {
           <span />
           <span />
         </button>
-        <button className="heroHeaderLangButton" type="button">
-          EN
-        </button>
+        {/*<button className="heroHeaderLangButton" type="button">*/}
+        {/*  EN*/}
+        {/*</button>*/}
       </div>
 
       <div

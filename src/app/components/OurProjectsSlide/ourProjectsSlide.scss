@@ -433,7 +433,10 @@
 
   .curavelSlide,
   .auxiliumMain,
+  .auxMobileShell,
   .bioBacShell,
+  .bioBacMobileShell,
+  .hayShenShell,
   .socialPodcastShell,
   .joeProfileShell {
     grid-template-columns: minmax(0, 1fr);
@@ -468,30 +471,19 @@
     grid-template-columns: 1fr;
   }
 
-  .axmTopLayout {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 16px;
-  }
-
-  .axmMainInfo,
-  .axmSliderWrapper {
-    width: 100%;
-    flex: 0 1 auto;
-  }
-
-  .axmSliderWrapper {
-    height: auto;
-    align-items: flex-start;
-    justify-content: flex-start;
-    padding-top: 0;
-  }
-
-  .axmSliderCard {
-    width: min(100%, 520px);
-  }
-
   .bioBacShell {
+    gap: 24px;
+  }
+
+  .auxMobileShell {
+    gap: 24px;
+  }
+
+  .bioBacMobileShell {
+    gap: 24px;
+  }
+
+  .hayShenShell {
     gap: 24px;
   }
 
@@ -508,6 +500,9 @@
   }
 
   .bioBacVisualPanel,
+  .auxMobilePreviewPanel,
+  .bioBacMobilePreviewPanel,
+  .hayShenPreviewPanel,
   .socialPodcastBrowser,
   .joeProfileMotionStage {
     width: min(100%, 980px);
@@ -590,7 +585,7 @@
 
   .ourProjectsFullPage .curavelGalleryFrame,
   .ourProjectsFullPage .bioBacVisualPanel,
-  .ourProjectsFullPage .axmSliderCard {
+  .ourProjectsFullPage .auxMobilePreviewPanel {
     max-width: 100%;
   }
 }

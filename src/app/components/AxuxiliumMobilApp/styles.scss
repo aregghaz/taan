@@ -1,618 +1,411 @@
-.axuxiliumMobilAppSlide {
-  --axm-bg-card: linear-gradient(
-                  156deg,
-                  rgba(92, 18, 100, 0.76) 0%,
-                  rgba(60, 24, 57, 0.92) 100%
-  );
-  --axm-bg-soft: linear-gradient(
-                  150deg,
-                  rgba(209, 26, 129, 0.44) 0%,
-                  rgba(255, 0, 194, 0.52) 100%
-  );
-  --axm-border: rgba(66, 39, 120, 0.32);
-  --axm-text-main: #f2f8ff;
-  --axm-text-soft: rgba(224, 237, 255, 0.88);
-  --axm-text-muted: rgba(198, 218, 244, 0.74);
+.auxMobileSlide {
+  --aux-mobile-border: rgba(154, 145, 240, 0.34);
+  --aux-mobile-text: #f7f4ff;
+  --aux-mobile-soft: rgba(238, 231, 255, 0.84);
+  --aux-mobile-muted: rgba(226, 214, 255, 0.66);
+  --aux-mobile-blue: #4f7cff;
+  --aux-mobile-purple: #5f5b94;
+  --aux-mobile-orange: #f06a18;
+  --aux-mobile-surface: #5c5a92;
 
   width: 100%;
   height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  color: var(--axm-text-main);
-  animation: axmProjectFadeIn 460ms ease-out both;
+  display: block;
+  color: var(--aux-mobile-text);
 }
 
-.axuxiliumMobilAppSlide * {
-  box-sizing: border-box;
-}
-
-.axmContent {
+.auxMobileShell {
   width: min(100%, 1460px);
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.axmTopLayout {
-  width: 100%;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(320px, 570px) minmax(420px, 760px);
+  gap: clamp(22px, 3vw, 44px);
   align-items: start;
   justify-content: center;
-  gap: 12px;
-}
-
-.axmTopLayout > * {
-  animation: axmProjectRise 620ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
-}
-
-.axmTopLayout > :first-child {
-  animation-delay: 90ms;
-}
-
-.axmTopLayout > :last-child {
-  animation-delay: 180ms;
-}
-
-.axmMainInfo {
-  width: auto;
-  flex: 0 1 760px;
   min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
 }
 
-.axmMainInfo > * {
-  animation: axmProjectRise 560ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+.auxMobileContent {
+  min-width: 0;
+  display: grid;
+  gap: 14px;
+  padding-top: clamp(8px, 1.8vw, 38px);
 }
 
-.axmMainInfo > :nth-child(1) {
-  animation-delay: 120ms;
-}
-
-.axmMainInfo > :nth-child(2) {
-  animation-delay: 170ms;
-}
-
-.axmMainInfo > :nth-child(3) {
-  animation-delay: 220ms;
-}
-
-.axmHero {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.axmEyebrow {
+.auxMobileEyebrow,
+.auxMobileSectionLabel {
   margin: 0;
-  width: fit-content;
-  padding: 6px 12px;
-  border-radius: 999px;
-  border: 1px solid rgba(143, 197, 255, 0.38);
-  background: rgba(41, 82, 156, 0.35);
   font-size: 11px;
-  letter-spacing: 0.13em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(220, 236, 255, 0.92);
+  color: var(--aux-mobile-muted);
 }
 
-.axmTitle {
+.auxMobileContent > h1 {
   margin: 0;
-  font-size: clamp(30px, 4vw, 58px);
-  line-height: 1.02;
-  letter-spacing: -0.02em;
-  color: var(--axm-text-main);
+  font-size: clamp(36px, 4.4vw, 70px);
+  line-height: 0.96;
+  letter-spacing: -0.05em;
+  color: var(--aux-mobile-text);
 }
 
-.axmLead {
+.auxMobileSubtitle {
   margin: 0;
-  max-width: 72ch;
-  font-size: clamp(14px, 1.05vw, 17px);
-  line-height: 1.58;
-  color: var(--axm-text-soft);
+  max-width: 60ch;
+  font-size: clamp(15px, 1.25vw, 19px);
+  line-height: 1.55;
+  color: var(--aux-mobile-soft);
 }
 
-.axmMetricGrid {
+.auxMobileLead {
+  margin: 0;
+  max-width: 62ch;
+  font-size: clamp(13px, 1vw, 15px);
+  line-height: 1.65;
+  color: var(--aux-mobile-soft);
+}
+
+.auxMobileTagRow {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-}
-
-.axmMetricCard {
-  flex: 1 1 calc((100% - 20px) / 3);
-  min-width: 0;
-  border: 1px solid rgba(138, 194, 255, 0.28);
-  border-radius: 14px;
-  padding: 11px 12px 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  background: var(--axm-bg-soft);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12),
-  0 10px 20px rgba(3, 14, 43, 0.28);
-}
-
-.axmMetricValue {
-  font-size: clamp(19px, 2vw, 30px);
-  line-height: 1;
-  font-weight: 700;
-  color: #ffffff;
-}
-
-.axmMetricLabel {
-  font-size: 12px;
-  color: rgba(219, 235, 255, 0.8);
-}
-
-.axmFlowLayout {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.axmFlowCard,
-.axmSummaryCard,
-.axmScreenGroupCard,
-.axmSliderCard,
-.axmDeliveryCard {
-  border: 1px solid var(--axm-border);
-  border-radius: 18px;
-  background: var(--axm-bg-card);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12),
-  0 16px 36px rgba(3, 12, 38, 0.34);
-}
-
-.axmFlowCard,
-.axmSummaryCard,
-.axmDeliveryCard {
-  padding: 14px;
-}
-
-.axmFlowCard h3,
-.axmSummaryCard h3,
-.axmScreenGroupCard h3,
-.axmDeliveryCard h3 {
-  margin: 0;
-  font-size: 15px;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  color: rgba(199, 224, 255, 0.9);
-}
-
-.axmFlowList {
-  margin: 12px 0 0;
-  padding: 0;
-  list-style: none;
-  counter-reset: axm-step;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.axmFlowList li {
-  counter-increment: axm-step;
-  position: relative;
-  padding-left: 42px;
-}
-
-.axmFlowList li::before {
-  content: counter(axm-step);
-  position: absolute;
-  top: 2px;
-  left: 0;
-  width: 26px;
-  height: 26px;
-  border-radius: 999px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(138, 192, 255, 0.45);
-  background: rgba(56, 110, 189, 0.42);
-  font-size: 12px;
-  font-weight: 700;
-  color: #e9f4ff;
-}
-
-.axmFlowList span {
-  display: block;
-  font-size: 14px;
-  font-weight: 650;
-  color: rgba(236, 245, 255, 0.95);
-}
-
-.axmFlowList p {
-  margin: 4px 0 0;
-  font-size: 12px;
-  line-height: 1.5;
-  color: var(--axm-text-muted);
-}
-
-.axmSummaryCard {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.axmSummaryCard p,
-.axmDeliveryCard p {
-  margin: 0;
-  font-size: 13px;
-  line-height: 1.58;
-  color: var(--axm-text-soft);
-}
-
-.axmCallout {
-  border-left: 3px solid rgba(142, 200, 255, 0.64);
-  padding-left: 10px;
-  color: rgba(231, 244, 255, 0.95);
-}
-
-.axmSliderWrapper {
-  width: auto;
-  flex: 0 1 460px;
-  min-width: 0;
-  padding-top: 25px;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.axmSliderCard {
-  width: min(100%, 400px);
-  padding: 12px;
-  gap: 10px;
-  display: flex;
-  flex-direction: column;
-}
-
-.axmSliderCard > * {
-  animation: axmProjectRise 520ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
-}
-
-.axmSliderCard > :nth-child(1) {
-  animation-delay: 220ms;
-}
-
-.axmSliderCard > :nth-child(2) {
-  animation-delay: 260ms;
-}
-
-.axmSliderCard > :nth-child(3) {
-  animation-delay: 300ms;
-}
-
-@keyframes axmProjectFadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes axmProjectRise {
-  from {
-    opacity: 0;
-    transform: translateY(18px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .axuxiliumMobilAppSlide,
-  .axmTopLayout > *,
-  .axmMainInfo > *,
-  .axmSliderCard > * {
-    animation: none;
-  }
-}
-
-.axmSliderHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   gap: 8px;
 }
 
-.axmSliderHeader p {
-  margin: 0;
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(209, 230, 255, 0.88);
-}
-
-.axmSliderHeader span {
+.auxMobileTag {
+  border: 1px solid rgba(209, 26, 129, 0.28);
   border-radius: 999px;
-  padding: 5px 10px;
-  border: 1px solid rgba(149, 199, 255, 0.34);
-  background: rgba(38, 77, 146, 0.36);
+  padding: 7px 11px;
+  background: rgba(209, 26, 129, 0.18);
+  color: rgba(255, 235, 248, 0.94);
   font-size: 11px;
-  color: rgba(227, 239, 255, 0.92);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
-.axmSliderViewport {
-  overflow: hidden;
-  border-radius: 14px;
-  border: 1px solid rgba(145, 194, 255, 0.28);
-  background: linear-gradient(
-                  155deg,
-                  rgba(55, 0, 106, 0.25),
-                  rgba(40, 81, 158, 0)
-  ),
-  rgba(27, 5, 57, 0.78);
-}
-
-.axmSliderTrack {
-  display: flex;
-  transition: transform 360ms ease;
-}
-
-.axmSlide {
-  min-width: 100%;
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
+.auxMobileStatsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
 }
 
-.axmPhoneFrame {
-  width: min(100%, 260px);
-  margin: 0 auto;
-  aspect-ratio: 10 / 19;
-  min-height: 260px;
-  position: relative;
-  border-radius: 24px;
-  border: 1px solid rgba(140, 189, 255, 0.38);
-  background: linear-gradient(160deg, rgba(18, 42, 94, 0.8), rgba(10, 27, 65, 0.95));
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 18px 32px rgba(1, 8, 24, 0.45);
-  overflow: hidden;
+.auxMobileStatCard,
+.auxMobileNarrativeCard,
+.auxMobilePreviewPanel,
+.auxMobileFlowGrid > article {
+  border: 1px solid var(--aux-mobile-border);
+  background:
+    linear-gradient(156deg, rgba(92, 18, 100, 0.74) 0%, rgba(60, 24, 57, 0.9) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 18px 38px rgba(11, 0, 31, 0.3);
 }
 
-.axmPhoneNotch {
+.auxMobileStatCard {
+  border-radius: 16px;
+  padding: 13px;
+  display: grid;
+  gap: 4px;
+}
+
+.auxMobileStatCard > strong {
+  font-size: clamp(21px, 2.2vw, 34px);
+  line-height: 1;
+  color: var(--aux-mobile-text);
+}
+
+.auxMobileStatCard > span {
+  font-size: 12px;
+  color: var(--aux-mobile-muted);
+}
+
+.auxMobileNarrativeCard {
+  border-radius: 18px;
+  padding: 16px;
+  display: grid;
+  gap: 11px;
+}
+
+.auxMobileNarrativeCard > h2 {
+  margin: 0;
+  font-size: clamp(20px, 1.8vw, 28px);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: var(--aux-mobile-text);
+}
+
+.auxMobileFeatureList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 9px;
+}
+
+.auxMobileFeatureList li {
+  position: relative;
+  padding-left: 18px;
+  font-size: clamp(13px, 1vw, 15px);
+  line-height: 1.55;
+  color: var(--aux-mobile-soft);
+}
+
+.auxMobileFeatureList li::before {
+  content: '';
+  position: absolute;
+  top: 9px;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--aux-mobile-orange);
+}
+
+.auxMobileVisualSide {
+  min-width: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.auxMobilePreviewPanel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 30px;
+  padding: clamp(18px, 2vw, 26px);
+  display: grid;
+  grid-template-columns: minmax(240px, 330px) minmax(0, 1fr);
+  gap: clamp(18px, 2.2vw, 30px);
+  align-items: center;
+  background:
+    radial-gradient(62% 72% at 18% 20%, rgba(209, 26, 129, 0.3), transparent 72%),
+    radial-gradient(48% 58% at 92% 86%, rgba(79, 124, 255, 0.2), transparent 70%),
+    linear-gradient(160deg, rgba(76, 16, 104, 0.94) 0%, rgba(31, 18, 70, 0.96) 100%);
+}
+
+.auxMobilePreviewPanel::before,
+.auxMobilePreviewPanel::after {
+  content: '';
+  position: absolute;
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.auxMobilePreviewPanel::before {
+  inset: auto auto 8% 8%;
+  width: 150px;
+  height: 150px;
+  border: 1px solid rgba(226, 214, 255, 0.13);
+}
+
+.auxMobilePreviewPanel::after {
+  top: 12%;
+  right: 10%;
+  width: 86px;
+  height: 86px;
+  background: rgba(209, 26, 129, 0.16);
+}
+
+.auxMobilePhoneFrame {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 330px);
+  aspect-ratio: 9 / 19.5;
+  margin: 0 auto;
+  border-radius: 38px;
+  padding: 14px;
+  background: linear-gradient(145deg, #14051f, #4f1763);
+  box-shadow: 0 24px 46px rgba(11, 0, 31, 0.42);
+}
+
+.auxMobilePhoneSpeaker {
   position: absolute;
   top: 8px;
   left: 50%;
+  z-index: 3;
+  width: 84px;
+  height: 5px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.22);
   transform: translateX(-50%);
-  width: 38%;
-  height: 12px;
-  border-radius: 0 0 10px 10px;
-  background: rgba(10, 21, 52, 0.85);
-  z-index: 2;
 }
 
-.axmPhoneImage {
+.auxMobilePhoneScreen {
+  position: relative;
   width: 100%;
   height: 100%;
-  display: block;
+  overflow: hidden;
+  border-radius: 28px;
+  background: var(--aux-mobile-surface);
+}
+
+.auxMobilePhoneImage {
   object-fit: cover;
   object-position: top center;
+  animation: auxMobileImageReveal 0.34s cubic-bezier(0.22, 0.9, 0.2, 1);
 }
 
-.axmSlideCaption h4 {
-  margin: 0;
-  font-size: 15px;
-  color: rgba(237, 247, 255, 0.98);
+.auxMobileScreenMeta {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+  display: grid;
+  grid-template-rows: minmax(250px, auto) auto;
+  align-content: center;
+  gap: 18px;
 }
 
-.axmSlideCaption p {
-  margin: 6px 0 0;
-  font-size: 12px;
-  line-height: 1.5;
-  color: rgba(208, 229, 255, 0.82);
+.auxMobileScreenMeta > div:first-child {
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.axmSliderControls {
+.auxMobileScreenMeta p {
+  margin: 0 0 8px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--aux-mobile-muted);
+}
+
+.auxMobileScreenMeta strong {
+  display: block;
+  font-size: clamp(30px, 3.5vw, 56px);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+  color: var(--aux-mobile-text);
+}
+
+.auxMobileScreenMeta span {
+  display: block;
+  margin-top: 12px;
+  max-width: 42ch;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--aux-mobile-soft);
+}
+
+.auxMobileControls {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 8px;
+  gap: 10px;
+  flex-wrap: wrap;
+  min-height: 42px;
 }
 
-.axmSliderButton {
-  border: 1px solid rgba(150, 198, 255, 0.4);
+.auxMobileControls > button {
+  border: 1px solid rgba(209, 26, 129, 0.36);
   border-radius: 999px;
-  padding: 7px 12px;
-  background: rgba(49, 94, 173, 0.42);
-  font-size: 11px;
-  letter-spacing: 0.04em;
-  color: rgba(230, 240, 255, 0.95);
+  padding: 8px 12px;
+  background: rgba(209, 26, 129, 0.18);
+  color: rgba(255, 238, 249, 0.96);
+  font-size: 12px;
   cursor: pointer;
-  transition: transform 180ms ease, background-color 180ms ease;
 }
 
-.axmSliderButton:hover {
-  transform: translateY(-1px);
-  background: rgba(62, 112, 197, 0.5);
-}
-
-.axmSliderDots {
+.auxMobileDots {
   display: flex;
   align-items: center;
   gap: 6px;
 }
 
-.axmDot {
+.auxMobileDots > button {
   width: 7px;
   height: 7px;
-  border-radius: 999px;
   border: 0;
-  background: rgba(182, 213, 255, 0.42);
+  border-radius: 999px;
+  padding: 0;
+  background: rgba(238, 231, 255, 0.28);
   cursor: pointer;
 }
 
-.axmDot.isActive {
-  width: 18px;
-  background: rgba(230, 244, 255, 0.98);
+.auxMobileDots > button.isActive {
+  background: #d11a81;
 }
 
-.axmScreenGroups {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+.auxMobileFlowGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
 }
 
-.axmScreenGroupCard {
-  flex: 1 1 calc((100% - 10px) / 2);
-  min-width: 0;
-  padding: 12px;
-}
-
-.axmScreenGroupCard ul {
-  margin: 10px 0 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
+.auxMobileFlowGrid > article {
+  border-radius: 18px;
+  padding: 15px;
+  display: grid;
   gap: 8px;
 }
 
-.axmScreenGroupCard li {
-  position: relative;
-  padding-left: 14px;
-  font-size: 12px;
-  line-height: 1.5;
-  color: rgba(222, 237, 255, 0.88);
+.auxMobileFlowGrid span {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--aux-mobile-muted);
 }
 
-.axmScreenGroupCard li::before {
-  content: '';
-  position: absolute;
-  top: 8px;
-  left: 0;
-  width: 6px;
-  height: 6px;
-  border-radius: 999px;
-  background: rgba(165, 209, 255, 0.82);
+.auxMobileFlowGrid strong {
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--aux-mobile-soft);
 }
 
-.axmDeliveryCard code {
-  color: rgba(233, 245, 255, 0.96);
-}
-
-@media (max-width: 1200px) {
-
-  .axmTopLayout {
-    flex-direction: column;
-    gap: 14px;
+@keyframes auxMobileImageReveal {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(1.015);
   }
 
-  .axmMainInfo,
-  .axmSliderWrapper {
-    width: 100%;
-  }
-
-  .axmSliderWrapper {
-    align-items: stretch;
-    justify-content: flex-start;
-  }
-
-  .axmSliderCard {
-    width: min(100%, 520px);
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
 @media (max-width: 980px) {
-  .axmScreenGroupCard {
-    flex-basis: 100%;
+  .auxMobileShell {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  .auxMobileContent {
+    padding-top: 0;
   }
 }
 
-@media (max-width: 720px) {
-
-  .axmMetricCard {
-    flex-basis: 100%;
+@media (max-width: 760px) {
+  .auxMobilePreviewPanel {
+    grid-template-columns: 1fr;
   }
 
-  .axmScreenGroupCard {
-    flex-basis: 100%;
+  .auxMobileScreenMeta {
+    grid-template-rows: auto auto;
   }
 
-  .axmSliderCard {
-    width: min(100%, 360px);
-    margin: 0 auto;
-    padding: 10px;
-    gap: 8px;
-  }
-
-  .axmSlide {
-    padding: 8px;
-  }
-
-  .axmSliderControls {
-    flex-wrap: wrap;
-    justify-content: center;
-    row-gap: 10px;
-  }
-
-  .axmSliderDots {
-    order: 3;
-    width: 100%;
-    justify-content: center;
-  }
-
-  .axmPhoneFrame {
-    width: min(100%, 212px);
-    min-height: 212px;
-  }
-}
-
-@media (max-width: 420px) {
-  .heroSlideLayer > .axuxiliumMobilAppSlide {
-    width: 100%;
+  .auxMobileScreenMeta > div:first-child {
     min-height: 0;
-    height: 100%;
-    transform: none;
-    overflow-y: auto;
-    overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
+    justify-content: flex-start;
   }
 
-  .axuxiliumMobilAppSlide {
-    padding-top: 26px;
-    padding-left: calc(10px + env(safe-area-inset-left));
-    padding-right: calc(10px + env(safe-area-inset-right));
+  .auxMobilePhoneFrame {
+    width: min(76vw, 320px);
   }
 
-  .axmFlowCard,
-  .axmSummaryCard,
-  .axmScreenGroupCard,
-  .axmSliderCard,
-  .axmDeliveryCard {
-    border-radius: 14px;
+  .auxMobileFlowGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .auxMobileStatsGrid {
+    grid-template-columns: 1fr;
   }
 
-  .axmSliderCard {
-    width: min(100%, 300px);
-    padding: 8px;
+  .auxMobilePreviewPanel {
+    border-radius: 22px;
+    padding: 14px;
   }
 
-  .axmSlide {
-    padding: 6px;
-  }
-
-  .axmPhoneFrame {
-    width: min(100%, 186px);
-    min-height: 186px;
-  }
-
-  .axmSliderButton {
-    padding: 6px 10px;
-  }
-
-  .axmFlowList li {
-    padding-left: 34px;
-  }
-
-  .axmFlowList li::before {
-    width: 22px;
-    height: 22px;
-    font-size: 11px;
+  .auxMobileControls {
+    justify-content: center;
   }
 }

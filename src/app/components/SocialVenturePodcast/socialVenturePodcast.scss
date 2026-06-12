@@ -425,6 +425,14 @@
   justify-content: space-between;
   gap: 14px;
   padding-top: 12px;
+  min-height: 78px;
+}
+
+.socialPodcastSliderMeta > div:first-child {
+  min-height: 52px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .socialPodcastSliderMeta p {
@@ -448,6 +456,7 @@
   align-items: center;
   gap: 8px;
   flex: 0 0 auto;
+  min-height: 36px;
 }
 
 .socialPodcastSliderControls > button {
@@ -535,6 +544,11 @@
   .socialPodcastSliderMeta {
     align-items: stretch;
     flex-direction: column;
+    min-height: 0;
+  }
+
+  .socialPodcastSliderMeta > div:first-child {
+    min-height: 0;
   }
 
   .socialPodcastSliderControls {

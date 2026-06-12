@@ -1,265 +1,205 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { useState } from 'react';
 import AuxMob1 from '@/app/assets/images/AuxMob1.png';
 import AuxMob2 from '@/app/assets/images/AuxMob2.png';
 import AuxMob3 from '@/app/assets/images/AuxMob3.png';
 import AuxMob4 from '@/app/assets/images/AuxMob4.png';
 
-const APP_METRICS = [
-  { value: '40+', label: 'Designed screens' },
-  { value: '6', label: 'Core user flows' },
-  { value: '1', label: 'Unified app experience' },
+const AUX_MOBILE_TAGS = [
+  'NEMT mobile app',
+  'Ride booking',
+  'Member verification',
+  'Live trip flow',
+  'Account safety',
 ] as const;
 
-const FLOW_STEPS = [
-  {
-    title: 'Secure Login',
-    description:
-      'Email login with password reset, social sign-in options, and SSO support.',
-  },
-  {
-    title: 'Identity Verification',
-    description:
-      'Member details, profile checks, and call support fallback for blocked cases.',
-  },
-  {
-    title: 'Ride Setup',
-    description:
-      'Ride preferences, pickup and drop-off locations, and quick address confirmation.',
-  },
-  {
-    title: 'Ride Operations',
-    description:
-      'Scheduled rides, map-based route details, live status updates, and rescheduling.',
-  },
-  {
-    title: 'Account & Safety',
-    description:
-      'Authorized contacts, eligibility checks, account security, and notification control.',
-  },
+const AUX_MOBILE_STATS = [
+  { value: '04', label: 'key mobile screens' },
+  { value: '06', label: 'core user flows' },
+  { value: 'HIPAA', label: 'healthcare mindset' },
 ] as const;
 
-const SCREEN_GROUPS = [
-  {
-    title: 'Onboarding & Access',
-    points: [
-      'Welcome and multi-step sign-up',
-      'Email verification and password setup',
-      'Optional Face ID and SSO toggles',
-    ],
-  },
-  {
-    title: 'Ride Creation',
-    points: [
-      'Preferred rider tags and service types',
-      'Pickup and drop-off with location search',
-      'Address confirmation modal and conflict warning',
-    ],
-  },
-  {
-    title: 'Trip Tracking',
-    points: [
-      'Scheduled rides timeline',
-      'Ride detail with map and status chips',
-      'Reschedule, cancel, and emergency call actions',
-    ],
-  },
-  {
-    title: 'Profile & Settings',
-    points: [
-      'Personal info and home address',
-      'Authorized contacts and permissions',
-      'Notifications, SMS code, and password reset',
-    ],
-  },
+const AUX_MOBILE_FEATURES = [
+  'Guided onboarding collects eligibility details, insurance information, and sign-in requirements before the member starts booking rides.',
+  'Ride creation supports date of service, passenger needs, line-of-business limits, assistance preferences, and location confirmation.',
+  'Profile, settings, and authorized contacts help members manage access, safety, communication, and account details from one mobile app.',
 ] as const;
 
-const MOBILE_SLIDES = [
+const AUX_MOBILE_SCREENS = [
   {
-    id: 'auth',
-    title: 'Login & Verification',
-    description:
-      'Secure sign-in, email verification, and password recovery path for members.',
+    label: 'Welcome',
+    title: 'Guided member onboarding',
+    caption:
+      'Clear requirements for coverage, insurance, physical address, and sign-in information.',
     image: AuxMob1,
+    alt: 'Auxilium mobile onboarding welcome screen',
   },
   {
-    id: 'rides',
-    title: 'Ride Scheduling',
-    description:
-      'Create rides, select service details, and review pickup and drop-off plans.',
+    label: 'Create Ride',
+    title: 'Ride request builder',
+    caption:
+      'Date of service, passenger count, business line limits, assistance options, and quick navigation.',
     image: AuxMob2,
+    alt: 'Auxilium mobile create ride screen',
   },
   {
-    id: 'tracking',
-    title: 'Live Ride Detail',
-    description:
-      'Track route progress with status states, map context, and quick actions.',
+    label: 'Profile',
+    title: 'Member details and home address',
+    caption:
+      'Editable rider profile, preferred name, pronouns, address fields, and secure save action.',
     image: AuxMob3,
+    alt: 'Auxilium mobile member detail screen',
   },
   {
-    id: 'settings',
-    title: 'Security & Settings',
-    description:
-      'Manage account protection, notifications, and authorized contact access.',
+    label: 'Contacts',
+    title: 'Authorized contact access',
+    caption:
+      'Trusted contact setup with relationship, phone, email, approval, and account access controls.',
     image: AuxMob4,
+    alt: 'Auxilium mobile authorized contact screen',
+  },
+] as const;
+
+const AUX_MOBILE_FLOWS = [
+  {
+    title: 'Book',
+    text: 'Members create transportation requests with the details dispatch teams need from the start.',
+  },
+  {
+    title: 'Verify',
+    text: 'Eligibility, insurance, profile, and contact information are structured into the flow.',
+  },
+  {
+    title: 'Manage',
+    text: 'Settings, notifications, trusted contacts, and ride actions stay close to the user.',
   },
 ] as const;
 
 export default function AxuxiliumMobilApp() {
-  const [activeSlide, setActiveSlide] = useState(0);
-
-  useEffect(() => {
-    const intervalId = window.setInterval(() => {
-      setActiveSlide((current) => (current + 1) % MOBILE_SLIDES.length);
-    }, 5200);
-
-    return () => window.clearInterval(intervalId);
-  }, []);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeScreen = AUX_MOBILE_SCREENS[activeIndex];
 
   const handlePrev = () => {
-    setActiveSlide((current) =>
-      current === 0 ? MOBILE_SLIDES.length - 1 : current - 1
+    setActiveIndex((current) =>
+      current === 0 ? AUX_MOBILE_SCREENS.length - 1 : current - 1,
     );
   };
 
   const handleNext = () => {
-    setActiveSlide((current) => (current + 1) % MOBILE_SLIDES.length);
+    setActiveIndex((current) => (current + 1) % AUX_MOBILE_SCREENS.length);
   };
 
   return (
-    <section className="axuxiliumMobilAppSlide">
-      <div className="axmContent">
-        <div className="axmTopLayout">
-          <div className="axmMainInfo">
-            <header className="axmHero">
-              <p className="axmEyebrow">Mobile Product</p>
-              <h2 className="axmTitle">Auxilium Mobile App</h2>
-              <p className="axmLead">
-                End-to-end member experience for NEMT ride booking,
-                verification, live trip tracking, and account security in one
-                mobile interface.
-              </p>
+    <section className="auxMobileSlide">
+      <div className="auxMobileShell">
+        <div className="auxMobileContent">
+          <p className="auxMobileEyebrow">Mobile Healthcare Transportation</p>
+          <h1>Auxilium Mobile App</h1>
+          <p className="auxMobileSubtitle">
+            A member-facing mobile experience for non-emergency medical
+            transportation, covering onboarding, ride requests, profile
+            management, and trusted contact access.
+          </p>
+          <p className="auxMobileLead">
+            The app turns a complex healthcare transportation process into a
+            clear mobile journey: members understand what information is needed,
+            create rides with service details, keep their profile accurate, and
+            give authorized contacts controlled access when support is needed.
+          </p>
 
-              <div className="axmMetricGrid">
-                {APP_METRICS.map((metric) => (
-                  <article className="axmMetricCard" key={metric.label}>
-                    <span className="axmMetricValue">{metric.value}</span>
-                    <span className="axmMetricLabel">{metric.label}</span>
-                  </article>
-                ))}
-              </div>
-            </header>
-
-            <div className="axmFlowLayout">
-              <article className="axmFlowCard">
-                <h3>Product Flow</h3>
-                <ol className="axmFlowList">
-                  {FLOW_STEPS.map((step) => (
-                    <li key={step.title}>
-                      <span>{step.title}</span>
-                      <p>{step.description}</p>
-                    </li>
-                  ))}
-                </ol>
-              </article>
-            </div>
-
-            <div
-              className="axmScreenGroups"
-              aria-label="Auxilium mobile screen groups"
-            >
-              {SCREEN_GROUPS.map((group) => (
-                <article className="axmScreenGroupCard" key={group.title}>
-                  <h3>{group.title}</h3>
-                  <ul>
-                    {group.points.map((point) => (
-                      <li key={point}>{point}</li>
-                    ))}
-                  </ul>
-                </article>
-              ))}
-            </div>
+          <div
+            className="auxMobileTagRow"
+            aria-label="Auxilium mobile product areas"
+          >
+            {AUX_MOBILE_TAGS.map((tag) => (
+              <span className="auxMobileTag" key={tag}>
+                {tag}
+              </span>
+            ))}
           </div>
 
-          <div className="axmSliderWrapper">
-            <aside
-              className="axmSliderCard"
-              aria-label="Auxilium app screen slider"
-            >
-              <div className="axmSliderHeader">
-                <p>Interface Preview</p>
-                <span>
-                  {String(activeSlide + 1).padStart(2, '0')} /{' '}
-                  {String(MOBILE_SLIDES.length).padStart(2, '0')}
-                </span>
+          <div className="auxMobileStatsGrid">
+            {AUX_MOBILE_STATS.map((item) => (
+              <article className="auxMobileStatCard" key={item.label}>
+                <strong>{item.value}</strong>
+                <span>{item.label}</span>
+              </article>
+            ))}
+          </div>
+
+          <article className="auxMobileNarrativeCard">
+            <p className="auxMobileSectionLabel">What the App Covers</p>
+            <h2>Ride booking, member data, and support access in one app.</h2>
+            <ul className="auxMobileFeatureList">
+              {AUX_MOBILE_FEATURES.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
+        </div>
+
+        <div className="auxMobileVisualSide">
+          <div className="auxMobilePreviewPanel">
+            <div className="auxMobilePhoneFrame">
+              <div className="auxMobilePhoneSpeaker" />
+              <div className="auxMobilePhoneScreen">
+                <Image
+                  key={activeScreen.label}
+                  src={activeScreen.image}
+                  alt={activeScreen.alt}
+                  fill
+                  className="auxMobilePhoneImage"
+                  sizes="(max-width: 720px) 72vw, 320px"
+                />
+              </div>
+            </div>
+
+            <div className="auxMobileScreenMeta">
+              <div>
+                <p>{activeScreen.label}</p>
+                <strong>{activeScreen.title}</strong>
+                <span>{activeScreen.caption}</span>
               </div>
 
-              <div className="axmSliderViewport">
-                <div
-                  className="axmSliderTrack"
-                  style={{ transform: `translateX(-${activeSlide * 100}%)` }}
-                >
-                  {MOBILE_SLIDES.map((slide) => (
-                    <article className="axmSlide" key={slide.id}>
-                      <div className="axmPhoneFrame">
-                        <div className="axmPhoneNotch" />
-                        <Image
-                          src={slide.image}
-                          alt={`${slide.title} screen`}
-                          width={slide.image.width}
-                          height={slide.image.height}
-                          sizes="(max-width: 420px) 186px, (max-width: 720px) 212px, 260px"
-                          className="axmPhoneImage"
-                        />
-                      </div>
-
-                      <div className="axmSlideCaption">
-                        <h4>{slide.title}</h4>
-                        <p>{slide.description}</p>
-                      </div>
-                    </article>
-                  ))}
-                </div>
-              </div>
-
-              <div className="axmSliderControls">
+              <div className="auxMobileControls">
                 <button
                   type="button"
-                  className="axmSliderButton"
                   onClick={handlePrev}
-                  aria-label="Previous screen"
+                  aria-label="Previous Auxilium mobile screen"
                 >
                   Prev
                 </button>
-
-                <div
-                  className="axmSliderDots"
-                  role="tablist"
-                  aria-label="Slide selector"
-                >
-                  {MOBILE_SLIDES.map((slide, index) => (
+                <div className="auxMobileDots">
+                  {AUX_MOBILE_SCREENS.map((screen, index) => (
                     <button
-                      key={slide.id}
                       type="button"
-                      className={`axmDot ${index === activeSlide ? 'isActive' : ''}`}
-                      aria-label={`Go to ${slide.title}`}
-                      onClick={() => setActiveSlide(index)}
+                      key={screen.label}
+                      className={index === activeIndex ? 'isActive' : ''}
+                      onClick={() => setActiveIndex(index)}
+                      aria-label={`Show ${screen.label} screen`}
                     />
                   ))}
                 </div>
-
                 <button
                   type="button"
-                  className="axmSliderButton"
                   onClick={handleNext}
-                  aria-label="Next screen"
+                  aria-label="Next Auxilium mobile screen"
                 >
                   Next
                 </button>
               </div>
-            </aside>
+            </div>
+          </div>
+
+          <div className="auxMobileFlowGrid">
+            {AUX_MOBILE_FLOWS.map((flow) => (
+              <article key={flow.title}>
+                <span>{flow.title}</span>
+                <strong>{flow.text}</strong>
+              </article>
+            ))}
           </div>
         </div>
       </div>

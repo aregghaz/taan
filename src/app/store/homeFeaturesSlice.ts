@@ -81,7 +81,17 @@ const initialState: HomeFeaturesState = {
     modernStack: {
       title: 'Modern Stack',
       description: 'Up-to-date tools for top performance',
-      badges: ['Java', 'JavaScript', 'Node.js', 'C#'],
+      badges: [
+        'Java',
+        'Node.js',
+        'Php',
+        'Python',
+        'JavaScript',
+        'ReactNative',
+        'React.js',
+        'Next.js',
+        'UI/UX',
+      ],
     },
   },
 };
