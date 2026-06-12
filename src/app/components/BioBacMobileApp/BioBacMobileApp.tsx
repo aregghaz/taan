@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
-import BioBacMobileCompanies from '@/app/assets/images/BioBacMobileCompanies.jpeg';
 import BioBacMobileCompany from '@/app/assets/images/BioBacMobileCompany.jpeg';
 import BioBacMobileHome from '@/app/assets/images/BioBacMobileHome.jpeg';
 import BioBacMobileReceipt from '@/app/assets/images/BioBacMobileReceipt.jpeg';
@@ -34,42 +33,40 @@ const MOBILE_SCREENS = [
   {
     label: 'Home',
     title: 'Module launcher',
-    caption: 'Fast entry into companies, warehouse, pre-orders, and account lists.',
+    caption:
+      'Fast entry into companies, warehouse, pre-orders, and account lists.',
     image: BioBacMobileHome,
     alt: 'BioBac mobile app home module screen',
   },
   {
-    label: 'Companies',
-    title: 'Company registry',
-    caption: 'Search, filter, add, and review company balances from a mobile list.',
-    image: BioBacMobileCompanies,
-    alt: 'BioBac mobile app companies list screen',
-  },
-  {
     label: 'Company',
     title: 'Company operations',
-    caption: 'Sales, payment, return, pre-order, task, and call actions in one hub.',
+    caption:
+      'Sales, payment, return, pre-order, task, and call actions in one hub.',
     image: BioBacMobileCompany,
     alt: 'BioBac mobile app company detail screen',
   },
   {
     label: 'Sales',
     title: 'Sales builder',
-    caption: 'Product chips, quantity fields, price inputs, total price, and received amount.',
+    caption:
+      'Product chips, quantity fields, price inputs, total price, and received amount.',
     image: BioBacMobileSales,
     alt: 'BioBac mobile app sales product screen',
   },
   {
     label: 'Receipt',
     title: 'Receipt preview',
-    caption: 'Supplier, buyer, product table, totals, balance, signature fields, and print actions.',
+    caption:
+      'Supplier, buyer, product table, totals, balance, signature fields, and print actions.',
     image: BioBacMobileReceipt,
     alt: 'BioBac mobile app receipt preview screen',
   },
   {
     label: 'Returns',
     title: 'Return products',
-    caption: 'Return date, comment, item rows, price calculation, and create action.',
+    caption:
+      'Return date, comment, item rows, price calculation, and create action.',
     image: BioBacMobileReturn,
     alt: 'BioBac mobile app return products screen',
   },
@@ -81,7 +78,7 @@ export default function BioBacMobileApp() {
 
   const handlePrev = () => {
     setActiveIndex((current) =>
-      current === 0 ? MOBILE_SCREENS.length - 1 : current - 1,
+      current === 0 ? MOBILE_SCREENS.length - 1 : current - 1
     );
   };
 
@@ -196,15 +193,21 @@ export default function BioBacMobileApp() {
           <div className="bioBacMobileFlowGrid">
             <article>
               <span>Company Hub</span>
-              <strong>Balances, history, actions, and contact shortcuts.</strong>
+              <strong>
+                Balances, history, actions, and contact shortcuts.
+              </strong>
             </article>
             <article>
               <span>Sales Flow</span>
-              <strong>Product rows, totals, received amount, and receipt preview.</strong>
+              <strong>
+                Product rows, totals, received amount, and receipt preview.
+              </strong>
             </article>
             <article>
               <span>Returns</span>
-              <strong>Return date, item rows, quantity, price, and create action.</strong>
+              <strong>
+                Return date, item rows, quantity, price, and create action.
+              </strong>
             </article>
           </div>
         </div>
