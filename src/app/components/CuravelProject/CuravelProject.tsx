@@ -41,16 +41,16 @@ const CURAVEL_STATS = [
 ] as const;
 
 const CURAVEL_SCOPE_POINTS = [
-  'Service overview with clearer trust signals',
-  'Ride coordination and support entry points',
-  'Responsive layouts across desktop and mobile',
-  'Conversion-focused calls to action and navigation',
+  'Clear medical transportation service presentation',
+  'Fast booking paths for patients and care teams',
+  'Trust-building sections for safety, care, and reliability',
+  'Responsive website flow for desktop and mobile visitors',
 ] as const;
 
 const CURAVEL_AUDIENCE = [
-  'Patients',
-  'Families',
+  'Medical ride clients',
   'Care coordinators',
+  'Healthcare partners',
 ] as const;
 
 const CURAVEL_GALLERY_IMAGES = [
@@ -102,11 +102,12 @@ export default function CuravelProject() {
         <div className="curavelNarrativeGrid">
           <article className="curavelNarrativeCard">
             <p className="curavelCardLabel">Project Focus</p>
-            <h3>Patient-friendly transportation journeys.</h3>
+            <h3>Clear access to medical transportation services.</h3>
             <p>
-              Curavel balances medical service credibility with a calmer visual
-              tone, clearer service explanation, and easier decision-making for
-              users who need transportation support quickly.
+              Curavel needed a website that explains non-emergency medical
+              transportation in a simple, trustworthy way, helping visitors
+              understand the service, choose the right next step, and request
+              support without confusion.
             </p>
 
             <div className="curavelAudienceRow" aria-label="Primary audiences">

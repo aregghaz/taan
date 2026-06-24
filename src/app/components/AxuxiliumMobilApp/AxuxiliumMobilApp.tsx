@@ -3,7 +3,6 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import AuxMob1 from '@/app/assets/images/AuxMob1.png';
-import AuxMob2 from '@/app/assets/images/AuxMob2.png';
 import AuxMob3 from '@/app/assets/images/AuxMob3.png';
 import AuxMob4 from '@/app/assets/images/AuxMob4.png';
 
@@ -36,14 +35,14 @@ const AUX_MOBILE_SCREENS = [
     image: AuxMob1,
     alt: 'Auxilium mobile onboarding welcome screen',
   },
-  {
-    label: 'Create Ride',
-    title: 'Ride request builder',
-    caption:
-      'Date of service, passenger count, business line limits, assistance options, and quick navigation.',
-    image: AuxMob2,
-    alt: 'Auxilium mobile create ride screen',
-  },
+  // {
+  //   label: 'Create Ride',
+  //   title: 'Ride request builder',
+  //   caption:
+  //     'Date of service, passenger count, business line limits, assistance options, and quick navigation.',
+  //   image: AuxMob2,
+  //   alt: 'Auxilium mobile create ride screen',
+  // },
   {
     label: 'Profile',
     title: 'Member details and home address',
@@ -83,7 +82,7 @@ export default function AxuxiliumMobilApp() {
 
   const handlePrev = () => {
     setActiveIndex((current) =>
-      current === 0 ? AUX_MOBILE_SCREENS.length - 1 : current - 1,
+      current === 0 ? AUX_MOBILE_SCREENS.length - 1 : current - 1
     );
   };
 
