@@ -2,6 +2,8 @@ import AuxiliumHighlightsSlider from '@/app/components/Auxilium/AuxiliumHighligh
 import {
   AUXILIUM_FEATURES,
   AUXILIUM_HIGHLIGHTS,
+  AUXILIUM_PRODUCT_MODULES,
+  AUXILIUM_PROJECT_STORY,
   AUXILIUM_STATS,
   AUXILIUM_TAGS,
   AUXILIUM_WORKSTREAMS,
@@ -39,6 +41,24 @@ export default function AuxiliumOverview() {
           <article className="auxiliumStatCard" key={stat.label}>
             <span className="auxiliumStatValue">{stat.value}</span>
             <span className="auxiliumStatLabel">{stat.label}</span>
+          </article>
+        ))}
+      </div>
+
+      <article className="auxiliumNarrativeCard auxiliumReveal auxiliumDelay7">
+        <p className="auxiliumDetailLabel">Project Story</p>
+        <div className="auxiliumNarrativeText">
+          {AUXILIUM_PROJECT_STORY.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
+      </article>
+
+      <div className="auxiliumModuleGrid auxiliumReveal auxiliumDelay8">
+        {AUXILIUM_PRODUCT_MODULES.map((module) => (
+          <article className="auxiliumModuleCard" key={module.title}>
+            <strong>{module.title}</strong>
+            <p>{module.text}</p>
           </article>
         ))}
       </div>

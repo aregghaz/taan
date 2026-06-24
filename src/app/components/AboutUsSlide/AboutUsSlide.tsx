@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, type CSSProperties } from 'react';
+import { type CSSProperties, useEffect, useRef } from 'react';
 import Link from 'next/link';
 
 const ABOUT_US_HERO_CHIPS = [
@@ -152,11 +152,11 @@ export default function AboutUsSlide() {
               </h1>
 
               <p className="aboutUsHeroText">
-                We build company websites, landing pages, product
-                presentations, and service-focused experiences for projects
-                connected to the United States, Russia, and Armenia. The focus
-                is always the same: sharp visuals, clear structure, and
-                delivery that feels finished.
+                We build company websites, landing pages, product presentations,
+                and service-focused experiences for projects connected to the
+                United States, Russia, and Armenia. The focus is always the
+                same: sharp visuals, clear structure, and delivery that feels
+                finished.
               </p>
 
               <div
@@ -198,15 +198,17 @@ export default function AboutUsSlide() {
                 style={getSubtleDelay('120ms')}
               >
                 <div className="aboutUsHeroMockupHeader">
-                  <span className="aboutUsHeroMockupBrand">Taan Office</span>
+                  <span className="aboutUsHeroMockupBrand">
+                    Taan Technologies
+                  </span>
                   <span className="aboutUsHeroMockupStatus">Yerevan</span>
                 </div>
 
                 <div className="aboutUsHeroMockupPanel">
                   <p className="aboutUsHeroMockupLabel">Current Focus</p>
                   <div className="aboutUsHeroMockupBubble">
-                    Websites that feel modern, structured, and market-aware
-                    from the first view.
+                    Websites that feel modern, structured, and market-aware from
+                    the first view.
                   </div>
 
                   <p className="aboutUsHeroMockupLabel">Project Types</p>
@@ -258,7 +260,7 @@ export default function AboutUsSlide() {
                 style={getSubtleDelay('120ms')}
               >
                 <span className="aboutUsNetworkCoreBadge">Yerevan</span>
-                <strong>Taan Office</strong>
+                <strong>Taan Technologies</strong>
                 <p>
                   Design, frontend, and delivery aligned in one practical
                   workflow.

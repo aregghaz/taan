@@ -1,80 +1,154 @@
+'use client';
+
 import Image from 'next/image';
-import Aux1 from '@/app/assets/images/Aux1.jpg';
-import Aux2 from '@/app/assets/images/Aux2.jpg';
-import Aux3 from '@/app/assets/images/Aux3.jpg';
-import Aux4 from '@/app/assets/images/Aux4.jpg';
-import { AUXILIUM_VIDEO_URL } from '@/app/components/Auxilium/auxilium.data';
+import { useState } from 'react';
+import AuxiliumDashboardHome from '@/app/assets/images/AuxiliumDashboardHome.png';
+import AuxiliumPayerFeatures from '@/app/assets/images/AuxiliumPayerFeatures.png';
+import AuxiliumPayerInformation from '@/app/assets/images/AuxiliumPayerInformation.png';
+import AuxiliumRideReportsCharts from '@/app/assets/images/AuxiliumRideReportsCharts.png';
+import AuxiliumRideReportsOverview from '@/app/assets/images/AuxiliumRideReportsOverview.png';
+import AuxiliumUsersDirectory from '@/app/assets/images/AuxiliumUsersDirectory.png';
 
-const AUXILIUM_GALLERY = [
-  { src: Aux1, alt: 'Auxilium dashboard view 1', caption: 'Dispatcher overview' },
-  { src: Aux2, alt: 'Auxilium dashboard view 2', caption: 'Live ride tracking' },
-  { src: Aux3, alt: 'Auxilium dashboard view 3', caption: 'Status and alerts' },
-  { src: Aux4, alt: 'Auxilium dashboard view 4', caption: 'Operations summary' },
-];
-
-const DELAY_CLASSES = [
-  'auxiliumDelay4',
-  'auxiliumDelay5',
-  'auxiliumDelay6',
-  'auxiliumDelay7',
-];
+const AUXILIUM_SCREENS = [
+  {
+    label: 'Home',
+    title: 'Operations command center',
+    caption:
+      'Actions, ride creation, member search, standing orders, contractors, and recent activity in one dispatcher home.',
+    src: AuxiliumDashboardHome,
+    alt: 'Auxilium home dashboard with actions and recent activity',
+  },
+  {
+    label: 'Users',
+    title: 'User directory and profile audit',
+    caption:
+      'Admin teams can manage users, inspect profile details, reset passwords, and review login activity.',
+    src: AuxiliumUsersDirectory,
+    alt: 'Auxilium user directory and user profile screen',
+  },
+  {
+    label: 'Payer Info',
+    title: 'Payer information workspace',
+    caption:
+      'Payer identity, locations, contact numbers, service levels, map context, and analytics stay visible together.',
+    src: AuxiliumPayerInformation,
+    alt: 'Auxilium payer information screen with map and analytics',
+  },
+  {
+    label: 'Features',
+    title: 'Feature controls by payer',
+    caption:
+      'Configurable payer, rideshare, contractor, and authorization features are organized for quick review.',
+    src: AuxiliumPayerFeatures,
+    alt: 'Auxilium payer features configuration screen',
+  },
+  {
+    label: 'Reports',
+    title: 'Ride reporting overview',
+    caption:
+      'A reporting dashboard tracks ride status, completion, cost, on-time performance, and member volume.',
+    src: AuxiliumRideReportsOverview,
+    alt: 'Auxilium ride reports dashboard with status and metric cards',
+  },
+  {
+    label: 'Charts',
+    title: 'Detailed performance charts',
+    caption:
+      'Deeper report views compare county cost, rendering services, rides, and on-time performance trends.',
+    src: AuxiliumRideReportsCharts,
+    alt: 'Auxilium ride report charts and performance graphs',
+  },
+] as const;
 
 const AUXILIUM_MEDIA_TAGS = [
-  'Ride board',
-  'Member ops',
-  'Status alerts',
-  'Shift visibility',
+  'Admin console',
+  'Payer controls',
+  'Ride reporting',
+  'Operations UI',
 ] as const;
 
 export default function AuxiliumMediaPanel() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeScreen = AUXILIUM_SCREENS[activeIndex];
+
+  const handlePrev = () => {
+    setActiveIndex((current) =>
+      current === 0 ? AUXILIUM_SCREENS.length - 1 : current - 1
+    );
+  };
+
+  const handleNext = () => {
+    setActiveIndex((current) => (current + 1) % AUXILIUM_SCREENS.length);
+  };
+
   return (
     <div className="auxiliumRightContent">
-      <div className="auxiliumMediaIntro auxiliumReveal auxiliumDelay1">
-        <p className="auxiliumMediaEyebrow">Product Surfaces</p>
+      <div className="auxiliumScreenShowcase auxiliumReveal auxiliumDelay2">
+        <div className="auxiliumScreenFrame">
+          <div className="auxiliumScreenTopbar">
+            <div className="auxiliumWindowDots" aria-hidden="true">
+              <span />
+              <span />
+              <span />
+            </div>
 
-        <div className="auxiliumMediaTagRow">
-          {AUXILIUM_MEDIA_TAGS.map((tag) => (
-            <span className="auxiliumMediaTag" key={tag}>
-              {tag}
+            <span className="auxiliumScreenCrumb">{activeScreen.label}</span>
+            <span className="auxiliumScreenCount">
+              {String(activeIndex + 1).padStart(2, '0')} /{' '}
+              {String(AUXILIUM_SCREENS.length).padStart(2, '0')}
             </span>
-          ))}
-        </div>
-      </div>
+          </div>
 
-      <div className="auxiliumEmbedCard auxiliumReveal auxiliumDelay2">
-        <div className="auxiliumEmbedViewport">
-          <iframe
-            className="auxiliumEmbedFrame auxiliumEmbedFrameVideoOnly"
-            src={AUXILIUM_VIDEO_URL}
-            title="Auxilium Embedded Demo"
-            loading="lazy"
-            scrolling="no"
-            allowFullScreen
-          />
-        </div>
-      </div>
-
-      <div className="auxiliumVideoMeta auxiliumReveal auxiliumDelay3">
-        <span className="auxiliumMetaPill">Auxilium Demo</span>
-        <span className="auxiliumMetaText">Product walkthrough preview</span>
-      </div>
-
-      <div className="auxiliumPhotoGrid">
-        {AUXILIUM_GALLERY.map((photo, index) => (
-          <article
-            className={`auxiliumPhotoCard auxiliumReveal ${DELAY_CLASSES[index]}`}
-            key={photo.alt}
-          >
+          <div className="auxiliumScreenViewport">
             <Image
-              src={photo.src}
-              alt={photo.alt}
+              key={activeScreen.label}
+              src={activeScreen.src}
+              alt={activeScreen.alt}
               fill
-              className="auxiliumPhotoImage"
-              sizes="(max-width: 960px) 48vw, 280px"
+              className="auxiliumScreenImage"
+              sizes="(max-width: 980px) 92vw, 760px"
+              priority={activeIndex === 0}
             />
-            <span className="auxiliumPhotoCaption">{photo.caption}</span>
-          </article>
-        ))}
+          </div>
+        </div>
+
+        <div className="auxiliumScreenMeta">
+          <div>
+            <p>{activeScreen.label}</p>
+            <strong>{activeScreen.title}</strong>
+            <span>{activeScreen.caption}</span>
+          </div>
+
+          <div className="auxiliumScreenControls">
+            <button
+              type="button"
+              onClick={handlePrev}
+              aria-label="Previous Auxilium screen"
+            >
+              Prev
+            </button>
+
+            <div className="auxiliumScreenDots">
+              {AUXILIUM_SCREENS.map((screen, index) => (
+                <button
+                  type="button"
+                  key={screen.label}
+                  className={index === activeIndex ? 'isActive' : ''}
+                  onClick={() => setActiveIndex(index)}
+                  aria-label={`Show ${screen.label} screen`}
+                />
+              ))}
+            </div>
+
+            <button
+              type="button"
+              onClick={handleNext}
+              aria-label="Next Auxilium screen"
+            >
+              Next
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

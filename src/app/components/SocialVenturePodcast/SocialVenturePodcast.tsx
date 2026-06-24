@@ -21,7 +21,6 @@ const PODCAST_TAGS = [
 
 const PODCAST_STATS = [
   { value: '01', label: 'complete website' },
-  { value: '100%', label: 'design by TAAN' },
   { value: 'All', label: 'screen sizes' },
 ] as const;
 
@@ -53,28 +52,32 @@ const PODCAST_SCREEN_SLIDES = [
   {
     label: 'Home',
     title: 'Podcast landing page',
-    caption: 'Hero story, host introduction, and quick path into featured episodes.',
+    caption:
+      'Hero story, host introduction, and quick path into featured episodes.',
     image: SocialPodcastScreen1,
     alt: 'Social Venture Podcast home page hero screen',
   },
   {
     label: 'Short Videos',
     title: 'Short lessons section',
-    caption: 'Vertical short-video cards for fast lessons, clips, and audience touchpoints.',
+    caption:
+      'Vertical short-video cards for fast lessons, clips, and audience touchpoints.',
     image: SocialPodcastScreen2,
     alt: 'Social Venture Podcast short videos page',
   },
   {
     label: 'Podcasts',
     title: 'Podcast overview',
-    caption: 'Editorial podcast page with featured content, episode cards, and strong visual rhythm.',
+    caption:
+      'Editorial podcast page with featured content, episode cards, and strong visual rhythm.',
     image: SocialPodcastScreen3,
     alt: 'Social Venture Podcast episodes overview screen',
   },
   {
     label: 'Programs',
     title: 'Principles carousel',
-    caption: 'Program and principle cards that extend the brand beyond listening.',
+    caption:
+      'Program and principle cards that extend the brand beyond listening.',
     image: SocialPodcastScreen4,
     alt: 'Social Venture Podcast programs and principles carousel screen',
   },
@@ -86,7 +89,7 @@ export default function SocialVenturePodcast() {
 
   const handlePrev = () => {
     setActiveIndex((current) =>
-      current === 0 ? PODCAST_SCREEN_SLIDES.length - 1 : current - 1,
+      current === 0 ? PODCAST_SCREEN_SLIDES.length - 1 : current - 1
     );
   };
 
@@ -101,9 +104,9 @@ export default function SocialVenturePodcast() {
           <p className="socialPodcastEyebrow">Podcast Website</p>
           <h1>Social Venture Podcast</h1>
           <p className="socialPodcastSubtitle">
-            A branded web experience for Joe Mikitariyan&apos;s podcast,
-            created to present conversations, ideas, and episodes with a sharp
-            editorial feel.
+            A branded web experience for Joe Mikitariyan&apos;s podcast, created
+            to present conversations, ideas, and episodes with a sharp editorial
+            feel.
           </p>
           <p className="socialPodcastLead">
             Our company handled the visual direction and interface design, then
@@ -145,7 +148,9 @@ export default function SocialVenturePodcast() {
           <article className="socialPodcastQuizBanner">
             <div className="socialPodcastQuizCopy">
               <p className="socialPodcastSectionLabel">Interactive Quizzes</p>
-              <h2>Interactive quizzes that turn listeners into participants.</h2>
+              <h2>
+                Interactive quizzes that turn listeners into participants.
+              </h2>
               <p>
                 Quizzes create a playful way for visitors to explore podcast
                 themes, test their perspective, and receive tailored results.
@@ -269,7 +274,9 @@ export default function SocialVenturePodcast() {
             </article>
             <article>
               <span>Short Videos</span>
-              <strong>Fast video content blocks for clips, promos, and highlights.</strong>
+              <strong>
+                Fast video content blocks for clips, promos, and highlights.
+              </strong>
             </article>
           </div>
         </div>

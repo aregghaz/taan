@@ -464,7 +464,13 @@
   }
 
   .auxiliumRightContent {
+    order: -1;
+    max-width: 820px;
     gap: 16px;
+  }
+
+  .auxiliumScreenShowcase {
+    order: -1;
   }
 
   .auxiliumDetailsGrid {
@@ -489,6 +495,11 @@
 
   .socialPodcastShell {
     gap: 24px;
+  }
+
+  .socialPodcastVisualSide {
+    order: -1;
+    max-width: 980px;
   }
 
   .joeProfileShell {

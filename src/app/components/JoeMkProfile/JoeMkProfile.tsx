@@ -10,7 +10,6 @@ import JoeProfileScreenStrategy from '@/app/assets/images/JoeProfileScreenStrate
 
 const PROFILE_TAGS = [
   'Profile website',
-  'Design by TAAN',
   'Motion system',
   'Z-index layers',
   'Smooth transitions',
@@ -19,7 +18,6 @@ const PROFILE_TAGS = [
 const PROFILE_STATS = [
   { value: '3D', label: 'layered scenes' },
   { value: '60fps', label: 'motion target' },
-  { value: '100%', label: 'design by TAAN' },
 ] as const;
 
 const PROFILE_FEATURES = [
@@ -32,35 +30,40 @@ const MOTION_STAGES = [
   {
     label: 'Profile',
     title: 'Profile intro',
-    caption: 'A high-impact first screen with portrait, layered cards, radial depth, and polished entrance timing.',
+    caption:
+      'A high-impact first screen with portrait, layered cards, radial depth, and polished entrance timing.',
     image: JoeProfileScreenHome,
     alt: 'Joe Mkhitaryan profile home screen',
   },
   {
     label: 'Podcasts',
     title: 'Audio content surface',
-    caption: 'Podcast sections use depth, active states, and animated audio-style surfaces for stronger storytelling.',
+    caption:
+      'Podcast sections use depth, active states, and animated audio-style surfaces for stronger storytelling.',
     image: JoeProfileScreenPodcasts,
     alt: 'Joe Mkhitaryan podcasts screen',
   },
   {
     label: 'Strategy',
     title: 'Z-index choreography',
-    caption: 'Strategy screens stack cards, media, and background rings to create a premium layered composition.',
+    caption:
+      'Strategy screens stack cards, media, and background rings to create a premium layered composition.',
     image: JoeProfileScreenStrategy,
     alt: 'Joe Mkhitaryan strategy screen',
   },
   {
     label: 'Story',
     title: 'Full-screen story transition',
-    caption: 'Large image sections keep the brand cinematic while text and controls reveal cleanly above the photo.',
+    caption:
+      'Large image sections keep the brand cinematic while text and controls reveal cleanly above the photo.',
     image: JoeProfileScreenStory,
     alt: 'Joe Mkhitaryan story screen',
   },
   {
     label: 'Contact',
     title: 'Contact flow',
-    caption: 'The contact section keeps the same animated depth language while making channels and actions clear.',
+    caption:
+      'The contact section keeps the same animated depth language while making channels and actions clear.',
     image: JoeProfileScreenContact,
     alt: 'Joe Mkhitaryan contact screen',
   },
@@ -72,7 +75,7 @@ export default function JoeMkProfile() {
 
   const handlePrev = () => {
     setActiveIndex((current) =>
-      current === 0 ? MOTION_STAGES.length - 1 : current - 1,
+      current === 0 ? MOTION_STAGES.length - 1 : current - 1
     );
   };
 
@@ -145,7 +148,6 @@ export default function JoeMkProfile() {
                 <p>{activeStage.label}</p>
                 <strong>{activeStage.title}</strong>
               </div>
-              <span>z-index / motion stack</span>
             </div>
 
             <div
@@ -197,11 +199,15 @@ export default function JoeMkProfile() {
           <div className="joeProfileMotionGrid">
             <article>
               <span>Animation</span>
-              <strong>Reveal timing, scroll rhythm, and page-to-page movement.</strong>
+              <strong>
+                Reveal timing, scroll rhythm, and page-to-page movement.
+              </strong>
             </article>
             <article>
               <span>Design</span>
-              <strong>Personal-brand visual system designed by our company.</strong>
+              <strong>
+                Personal-brand visual system designed by our company.
+              </strong>
             </article>
           </div>
         </div>
