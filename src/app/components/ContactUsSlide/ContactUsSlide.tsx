@@ -13,6 +13,9 @@ const CONTACT_CHIPS = [
   'Launch support',
 ] as const;
 
+const CONTACT_PHONE = '+374 94 80 60 80';
+const CONTACT_PHONE_HREF = `tel:${CONTACT_PHONE.replace(/\s/g, '')}`;
+
 const CONTACT_CARDS = [
   {
     id: 'email',
@@ -25,9 +28,9 @@ const CONTACT_CARDS = [
   {
     id: 'phone',
     title: 'Call us',
-    value: '+374 94 80 60 80',
+    value: CONTACT_PHONE,
     hint: 'Quick intro calls for active projects and handoff.',
-    href: 'tel:+37441200410',
+    href: CONTACT_PHONE_HREF,
     icon: PhoneIcon,
   },
   {
