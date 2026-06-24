@@ -15,6 +15,8 @@ const CONTACT_CHIPS = [
 
 const CONTACT_PHONE = '+374 94 80 60 80';
 const CONTACT_PHONE_HREF = `tel:${CONTACT_PHONE.replace(/\s/g, '')}`;
+const CONTACT_LOCATION = '12 Vagharsh Vagharshyan St, Yerevan 0012';
+const CONTACT_LOCATION_HREF = `https://maps.google.com/?q=${encodeURIComponent(CONTACT_LOCATION)}`;
 
 const CONTACT_CARDS = [
   {
@@ -36,9 +38,9 @@ const CONTACT_CARDS = [
   {
     id: 'location',
     title: 'Our location',
-    value: '12 Vagharsh Vagharshyan St, Yerevan 0012',
+    value: CONTACT_LOCATION,
     hint: 'Office-based workflow with remote delivery across markets.',
-    href: 'https://maps.google.com/?q=Yerevan%2C%20Armenia',
+    href: CONTACT_LOCATION_HREF,
     icon: LocationIcon,
     external: true,
   },

@@ -17,6 +17,9 @@
 :root {
   --app-min-viewport-height: 900px;
   --app-height-reference: max(100vh, var(--app-min-viewport-height));
+  --app-scrollbar-thumb: rgba(150, 170, 255, 0.38);
+  --app-scrollbar-thumb-hover: rgba(180, 196, 255, 0.58);
+  --app-scrollbar-track: rgba(255, 255, 255, 0.04);
 }
 
 @supports (height: 100dvh) {
@@ -35,6 +38,37 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  scrollbar-color: var(--app-scrollbar-thumb) transparent;
+  scrollbar-width: thin;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--app-scrollbar-track);
+  border-radius: 999px;
+}
+
+*::-webkit-scrollbar-thumb {
+  min-height: 44px;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background:
+    linear-gradient(var(--app-scrollbar-thumb), var(--app-scrollbar-thumb))
+    padding-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background:
+    linear-gradient(var(--app-scrollbar-thumb-hover), var(--app-scrollbar-thumb-hover))
+    padding-box;
+}
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
 }
 
 body {
