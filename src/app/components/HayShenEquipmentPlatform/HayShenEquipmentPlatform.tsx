@@ -50,74 +50,84 @@ const ECOSYSTEM_APPS = [
 
 const HAYSHEN_SCREENS = [
   {
+    label: 'Auth',
+    title: 'Company sign-in',
+    caption:
+      'Branded login screen for company access with email, password, and social sign-in.',
+    image: HayShenAuth,
+    alt: 'HayShen company sign in screen',
+  },
+  {
     label: 'Client Home',
     title: 'Equipment marketplace',
-    caption: 'Category browsing, search, recent orders, favorites, profile, and request history.',
+    caption:
+      'Category browsing, search, recent orders, favorites, profile, and request history.',
     image: HayShenClientHome,
     alt: 'HayShen client app home screen',
   },
   {
     label: 'Equipment',
     title: 'Machine detail page',
-    caption: 'Photos, rating, hourly price, technical specs, company profile, and order action.',
+    caption:
+      'Photos, rating, hourly price, technical specs, company profile, and order action.',
     image: HayShenEquipmentDetail,
     alt: 'HayShen equipment detail screen',
   },
   {
     label: 'Order',
     title: 'Order lifecycle',
-    caption: 'Step-by-step status from accepted request to machine dispatch, work, and completion.',
+    caption:
+      'Step-by-step status from accepted request to machine dispatch, work, and completion.',
     image: HayShenOrderTracking,
     alt: 'HayShen order tracking screen',
   },
   {
     label: 'Accepted',
     title: 'Accepted job status',
-    caption: 'A clear milestone screen with job progress, equipment, driver contact, and confirmation actions.',
+    caption:
+      'A clear milestone screen with job progress, equipment, driver contact, and confirmation actions.',
     image: HayShenOrderAccepted,
     alt: 'HayShen accepted job status screen',
   },
   {
     label: 'Summary',
     title: 'PDF-ready summary',
-    caption: 'A final order document with equipment, driver, dates, price, and downloadable PDF action.',
+    caption:
+      'A final order document with equipment, driver, dates, price, and downloadable PDF action.',
     image: HayShenOrderSummary,
     alt: 'HayShen completed order document summary screen',
   },
   {
     label: 'Driver',
     title: 'Incoming jobs',
-    caption: 'Driver dashboard for availability, new jobs, machine preview, price, reject, and accept actions.',
+    caption:
+      'Driver dashboard for availability, new jobs, machine preview, price, reject, and accept actions.',
     image: HayShenDriverOrders,
     alt: 'HayShen driver incoming job screen',
   },
   {
     label: 'Route',
     title: 'Navigation to work site',
-    caption: 'Map route, call action, send message, notes, worker details, equipment, and confirm arrival.',
+    caption:
+      'Map route, call action, send message, notes, worker details, equipment, and confirm arrival.',
     image: HayShenDriverRoute,
     alt: 'HayShen driver route and order details screen',
   },
   {
     label: 'Company Setup',
     title: 'Start company operations',
-    caption: 'Empty-state onboarding for adding drivers and equipment before taking orders.',
+    caption:
+      'Empty-state onboarding for adding drivers and equipment before taking orders.',
     image: HayShenCompanyEmpty,
     alt: 'HayShen company setup empty state screen',
   },
   {
     label: 'Company',
     title: 'Create driver flow',
-    caption: 'Company-side form for worker details, license upload, machine assignment, and notes.',
+    caption:
+      'Company-side form for worker details, license upload, machine assignment, and notes.',
     image: HayShenCreateDriver,
     alt: 'HayShen create driver form screen',
-  },
-  {
-    label: 'Auth',
-    title: 'Company sign-in',
-    caption: 'Branded login screen for company access with email, password, and social sign-in.',
-    image: HayShenAuth,
-    alt: 'HayShen company sign in screen',
   },
 ] as const;
 
@@ -127,7 +137,7 @@ export default function HayShenEquipmentPlatform() {
 
   const handlePrev = () => {
     setActiveIndex((current) =>
-      current === 0 ? HAYSHEN_SCREENS.length - 1 : current - 1,
+      current === 0 ? HAYSHEN_SCREENS.length - 1 : current - 1
     );
   };
 
