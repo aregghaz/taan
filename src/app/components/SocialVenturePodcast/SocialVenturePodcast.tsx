@@ -2,13 +2,14 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
-import SocialPodcastQuiz1 from '@/app/assets/images/SocialPodcastQuiz1.png';
-import SocialPodcastQuiz2 from '@/app/assets/images/SocialPodcastQuiz2.png';
-import SocialPodcastQuiz3 from '@/app/assets/images/SocialPodcastQuiz3.png';
-import SocialPodcastScreen1 from '@/app/assets/images/SocialPodcastScreen1.png';
-import SocialPodcastScreen2 from '@/app/assets/images/SocialPodcastScreen2.png';
-import SocialPodcastScreen3 from '@/app/assets/images/SocialPodcastScreen3.png';
-import SocialPodcastScreen4 from '@/app/assets/images/SocialPodcastScreen4.png';
+import SocialPodcastAdminDashboard2026 from '@/app/assets/images/SocialPodcastAdminDashboard2026.png';
+import SocialPodcastAdminFaqs2026 from '@/app/assets/images/SocialPodcastAdminFaqs2026.png';
+import SocialPodcastAdminLogin2026 from '@/app/assets/images/SocialPodcastAdminLogin2026.png';
+import SocialPodcastAdminShorts2026 from '@/app/assets/images/SocialPodcastAdminShorts2026.png';
+import SocialPodcastAudioNotes2026 from '@/app/assets/images/SocialPodcastAudioNotes2026.png';
+import SocialPodcastHome2026 from '@/app/assets/images/SocialPodcastHome2026.png';
+import SocialPodcastPrograms2026 from '@/app/assets/images/SocialPodcastPrograms2026.png';
+import SocialPodcastQuiz2026 from '@/app/assets/images/SocialPodcastQuiz2026.png';
 
 const PODCAST_TAGS = [
   'Website design',
@@ -30,21 +31,28 @@ const PODCAST_FEATURES = [
   'Editorial-style interface with strong typography, clean content rhythm, and reusable presentation sections.',
 ] as const;
 
+const PODCAST_ADMIN_FEATURES = [
+  'Update website content from a private admin panel without changing code.',
+  'Manage podcast shorts, audio notes, programs, quiz content, and FAQs from one backend workspace.',
+  'Control where content appears across the public website, including home and podcast sections.',
+  'Keep the site fresh as new episodes, programs, and audience resources are published.',
+] as const;
+
 const PODCAST_QUIZ_SCREENS = [
   {
-    title: 'Quiz library',
-    image: SocialPodcastQuiz1,
-    alt: 'Social Venture Podcast quiz selection page',
+    title: 'Quiz experience',
+    image: SocialPodcastQuiz2026,
+    alt: 'Social Venture Podcast quiz library page',
   },
   {
-    title: 'Question flow',
-    image: SocialPodcastQuiz2,
-    alt: 'Social Venture Podcast quiz question screen',
+    title: 'Programs carousel',
+    image: SocialPodcastPrograms2026,
+    alt: 'Social Venture Podcast programs page carousel',
   },
   {
-    title: 'Result screen',
-    image: SocialPodcastQuiz3,
-    alt: 'Social Venture Podcast quiz result screen',
+    title: 'Audio notes',
+    image: SocialPodcastAudioNotes2026,
+    alt: 'Social Venture Podcast audio notes page',
   },
 ] as const;
 
@@ -54,32 +62,64 @@ const PODCAST_SCREEN_SLIDES = [
     title: 'Podcast landing page',
     caption:
       'Hero story, host introduction, and quick path into featured episodes.',
-    image: SocialPodcastScreen1,
+    image: SocialPodcastHome2026,
     alt: 'Social Venture Podcast home page hero screen',
   },
   {
-    label: 'Short Videos',
-    title: 'Short lessons section',
+    label: 'Quiz',
+    title: 'Quiz library',
     caption:
-      'Vertical short-video cards for fast lessons, clips, and audience touchpoints.',
-    image: SocialPodcastScreen2,
-    alt: 'Social Venture Podcast short videos page',
+      'A quiz hub that turns business, risk, leadership, and discipline themes into interactive paths.',
+    image: SocialPodcastQuiz2026,
+    alt: 'Social Venture Podcast quiz cards page',
   },
   {
     label: 'Podcasts',
-    title: 'Podcast overview',
+    title: 'Audio notes',
     caption:
-      'Editorial podcast page with featured content, episode cards, and strong visual rhythm.',
-    image: SocialPodcastScreen3,
-    alt: 'Social Venture Podcast episodes overview screen',
+      'A dark editorial podcast page with audio-note cards, playback controls, and principle-led episode framing.',
+    image: SocialPodcastAudioNotes2026,
+    alt: 'Social Venture Podcast audio notes screen',
   },
   {
     label: 'Programs',
     title: 'Principles carousel',
     caption:
-      'Program and principle cards that extend the brand beyond listening.',
-    image: SocialPodcastScreen4,
-    alt: 'Social Venture Podcast programs and principles carousel screen',
+      'Program cards bring Joe’s principles into guided learning paths beyond the podcast feed.',
+    image: SocialPodcastPrograms2026,
+    alt: 'Social Venture Podcast programs carousel screen',
+  },
+  {
+    label: 'Admin',
+    title: 'Admin dashboard',
+    caption:
+      'The backend dashboard tracks published content, active sections, podcast shorts, quizzes, programs, and FAQs.',
+    image: SocialPodcastAdminDashboard2026,
+    alt: 'Social Venture Podcast admin dashboard screen',
+  },
+  {
+    label: 'Shorts CMS',
+    title: 'Podcast shorts manager',
+    caption:
+      'Content managers can add YouTube short links, display text, and placement rules from the admin panel.',
+    image: SocialPodcastAdminShorts2026,
+    alt: 'Social Venture Podcast admin podcast shorts manager screen',
+  },
+  {
+    label: 'FAQs CMS',
+    title: 'FAQ content library',
+    caption:
+      'A focused FAQ admin screen supports question-and-answer content for the public programs page.',
+    image: SocialPodcastAdminFaqs2026,
+    alt: 'Social Venture Podcast admin FAQs manager screen',
+  },
+  {
+    label: 'Login',
+    title: 'Admin access',
+    caption:
+      'A branded admin login screen gives the content team a private entry point for managing the podcast website.',
+    image: SocialPodcastAdminLogin2026,
+    alt: 'Social Venture Podcast admin login screen',
   },
 ] as const;
 
@@ -140,6 +180,22 @@ export default function SocialVenturePodcast() {
             <h2>Design-led podcast website with a clear content flow.</h2>
             <ul className="socialPodcastFeatureList">
               {PODCAST_FEATURES.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
+
+          <article className="socialPodcastNarrativeCard socialPodcastAdminCard">
+            <p className="socialPodcastSectionLabel">Admin Panel</p>
+            <h2>Content management for the full podcast website.</h2>
+            <p className="socialPodcastAdminText">
+              We also built a custom admin panel so the team can update the
+              website content themselves. From the backend, they can add and
+              edit podcast shorts, audio podcast items, programs, FAQs, and
+              page content that appears on the live site.
+            </p>
+            <ul className="socialPodcastFeatureList">
+              {PODCAST_ADMIN_FEATURES.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>

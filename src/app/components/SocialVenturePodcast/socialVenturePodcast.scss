@@ -139,6 +139,19 @@
   color: #fff7ec;
 }
 
+.socialPodcastAdminCard {
+  background:
+    radial-gradient(90% 120% at 100% 0%, rgba(74, 185, 255, 0.16), transparent 58%),
+    var(--podcast-card);
+}
+
+.socialPodcastAdminText {
+  margin: 0;
+  font-size: clamp(13px, 1vw, 15px);
+  line-height: 1.62;
+  color: var(--podcast-soft);
+}
+
 .socialPodcastFeatureList {
   margin: 0;
   padding: 0;
@@ -236,13 +249,12 @@
 
 .socialPodcastQuizScreen {
   min-width: 0;
-  min-height: 320px;
   border: 1px solid rgba(255, 230, 201, 0.2);
-  border-radius: 24px;
-  padding: 14px;
+  border-radius: 20px;
+  padding: 12px;
   display: grid;
-  grid-template-rows: auto minmax(0, 1fr);
-  gap: 14px;
+  grid-template-rows: auto auto;
+  gap: 12px;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.04)),
     linear-gradient(150deg, rgba(255, 180, 95, 0.18), rgba(104, 98, 255, 0.12));
@@ -279,11 +291,11 @@
 .socialPodcastQuizShot {
   position: relative;
   width: 100%;
-  min-height: 230px;
+  aspect-ratio: 16 / 10;
   overflow: hidden;
   border: 1px solid rgba(255, 230, 201, 0.2);
-  border-radius: 18px;
-  background: rgba(255, 245, 231, 0.08);
+  border-radius: 14px;
+  background: rgba(7, 8, 20, 0.8);
 }
 
 .socialPodcastQuizShot::before {
@@ -297,8 +309,8 @@
 }
 
 .socialPodcastQuizImage {
-  object-fit: cover;
-  object-position: top center;
+  object-fit: contain;
+  object-position: center;
 }
 
 .socialPodcastVisitLink {
